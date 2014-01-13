@@ -116,9 +116,9 @@ The UI/UX decision will make or break this product.
 Yes we would like to compete in the main division.
 
 [mockup]: mockup.png
-[design1]: design1.JPG
-[design2]: design2.JPG
-[design3]: design3.JPG
+[design1]: design1.jpg
+[design2]: design2.jpg
+[design3]: design3.jpg
 
 
 
