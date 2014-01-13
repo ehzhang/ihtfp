@@ -45,6 +45,34 @@ Make a list of 3 pros and 3 cons for each design.
 Pick the best design and mock it up using an image editing program (i.e. Photoshop or Gimp) or using HTML/CSS. Submit a screenshot of this mockup.
 
 Designs are below:
+![design1]
+Pros:
+- something
+- something else
+- something else
+Cons:
+- Something
+- Something
+- Something
+![design2]
+Pros:
+- Something
+- Something
+- Something
+Cons:
+- alksdjfa
+- alskdfja
+- alksjdfad
+![design3]
+Pros:
+- alskdjf
+- alskdjf
+- asldkfj
+Cons:
+- alsdkjf
+- asdlkfj
+- asdlfkj
+
 ![mockup]
 
 Minimal Viable Product
@@ -88,7 +116,9 @@ The UI/UX decision will make or break this product.
 Yes we would like to compete in the main division.
 
 [mockup]: mockup.png
-
+[design1]: design1.JPG
+[design2]: design2.JPG
+[design3]: design3.JPG
 
 
 
