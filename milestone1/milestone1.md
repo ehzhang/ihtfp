@@ -47,34 +47,34 @@ Pick the best design and mock it up using an image editing program (i.e. Photosh
 Designs are below:
 ![design1]
 Pros:
-- something
-- something else
-- something else
+- pretty animations
+- suggests to the user the connectedness of their submission with the rest of the submissions
+- compact, uniform layout
 
 Cons:
-- Something
-- Something
-- Something
+- technically challenging to elimate…
+- overall layout looks kind of clunky
+- posts need to maintain some sort of "chronological order” - potentially confusing organization
 ![design2]
 Pros:
-- Something
-- Something
-- Something
+- sidebar for submissions is easy for the user to understand
+- 9-cell feeling square is an interesting idea, gives us more data points
+- large space for feed grid 
 
 Cons:
-- alksdjfa
-- alskdfja
-- alksjdfad
+- have to encompass and quantify all emotions in some nice way 
+- layout possibly looks kind of boring
+- not sure how 9 colors would look in a grid together
 ![design3]
 Pros:
-- alskdjf
-- alskdjf
-- asldkfj
+- lazy load of more posts is cool
+- simple interactions: you can just keep scrolling up/down
+- fresh yet minimal design
 
 Cons:
-- alsdkjf
-- asdlkfj
-- asdlfkj
+- not sure what make most intuitive sense upon clicking submit (go back to the top of the page? refresh?) 
+- you don’t initially see a lot of the feed
+- user could get “lost” in a sea of posts (is that the effect we are going for?)
 
 ![mockup]
 
