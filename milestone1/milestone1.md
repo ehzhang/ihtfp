@@ -50,6 +50,7 @@ Pros:
 - something
 - something else
 - something else
+
 Cons:
 - Something
 - Something
@@ -59,6 +60,7 @@ Pros:
 - Something
 - Something
 - Something
+
 Cons:
 - alksdjfa
 - alskdfja
@@ -68,6 +70,7 @@ Pros:
 - alskdjf
 - alskdjf
 - asldkfj
+
 Cons:
 - alsdkjf
 - asdlkfj
@@ -118,7 +121,7 @@ Yes we would like to compete in the main division.
 [mockup]: mockup.png
 [design1]: design1.jpg
 [design2]: design2.jpg
-[design3]: design3.jpg
+[design3]: design3.JPG
 
 
 
