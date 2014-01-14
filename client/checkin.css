@@ -1,0 +1,32 @@
+/*
+    ihtfp : the anonymous bitching/celebration app
+
+    Edwin Zhang 2013
+*/
+
+@font-face {
+    font-family: 'Pacifico', cursive;
+    src: url(Pacifico.ttf) format("truetype");
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Pacifico';
+}
+
+h1 {
+    font-family = 'Pacifico'
+}
+
+.main-title {
+  font-family = 'Pacifico';
+  font-size = 220pt;
+}
+
+.main-window {
+  position: absolute;
+  top: 40%;
+  margin 10px
+}
+
