@@ -1,2 +1,6 @@
+.gitignore
 .DS_Store
 *.pxm
+*.iml
+.idea
+notes.md

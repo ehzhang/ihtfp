@@ -16,17 +16,17 @@ body {
 }
 
 h1 {
-    font-family = 'Pacifico'
+    font-family: 'Pacifico'
 }
 
 .main-title {
-  font-family = 'Pacifico';
-  font-size = 220pt;
+  font-family: 'Pacifico';
+  font-size: 220pt;
 }
 
 .main-window {
   position: absolute;
   top: 40%;
-  margin 10px
+margin: 10px
 }
 
