@@ -1,24 +1,41 @@
 <head>
   <title>ihtfp</title>
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
+  <script>
+    Handlebars.registerHelper('times', function(n, block) {
+      var accum = '';
+      for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+      return accum;
+    });
+  </script>
+
 </head>
 <body>
-{{> toolbar }}
-{{> debug }}
-{{> grid }}
+  {{> main-feed }}
+  {{> splash }}
 </body>
 
-<template name="toolbar">
-  <div class="ui inverted teal menu">
-    <a class="item">
-      <div class="logo-title">
-        IHTFP
-      </div>
-    </a>
+<template name="main-feed">
+  {{> title }}
+  {{> grid }}
+</template>
+
+<template name="title">
+  <div class="ui accordion" id="toolbar">
+    <div class="aligned title">
+      <h1> IHTFP </h1>
+    </div>
+
+    <div class="content">
+      {{> post }}
+    </div>
+
   </div>
 </template>
 
-<template name="debug">
+<template name="post">
   <div class="ui form segment">
     <div class="field">
       <label>Tell us about your feels</label>
@@ -36,10 +53,15 @@
 
 <template name="grid">
   <!-- Grid should contain just a vertical list of feels, for now -->
+  {{#times 1000}}
+    <div class="ui green button"> :) </div>
+  {{/times}}
+
 </template>
 
 <template name="feel">
   <div class="ui segment">
     <!-- Put the text of the database entry here. Text, username, feeling -->
+
   </div>
 </template>

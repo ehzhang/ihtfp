@@ -4,7 +4,7 @@ if (Meteor.isClient) {
     console.log("I GOT THE FEELS! " + Feels.find().count());
   });
 
-  Template.debug.events({
+  Template.post.events({
     'click .green': function () {
       var username = $("textarea").val();
       var text = $(":input:text").val();
