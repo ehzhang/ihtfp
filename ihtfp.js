@@ -1,3 +1,5 @@
+Feels = new Meteor.Collection("feels");
+
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return "Welcome to ihtfp.";
