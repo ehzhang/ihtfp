@@ -1,24 +1,30 @@
 if (Meteor.isClient) {
 
-  Meteor.subscribe("feels", function() {
-    console.log("I GOT THE FEELS!");
+  Meteor.subscribe("feels", function () {
+    console.log("I GOT THE FEELS! " + Feels.find().count());
   });
 
-  Template.hello.greeting = function () {
-    return "Welcome to ihtfp.";
-  };
-
-  Template.hello.events({
-    'click' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+  Template.debug.events({
+    'click .green': function () {
+      var username = $("textarea").val();
+      var text = $(":input:text").val();
+      var emotion = $('.green').html();
+      Meteor.call("postFeel", username, text, emotion);
+      return false;
+    },
+    'click .black': function () {
+      var username = $("textarea").val();
+      var text = $(":input:text").val();
+      var emotion = $('.black').html();
+      Meteor.call("postFeel", username, text, emotion);
+      return false;
     }
   });
 }
 
 if (Meteor.isServer) {
   Meteor.publish("feels", function () {
-    return Feels.find();
+    console.log("I'M SENDING THE FEELS! " + Feels.find({username: "Bob"}).count());
+    return Feels.find({username: "Bob"});
   });
 }

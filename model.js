@@ -15,3 +15,19 @@
  */
 
 Feels = new Meteor.Collection("feels");
+
+Meteor.methods({
+  postFeel: function (username, text, emotion) {
+    Feels.insert(
+      {
+        username: username,
+        anon: false, // default for now
+        text: text,
+        emotion: emotion,
+        hearts: 0,
+        timestamp: (new Date()).getTime()
+      }, function () {
+        console.log("successfully posted!!")
+      });
+  }
+})
