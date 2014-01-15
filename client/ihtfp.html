@@ -53,15 +53,29 @@
 
 <template name="grid">
   <!-- Grid should contain just a vertical list of feels, for now -->
-  {{#times 1000}}
-    <div class="ui green button"> :) </div>
+  {{#times 100}}
+  {{> feel}}
   {{/times}}
+
+  {{#each feels}}
+  {{> feel}}
+  {{/each}}
+
 
 </template>
 
 <template name="feel">
-  <div class="ui segment">
+  <div class="ui green button">
+    {{#if text}}
+      {{ text }}
+    {{else}}
+      :)
+    {{/if}}
+  </div>
+
+<!--  <div class="ui segment">
+
     <!-- Put the text of the database entry here. Text, username, feeling -->
 
-  </div>
+<!--  </div> -->
 </template>
