@@ -1,10 +1,45 @@
 <head>
   <title>ihtfp</title>
-  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link href="css/semantic.min.css" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="red ui button">
-      Hello
-    </div>
+  {{> toolbar }}
+  {{> debug }}
+  {{> grid }}
 </body>
+
+<template name="toolbar">
+  <div class = "ui inverted teal menu">
+    <a class="item">
+      <div class="logo-title">
+        IHTFP
+      </div>
+    </a>
+  </div>
+</template>
+
+<template name="debug">
+  <div class="ui form segment">
+    <div class="field">
+      <label>Tell us about your feels</label>
+        <textarea></textarea>
+    </div>
+    <div class="field">
+      <label>Whats yo name, foo?</label>
+        <input type="text" placeholder="Bobby">
+    </div>
+
+    <div class="ui green submit button">Happy</div>
+    <div class="ui black submit button">Sad</div>
+  </div>
+</template>
+
+<template name="grid">
+  <!-- Grid should contain just a vertical list of feels, for now -->
+</template>
+
+<template name="feel">
+  <div class="ui segment">
+    <!-- Put the text of the database entry here. Text, username, feeling -->
+  </div>
+</template>
