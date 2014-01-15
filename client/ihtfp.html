@@ -18,25 +18,29 @@
 </body>
 
 <template name="main-feed">
-  {{> title }}
+  {{> logo }}
   {{> grid }}
 </template>
 
-<template name="title">
-  <div class="ui accordion" id="toolbar">
-    <div class="aligned title">
-      <h1> IHTFP </h1>
-    </div>
+<template name="logo">
+  <div id="toolbar">
+    <div class="ui basic accordion">
+      <div class="title">
+        IHTFP
+        <div class="subtitle">
+          real-time feels
+        </div>
+      </div>
 
-    <div class="content">
-      {{> post }}
+      <div class="content">
+        {{> post }}
+      </div>
     </div>
-
   </div>
 </template>
 
 <template name="post">
-  <div class="ui form segment">
+  <div class="ui form">
     <div class="field">
       <label>Tell us about your feels</label>
       <textarea placeholder="default text"></textarea>

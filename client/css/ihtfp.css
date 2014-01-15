@@ -12,12 +12,30 @@ h1 {
   font-family: 'Oswald';
 }
 
-.logo-title {
-  font-family: 'Oswald';
-}
-
 #toolbar {
   position: fixed;
   top: 0;
+  left: calc(50% - 210px);
+  width: 420px;
   z-index: 999;
+
+  font-family: 'Oswald';
+  background-color: white;
+  padding: 12px;
+}
+
+#toolbar .title {
+  text-align: center;
+  font-size: 72pt;
+  padding: 0px;
+}
+
+#toolbar .subtitle {
+  font-size: 14pt;
+  margin-top: -20px;
+  margin-bottom: 14px;
+}
+
+#toolbar .content {
+
 }
