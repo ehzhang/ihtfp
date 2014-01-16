@@ -9,8 +9,13 @@ body {
   font-size: 14pt;
 }
 
+#header {
+  height: 500px;
+  background-color: #9f220e :
+}
+
 #toolbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: calc(50% - 210px);
   width: 420px;
@@ -18,6 +23,8 @@ body {
 
   background-color: white;
   padding: 12px;
+
+  margin-bottom: 8px;
 }
 
 #toolbar .title {
@@ -49,6 +56,5 @@ body {
 
 /* Grid CSS */
 #grid {
-  margin-top: 150px;
 
 }

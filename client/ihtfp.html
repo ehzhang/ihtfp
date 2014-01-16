@@ -1,6 +1,5 @@
 <head>
   <title>ihtfp</title>
-  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
@@ -15,16 +14,21 @@
 
 </head>
 <body>
-  {{> main-feed }}
+  {{> app }}
   {{> splash }}
 </body>
 
-<template name="main-feed">
+<template name="app">
   {{> logo }}
   {{> feed }}
 </template>
 
 <template name="logo">
+  <div id="header">
+
+
+
+  </div>
   <div id="toolbar" class="">
     <div class="ui basic accordion">
       <div class="title">
@@ -34,7 +38,7 @@
         </div>
       </div>
 
-      <div class="content">
+      <div class="active content">
         {{> post }}
       </div>
     </div>
@@ -52,7 +56,8 @@
       <input type="text" placeholder="Bobby">
     </div>
 
-    <div class="ui green submit button">Happy</div>
+    <div class="ui green submit button">
+      <i class="facebook icon"></i>Happy</div>
     <div class="ui black submit button">Sad</div>
   </div>
 </template>
