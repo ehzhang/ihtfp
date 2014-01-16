@@ -5,16 +5,14 @@ if (Meteor.isClient) {
   });
 
   Template.feed.feels = function () {
-    return Feels.find({}, { sort: { timestamp: -1 }});
+    Feels.find().observe({
+      added : function (item){
+        var $newItem = Template.feel({text: item.text});
+        $('#grid').prepend($newItem)
+          .isotope('reloadItems').isotope({sortBy: 'original-order'});
+      }
+    })
   }
-
-// failed attempt to make new posts appear properly w/ isotope
-//  Template.feel.rendered = function () {
-//    $('#grid').isotope('reloadItems', function () {
-//      console.log("RELOAD!!");
-//    });
-//  };
-
 
   Template.post.events({
     'click .green': function () {

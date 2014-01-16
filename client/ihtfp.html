@@ -26,7 +26,7 @@
 <template name="logo">
   <div id="header">
 
-
+  <!-- Something for the Header will go here-->
 
   </div>
   <div id="toolbar" class="">
@@ -57,17 +57,16 @@
     </div>
 
     <div class="ui green submit button">
-      <i class="facebook icon"></i>Happy</div>
-    <div class="ui black submit button">Sad</div>
+      <i class="smile icon"></i>Happy</div>
+    <div class="ui black submit button">
+      <i class="frown icon"></i>Sad</div>
   </div>
 </template>
 
 <template name="feed">
   <!-- Grid should contain just a vertical list of feels, for now -->
   <div id="grid">
-    {{#each feels}}
-    {{> feel}}
-    {{/each}}
+    {{feels}}
   </div>
 </template>
 
@@ -75,7 +74,7 @@
   <div class="feel">
     <div class="text">
       {{#if text}}
-      {{ text }}
+        {{ text }}
       {{/if}}
     </div>
     <div class="footer">
@@ -84,9 +83,3 @@
   </div>
 
 </template>
-
-<!--  <div class="ui segment">
-
-<!-- Put the text of the database entry here. Text, username, feeling -->
-
-<!--  </div> -->

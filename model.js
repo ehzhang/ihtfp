@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Feels
 
-/*
+/**
  Each feel is represented by a document in the Feels collection:
  username: String user name
  anon: Boolean
