@@ -4,7 +4,7 @@ if (Meteor.isClient) {
     console.log("I GOT THE FEELS! " + Feels.find().count());
   });
 
-  Template.grid.feels = function () {
+  Template.feed.feels = function () {
     return Feels.find();
   }
 
@@ -35,6 +35,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.publish("feels", function () {
     console.log("I'M SENDING THE FEELS! " + Feels.find().count());
-    return Feels.find({username :"Bob"});
+//    return Feels.find({username :"Bob"});
+    return Feels.find();
   });
 }

@@ -21,16 +21,16 @@
 
 <template name="main-feed">
   {{> logo }}
-  {{> grid }}
+  {{> feed }}
 </template>
 
 <template name="logo">
-  <div id="toolbar">
+  <div id="toolbar" class="">
     <div class="ui basic accordion">
       <div class="title">
         ihtfp
         <div class="subtitle">
-          real-time feels
+          anonymous, real-time feels
         </div>
       </div>
 
@@ -57,16 +57,17 @@
   </div>
 </template>
 
-<template name="grid">
+<template name="feed">
   <!-- Grid should contain just a vertical list of feels, for now -->
-  {{#times 100}}
-  {{> feel}}
-  {{/times}}
+  <div id="grid">
+    {{#times 1000}}
+    {{> feel}}
+    {{/times}}
 
-  {{#each feels}}
-  {{> feel}}
-  {{/each}}
-
+    {{#each feels}}
+    {{> feel}}
+    {{/each}}
+  </div>
 
 </template>
 
