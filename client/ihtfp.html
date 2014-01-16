@@ -65,29 +65,28 @@
 <template name="feed">
   <!-- Grid should contain just a vertical list of feels, for now -->
   <div id="grid">
-    {{#times 1000}}
-    {{> feel}}
-    {{/times}}
-
     {{#each feels}}
     {{> feel}}
     {{/each}}
   </div>
-
 </template>
 
 <template name="feel">
-  <div class="ui green button">
-    {{#if text}}
+  <div class="feel">
+    <div class="text">
+      {{#if text}}
       {{ text }}
-    {{else}}
-      :)
-    {{/if}}
+      {{/if}}
+    </div>
+    <div class="footer">
+      <i class="red heart empty icon"></i>
+    </div>
   </div>
+
+</template>
 
 <!--  <div class="ui segment">
 
-    <!-- Put the text of the database entry here. Text, username, feeling -->
+<!-- Put the text of the database entry here. Text, username, feeling -->
 
 <!--  </div> -->
-</template>

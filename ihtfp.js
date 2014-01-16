@@ -1,16 +1,20 @@
 if (Meteor.isClient) {
 
   Meteor.subscribe("feels", function () {
-    console.log("I GOT THE FEELS! " + Feels.find().count());
+    console.log("I GOT THE FEELS! ");
   });
 
   Template.feed.feels = function () {
-    return Feels.find();
+    return Feels.find({}, { sort: { timestamp: -1 }});
   }
 
-  Template.post.clear = function () {
-  // reset post stuff
-  }
+// failed attempt to make new posts appear properly w/ isotope
+//  Template.feel.rendered = function () {
+//    $('#grid').isotope('reloadItems', function () {
+//      console.log("RELOAD!!");
+//    });
+//  };
+
 
   Template.post.events({
     'click .green': function () {
