@@ -4,21 +4,27 @@ if (Meteor.isClient) {
     console.log("I GOT THE FEELS! ");
   });
 
+  Template.feed.alpha = function () {
+    var positive = Feels.find({emotion: 'Happy'}).count();
+    var negative = Feels.find({emotion: 'Sad'}).count();
+    var alpha = negative / (positive + negative);
+    $('.feel').css({opacity: alpha});
+    return alpha;
+  }
+
   Template.feed.feels = function () {
     Feels.find().observe({
       added : function (item){
-        var $newItem = Template.feel({text: item.text});
-        $('#grid').prepend($newItem)
-          .isotope('reloadItems').isotope({sortBy: 'original-order'});
       }
     })
+    return Feels.find({}, {sort: {timestamp: -1, limit: 100}});
   }
 
   Template.post.events({
     'click .green': function () {
       var username = $(":input:text").val();
       var text = $("textarea").val();
-      var emotion = $('.green').html();
+      var emotion = 'Happy';
       Meteor.call("postFeel", username, text, emotion);
       // reset post stuff
       return false;
@@ -26,7 +32,7 @@ if (Meteor.isClient) {
     'click .black': function () {
       var username = $(":input:text").val();
       var text = $("textarea").val();
-      var emotion = $('.black').html();
+      var emotion = 'Sad';
       Meteor.call("postFeel", username, text, emotion);
       // reset post stuff
       return false;
