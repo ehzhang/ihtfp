@@ -4,9 +4,9 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
   <script>
-    Handlebars.registerHelper('times', function(n, block) {
+    Handlebars.registerHelper('times', function (n, block) {
       var accum = '';
-      for(var i = 0; i < n; ++i)
+      for (var i = 0; i < n; ++i)
         accum += block.fn(i);
       return accum;
     });
@@ -14,8 +14,11 @@
 
 </head>
 <body>
+{{#if False}} <!-- if authenticated-->
   {{> app }}
+{{else}}
   {{> splash }}
+{{/if}}
 </body>
 
 <template name="app">
@@ -25,8 +28,6 @@
 
 <template name="logo">
   <div id="header">
-
-  <!-- Something for the Header will go here-->
 
   </div>
   <div id="toolbar" class="">
@@ -57,9 +58,9 @@
     </div>
 
     <div class="ui green submit button">
-      <i class="smile icon"></i>Happy</div>
-    <div class="ui black submit button">
-      <i class="frown icon"></i>Sad</div>
+      <i class="facebook icon"></i>Happy
+    </div>
+    <div class="ui black submit button">Sad</div>
   </div>
 </template>
 
@@ -77,12 +78,27 @@
   <div class="feel">
     <div class="text">
       {{#if text}}
-        {{ text }}
+      {{ text }}
       {{/if}}
     </div>
     <div class="footer">
-      <i class="red heart empty icon"></i>
+      {{> heart}}
     </div>
   </div>
 
 </template>
+
+<template name="heart">
+  <div class="heart-count">
+    {{ hearts }}
+    <i class="teal heart empty icon"></i>
+  </div>
+
+</template>
+
+
+<!--  <div class="ui segment">
+
+<!-- Put the text of the database entry here. Text, username, feeling -->
+
+<!--  </div> -->

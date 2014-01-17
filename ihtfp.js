@@ -20,6 +20,20 @@ if (Meteor.isClient) {
     return Feels.find({}, {sort: {timestamp: -1, limit: 100}});
   }
 
+//// failed attempt to make new posts appear properly w/ isotope
+//  Template.feel.rendered = function () {
+//    $('#grid').isotope('reloadItems', function () {
+//      console.log("RELOAD!!");
+//    });
+//  };
+//
+  Template.heart.events({
+    'click .heart': function () {
+      console.log("HEART");
+      Feels.update(this._id, {$inc: {hearts: 1}});
+    }
+  });
+
   Template.post.events({
     'click .green': function () {
       var username = $(":input:text").val();
