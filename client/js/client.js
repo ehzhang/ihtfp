@@ -2,19 +2,7 @@ Meteor.subscribe("feels", function () {
   console.log("I GOT THE FEELS! ");
 });
 
-Template.feed.alpha = function () {
-  var positive = Feels.find({emotion: 'Happy'}).count();
-  var negative = Feels.find({emotion: 'Sad'}).count();
-  var alpha = negative / (positive + negative);
-  $('.feel').css({opacity: alpha});
-  return alpha;
-}
-
 Template.feed.feels = function () {
-  Feels.find().observe({
-    added : function (item){
-    }
-  })
   return Feels.find({}, {sort: {timestamp: -1, limit: 100}});
 }
 
