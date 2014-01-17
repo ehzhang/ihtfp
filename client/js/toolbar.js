@@ -1,3 +1,7 @@
+/**
+ * Okay
+ */
+
 // Custom javascript for the toolbar
 $(document).ready(function() {
 

@@ -1,26 +1,3 @@
-<head>
-  <title>ihtfp</title>
-  <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
-  <script>
-    Handlebars.registerHelper('times', function (n, block) {
-      var accum = '';
-      for (var i = 0; i < n; ++i)
-        accum += block.fn(i);
-      return accum;
-    });
-  </script>
-
-</head>
-<body>
-{{#if False}} <!-- if authenticated-->
-  {{> app }}
-{{else}}
-  {{> splash }}
-{{/if}}
-</body>
-
 <template name="app">
   {{> logo }}
   {{> feed }}
@@ -85,7 +62,6 @@
       {{> heart}}
     </div>
   </div>
-
 </template>
 
 <template name="heart">
