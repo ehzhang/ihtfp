@@ -59,11 +59,9 @@ body {
 }
 
 #splash .title {
-  font-size: 100pt;
+  font-size: 170pt;
   text-shadow: 1px 1px 3px #424040;
 }
-
-
 
 /* For the shrinking toolbar */
 
@@ -79,6 +77,11 @@ body {
 #toolbar .subtitle {
   font-size: 14pt;
   margin-bottom: 14px;
+}
+
+#splash .subtitle{
+  font-size: 32pt;
+  text-shadow: 1px 1px 3px #424040;
 }
 
 #toolbar .content {

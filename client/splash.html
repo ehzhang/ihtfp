@@ -1,10 +1,39 @@
 <template name="splash">
   <div id="splash">
-    <div class="title">
-      ihtfp
-      <div class="subtitle">
-        anonymous, real-time feels
-      </div>
+    {{> title}}
+
+    {{#if True}}
+    {{> login}}
+    {{else}}
+    {{> signup}}
+    {{/if}}
+
+  </div>
+</template>
+
+<template name="title">
+  <div class="title">
+    ihtfp
+    <div class="subtitle">
+      anonymous, real-time feels
     </div>
   </div>
+</template>
+
+
+<template name="signup">
+  <div class="signup">
+    <div class="instructions">
+      Hi there. SIGNUP.
+    </div>
+    <div class="ui input focus">
+      <input type="text" placeholder="email">
+      <input type="text" placeholder="password">
+    </div>
+  </div>
+</template>
+
+
+<template name="login">
+THIS IS LOGIN
 </template>
