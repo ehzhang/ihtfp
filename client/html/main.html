@@ -15,9 +15,16 @@
 
 </head>
 <body>
-{{#if true}} <!-- if authenticated-->
+<div class="ui green debug button">
+  Trigger Splash/App
+</div>
 {{> app }}
-{{else}}
-{{> splash }}
-{{/if}}
 </body>
+
+<template name="app">
+  {{#if true}} <!-- if authenticated-->
+  {{> feed }}
+  {{else}}
+  {{> splash }}
+  {{/if}}
+</template>

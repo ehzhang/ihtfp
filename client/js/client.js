@@ -13,7 +13,7 @@ Template.feel.rendered = function () {
   $(this.find('.feel')).transition('fade up in', '500ms');
 }
 
-Template.feed.feels = function () {
+Template.grid.feels = function () {
   return Feels.find({}, {sort: {timestamp: -1, limit: 100}});
 }
 

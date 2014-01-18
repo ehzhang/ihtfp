@@ -1,6 +1,6 @@
-<template name="app">
+<template name="feed">
   {{> logo }}
-  {{> feed }}
+  {{> grid }}
 </template>
 
 <template name="logo">
@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<template name="feed">
+<template name="grid">
   <!-- Grid should contain just a vertical list of feels, for now -->
   <div id="grid">
     {{#each feels}}

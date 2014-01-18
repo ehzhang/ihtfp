@@ -9,6 +9,13 @@ body {
   font-size: 12pt;
   font-weight: 100;
 }
+/* For debuggin, rapid switch between splash and app */
+.debug.button {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 40px;
+}
 
 /*
   Splash Screen CSS
