@@ -9,7 +9,7 @@
  username: String user name
  anon: Boolean
  text: String
- emotion: String out of the set {Happy, Sad, Meh}
+ emotion: String out of the set {happy, sad, meh}
  hearts: Integer representing number of 'hearts'
  timestamp: Date
  */

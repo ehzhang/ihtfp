@@ -34,10 +34,17 @@
       <input type="text" placeholder="Bobby">
     </div>
 
-    <div class="ui green submit button">
-      <i class="facebook icon"></i>Happy
+    <div class="ui happy submit button">
+      <i class="smile icon"></i> Happy
     </div>
-    <div class="ui black submit button">Sad</div>
+
+    <div class="ui meh submit button">
+      <i class="meh icon"></i> Meh
+    </div>
+
+    <div class="ui sad submit button">
+      <i class="frown icon"></i> Sad
+    </div>
   </div>
 </template>
 
@@ -51,13 +58,22 @@
 </template>
 
 <template name="feel">
-  <div class="feel">
+  <div class="feel {{#if text}}big{{/if}} {{ emotion }}">
     <div class="text">
       {{#if text}}
-      {{ text }}
+        {{ text }}
+      {{else}}
+        {{ emotion }}
       {{/if}}
     </div>
     <div class="footer">
+      <div class="name">
+        {{#if anon}}
+        Anonymous
+        {{else}}
+        {{ username }}
+        {{/if}}
+      </div>
       {{> heart}}
     </div>
   </div>
@@ -66,9 +82,8 @@
 <template name="heart">
   <div class="heart-count">
     {{ hearts }}
-    <i class="teal heart empty icon"></i>
+    <i class="teal heart empty link icon"></i>
   </div>
-
 </template>
 
 
