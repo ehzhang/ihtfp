@@ -8,7 +8,10 @@ body {
   font-family: 'Roboto';
   font-size: 12pt;
   font-weight: 100;
+  width: 100%;
+  height: 100%;
 }
+
 /* For debuggin, rapid switch between splash and app */
 .debug.button {
   z-index: 10;
@@ -22,20 +25,27 @@ body {
 */
 
 #splash {
-  min-width:100%;
-  min-height:100%;
+  min-width: 100%;
+  min-height: 100%;
   position: absolute;
-  top:0px;
-  left:0px;
-  background: url('/feels_gifs/1.gif') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  top: 0px;
+  left: 0px;
+  background-color: #333333;
+}
+
+#splash-center {
+  width: 500px;
+  margin: auto;
+}
+
+.signup .input {
+  width:300px;
+  margin-left: 100px;
+  margin-top:10px;
 }
 
 #header {
-  height: 508px;
+  height: 608px;
   width: 100%;
   /*background-color: #4e4e4e*/
 
@@ -87,8 +97,8 @@ body {
   margin-bottom: 14px;
 }
 
-#splash .subtitle{
-  font-size: 32pt;
+#splash .subtitle {
+  font-size: 28pt;
   text-shadow: 1px 1px 3px #424040;
 }
 
@@ -136,6 +146,7 @@ body {
 }
 
 .feel .footer {
+<<<<<<< HEAD
   z-index: 2;
   opacity: .4;
   background-color:white;
@@ -149,6 +160,15 @@ body {
   z-index: 3;
   color: black;
   font-size: 14pt;
+=======
+  background-color: white;
+  opacity: 0.4;
+  position: absolute;
+  bottom: 0px;
+  width: 150px;
+  height: 30px;
+  padding: 4px;
+>>>>>>> did a bit of stuff on splash page, but nothing done. pushing only so that i can pull.
 }
 
 .feel .footer .heart-count {

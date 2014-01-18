@@ -1,13 +1,14 @@
 <template name="splash">
   <div id="splash">
-    {{> title}}
+    <div id="splash-center">
+      {{> title}}
 
-    {{#if True}}
-    {{> login}}
-    {{else}}
-    {{> signup}}
-    {{/if}}
-
+      {{#if True}}
+      {{> login}}
+      {{else}}
+      {{> signup}}
+      {{/if}}
+    </div>
   </div>
 </template>
 
@@ -15,7 +16,7 @@
   <div class="title">
     ihtfp
     <div class="subtitle">
-      anonymous, real-time feels
+      anonymous, real time feels.
     </div>
   </div>
 </template>
@@ -24,16 +25,20 @@
 <template name="signup">
   <div class="signup">
     <div class="instructions">
-      Hi there. SIGNUP.
+      <br>see your community's emotional state.
+      share your own.
     </div>
-    <div class="ui input form">
+    <div class="ui big input form">
       <input type="text" placeholder="email">
+    </div>
+    <div class="ui big input form">
       <input type="text" placeholder="password">
     </div>
+    {{loginButtons align="center"}}
   </div>
 </template>
 
 
 <template name="login">
-THIS IS LOGIN
+  THIS IS LOGIN
 </template>
