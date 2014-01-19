@@ -66,23 +66,23 @@
 
 <template name="feel">
   <div class="feel {{#if text}}big{{/if}} {{ emotion }}">
-    <div class="text">
-      {{#if text}}
-        {{ text }}
-      {{else}}
-        {{ emotion }}
-      {{/if}}
-    </div>
-    <div class="footer">
-      <div class="name">
-        {{#if anon}}
-        Anonymous
-        {{else}}
-        {{ username }}
+    {{#if text}}
+      <div class="text">
+          {{ text }}
+      </div>
+      <div class="footer">
+        <div class="name">
+          {{#if anon}}
+          Anonymous
+          {{else}}
+          {{ username }}
+          {{/if}}
+        </div>
+        {{#if false }}
+        {{> heart}}
         {{/if}}
       </div>
-      {{> heart}}
-    </div>
+    {{/if}}
   </div>
 </template>
 

@@ -133,13 +133,6 @@ Template.grid.feels = function () {
   return Feels.find({}, {sort: {timestamp: -1}});
 }
 
-/**
- * Every time the feel template is rendered, do a thing:
- * - transition this new feel upward!
- */
-Template.feel.rendered = function () {
-  $(this.find('.feel')).transition('fade up in', '300ms');
-}
 
 /**
  * Events for the heart template

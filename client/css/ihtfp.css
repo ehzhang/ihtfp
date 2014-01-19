@@ -64,7 +64,7 @@ input {
   top: 0;
   left: calc(50% - 210px);
   width: 420px;
-  z-index: 3;
+  z-index: 100;
 
   background-color: white;
   padding: 12px;
@@ -161,42 +161,49 @@ input {
   height:700px;
 }
 
+/* center container with CSS */
+#fit-width .masonry {
+  margin: 0 auto;
+}
+
 /* Grid CSS */
 #grid {
   margin-top: 16px;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
-
-  -moz-column-count: 6;
-  -moz-column-gap: 3px;
-  -webkit-column-count: 6;
-  -webkit-column-gap: 3px;
-  column-count: 6;
-  column-gap: 3px;
 }
 
 /* Feel CSS*/
 .feel {
-  height: 100px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 25px;
   background-color: #33b5e5;
-  margin: 6px;
   overflow: hidden;
   border-radius: 2px;
   position: relative;
 
-  display: inline-block;
-  margin-bottom: 0px;
-  width: 97%;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.fadein {
+  opacity: 1 !important;
 }
 
 .feel.big {
-  height: 100%;
+  width: 200px;
+  height: 200px;
 }
 
 .feel .text {
   padding: 12px;
-  font-size: 24pt;
+  font-size: 18pt;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
 }
@@ -205,10 +212,11 @@ input {
   z-index: 2;
   opacity: .4;
   background-color:white;
-  position: relative;
+  position: absolute;
   bottom: 0px;
   height:25px;
-  padding:8px;
+  padding:8px 12px;
+  width: 100%;
 }
 
 .feel .footer .name {
@@ -219,79 +227,9 @@ input {
 
 .feel .footer .heart-count {
   position: absolute;
-  right: 8px;
-  top: 8px;
-  color: red;
+  color: black;
 }
 
-/* Media queries for CSS Masonry */
-@media only screen and (max-width : 1199px),
-only screen and (max-device-width : 1199px){
-  #grid {
-    -moz-column-count: 5;
-    -moz-column-gap: 3px;
-    -webkit-column-count: 5;
-    -webkit-column-gap: 3px;
-    column-count: 5;
-    column-gap: 3px;
-    width: 1000px;
-  }
-
-  #grid {
-    width: 1000px;
-  }
-}
-
-@media only screen and (max-width : 999px),
-only screen and (max-device-width : 999px){
-  #grid {
-    -moz-column-count: 4;
-    -moz-column-gap: 3px;
-    -webkit-column-count: 4;
-    -webkit-column-gap: 3px;
-    column-count: 4;
-    column-gap: 3px;
-    width: 800px;
-  }
-
-  #grid {
-    width: 800px;
-  }
-}
-
-@media only screen and (max-width : 799px),
-only screen and (max-device-width : 799px){
-  #grid {
-    -moz-column-count: 3;
-    -moz-column-gap: 3px;
-    -webkit-column-count: 3;
-    -webkit-column-gap: 3px;
-    column-count: 34;
-    column-gap: 3px;
-    width: 600px;
-  }
-
-  #grid {
-    width: 600px;
-  }
-}
-
-@media only screen and (max-width : 599px),
-only screen and (max-device-width : 599px){
-  #grid {
-    -moz-column-count: 2;
-    -moz-column-gap: 3px;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 3px;
-    column-count: 2;
-    column-gap: 3px;
-    width: 400px;
-  }
-
-  #grid {
-    width: 400px;
-  }
-}
 /* Footer CSS */
 #footer {
   position: relative;
@@ -360,4 +298,32 @@ only screen and (max-device-width : 599px){
 .clear.button:hover {
   background-color: rgba(255, 255, 255, .6) !important;
 }
+
+/**** Transitions ****/
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -ms-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, top;
+  -moz-transition-property: left, right, top;
+  -ms-transition-property: left, right, top;
+  -o-transition-property: left, right, top;
+  transition-property: left, right, top;
+}
+
 
