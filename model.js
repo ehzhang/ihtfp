@@ -1,17 +1,19 @@
-// ihtfp data model
-// Loaded on both the client and the server
-
-///////////////////////////////////////////////////////////////////////////////
-// Feels
-
 /**
- Each feel is represented by a document in the Feels collection:
- username: String user name
- anon: Boolean
- text: String
- emotion: String out of the set {happy, sad, meh}
- hearts: Integer representing number of 'hearts'
- timestamp: Date
+ *  __ __  __ ______  ____ ____
+ *  || ||  || | || | ||    || \\
+ *  || ||==||   ||   ||==  ||_//
+ *  || ||  ||   ||   ||    ||
+ *  -- --  --   --   --    --
+ *
+ *  This datamodel is shared with the client and server.
+ *
+ *  Each feel is represented by a document in the Feels collection:
+ *  username: String user name
+ *  anon: Boolean
+ *  text: String
+ *  emotion: String out of the set {'happy', 'sad', 'meh'}
+ *  hearts: Integer representing number of 'hearts'
+ *  timestamp: Date object
  */
 Feels = new Meteor.Collection("feels");
 

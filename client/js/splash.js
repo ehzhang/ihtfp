@@ -1,5 +1,17 @@
-// Custom javascript for the ihtfp site
-
+/**
+ *  __ __  __ ______  ____ ____
+ *  || ||  || | || | ||    || \\
+ *  || ||==||   ||   ||==  ||_//
+ *  || ||  ||   ||   ||    ||
+ *  -- --  --   --   --    --
+ *
+ *  Client-side code.
+ *
+ *  Splash-screen related functions.
+ *  Mainly, things to execute when the splash or login/signup
+ *  templates are rendered.
+ *
+ */
 Template.splash.rendered = function () {
   // Number of feels gifs currently in the folder
   var feelsGifs = 7;
@@ -18,10 +30,11 @@ Template.splash.rendered = function () {
       .css('-moz-background-size', 'cover')
       .css('-o-background-size', 'cover')
   }
+  // Call the refresh function once, then refresh every 30 seconds.
   refreshGif();
   setInterval(refreshGif, 30000);
 
-  // Automatically append @mit to the username
+  // Automatically append @mit to the username field
   $.fn.setCursorPosition = function(pos) {
     this.each(function(index, elem) {
       if (elem.setSelectionRange) {
@@ -59,10 +72,10 @@ Template.splash.rendered = function () {
   });
 }
 
+// Animate the signup/login forms
 Template.signup.rendered = function () {
   $(this.find('.ui.signup.form')).transition('fade down in', '300ms');
 }
-
 Template.login.rendered = function () {
   $(this.find('.ui.login.form')).transition('fade down in', '300ms');
 }

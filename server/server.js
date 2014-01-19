@@ -1,5 +1,15 @@
 /**
- * METEOR server side javascript
+ *  __ __  __ ______  ____ ____
+ *  || ||  || | || | ||    || \\
+ *  || ||==||   ||   ||==  ||_//
+ *  || ||  ||   ||   ||    ||
+ *  -- --  --   --   --    --
+ *
+ *  Server-side javascript.
+ *  Code here is server-specific, (no client-side access).
+ *
+ *  TODO: be able to publish a daily emotion, without
+ *        having the client load an entire day's worth of posts.
  */
 
 /**
@@ -7,10 +17,7 @@
  * @type {Date}
  */
 var today = new Date();
-var year = today.getYear(),
-  month = today.getMonth(),
-  day = today.getDay();
-var start = new Date(year, month, day);
+var start = today.setHours(0,0,0,0);
 
 /**
  * Meteor publishes a set of feels based on the getFeels function.
@@ -23,13 +30,29 @@ Meteor.publish("feels", getFeels);
  *
  * @param start: Date object, start date of query
  * @param end: Date object, end date of query
+ * @param limit: limit of how many to query
  *
- * Returns the cursor for a set of feels, sorted by recency.
+ * Returns the cursor for a set of feels, according to recency
  */
-function getFeels(startDate, endDate) {
+function getFeels(startDate, endDate, limit) {
+
   if (!endDate) {
-    return Feels.find({ timestamp: {$gte: startDate}});
+    return Feels.find(
+      {
+        timestamp: {$gte: startDate}
+      },
+      {
+        sort: {timestamp: -1},
+        limit: limit
+      });
   } else {
-    return Feels.find({ timestamp: {$gte: start, $lt: endDate}});
+    return Feels.find(
+      {
+        timestamp: {$gte: start, $lt: endDate}
+      },
+      {
+        sort: {timestamp: -1},
+        limit: limit
+      });
   }
 }

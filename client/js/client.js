@@ -1,7 +1,36 @@
+/**
+ *  __ __  __ ______  ____ ____
+ *  || ||  || | || | ||    || \\
+ *  || ||==||   ||   ||==  ||_//
+ *  || ||  ||   ||   ||    ||
+ *  -- --  --   --   --    --
+ *
+ *  Client-side code.
+ *
+ *  This primarily contains Session.get/set stuff
+ *  and Template functions.
+ *
+ */
+
+// Today!
+var today = new Date();
+var start = new Date(today.setHours(0,0,0,0));
+
+/**
+ * Session key-value pairs.
+ */
+// For now, only subscribing to today's posts.
+Session.setDefault("startDate", start);
+Session.setDefault("debugLoggedIn", false);
+Session.setDefault("limit", 40);
+
 Deps.autorun( function () {
   // Gets the feels from the sessions startDate/endDate.
-  // Only subscribe to the data relevant for speed
-  Meteor.subscribe("feels", Session.get("startDate"), Session.get("endDate"))
+  // Only subscribe to the data relevant to the session values.
+  // startDate indicates the start of the query
+  // endDate indicates the end of the query
+  // limit is the number of feels to load
+  Meteor.subscribe("feels", Session.get("startDate"), Session.get("endDate"), Session.get("limit"));
 });
 
 /**
@@ -18,10 +47,6 @@ Template.splash.events({
   }
 })
 
-Template.splash.preserve({
-  '#splash' : function(node) {}
-})
-
 /**
  * debug value for switching between the splash/app
  */
@@ -30,21 +55,21 @@ Template.app.debug = function () {
 }
 
 /**
- * Events for the debug button
+ * Events for the debug button.
+ * Currently:
+ * debug -> toggle the splash/app
+ * load -> increases the limit, loads more!
+ *
  */
 Template.debug.events({
   'click .debug.button' : function () {
+    Session.set("limit", 40);
     Session.set("debugLoggedIn", !Session.get("debugLoggedIn"));
+  },
+  'click .load.button' : function () {
+    Session.set("limit", Session.get("limit") + 15);
   }
 })
-
-// Today!
-var today = new Date();
-var start = new Date(today.setHours(0,0,0,0));
-
-// For now, only subscribing to today's posts.
-Session.set("startDate", start);
-Session.set("debugLoggedIn", false);
 
 /**
  * Find the maximum element of an array.
@@ -97,7 +122,7 @@ Template.header.emotion = function () {
  * - transition the new header
  */
 Template.header.rendered = function () {
-  $(this.find('#header')).transition('fade up in', '300ms');
+//  $(this.find('#header')).transition('fade up in', '300ms');
 }
 
 /**

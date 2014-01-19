@@ -35,29 +35,28 @@
   <div class="ui form">
     <div class="field">
       <label>Tell us about your feels</label>
-      <textarea placeholder="default text"></textarea>
+      <textarea placeholder="Start writing here!"></textarea>
     </div>
     <div class="field">
       <label>Whats yo name, foo?</label>
       <input type="text" placeholder="Bobby">
     </div>
 
-    <div class="ui happy submit button">
+    <div class="ui happy emotion submit button">
       <i class="smile icon"></i> Happy
     </div>
 
-    <div class="ui meh submit button">
+    <div class="ui meh emotion submit button">
       <i class="meh icon"></i> Meh
     </div>
 
-    <div class="ui sad submit button">
+    <div class="ui sad emotion submit button">
       <i class="frown icon"></i> Sad
     </div>
   </div>
 </template>
 
 <template name="grid">
-  <!-- Grid should contain just a vertical list of feels, for now -->
   <div id="grid">
     {{#each feels}}
       {{> feel}}
@@ -93,10 +92,3 @@
     <i class="teal heart empty link icon"></i>
   </div>
 </template>
-
-
-<!--  <div class="ui segment">
-
-<!-- Put the text of the database entry here. Text, username, feeling -->
-
-<!--  </div> -->
