@@ -8,7 +8,10 @@
       {{else}}
       {{> signup}}
       {{/if}}
+
     </div>
+
+    {{> splash-info }}
   </div>
 </template>
 
@@ -18,27 +21,64 @@
     <div class="subtitle">
       anonymous, real time feels.
     </div>
+    <div class="details">
+      <a href="#splash-info" id="learn-more">
+        learn more<i class="down arrow icon"></i>
+      </a>
+      <br>now available for MIT.
+    </div>
+
   </div>
+
 </template>
 
 
 <template name="signup">
   <div class="signup">
-    <div class="instructions">
-      <br>see your community's emotional state.
-      share your own.
-    </div>
     <div class="ui big input form">
-      <input type="text" placeholder="email">
+      <input type="text" placeholder="your_email@mit.edu">
     </div>
-    <div class="ui big input form">
-      <input type="text" placeholder="password">
-    </div>
-    {{loginButtons align="center"}}
+    <br><a class="ui orange button signup-button">Sign Up</a>
   </div>
 </template>
 
 
 <template name="login">
   THIS IS LOGIN
+</template>
+
+<template name="splash-info">
+  <a id="splash-info">
+    <div class="ui connected items">
+      <div class="row">
+        <div class="item">
+          <div class="content">
+            <div class="name">1) Join your community.</div>
+            <p class="description">Got an @mit.edu email address? Then you can join the MIT community ihtfp page. Verify your email here.</p>
+          </div>
+          <div class="image">
+            <img src="images/screenshot1">
+          </div>
+        </div>
+        <div class="item">
+          <div class="content">
+            <div class="name">2) Get a sense for your community's emotional state.</div>
+            <p class="description">See what people are saying about how tfp is feeling today.</p>
+          </div>
+          <div class="images/screenshot2">
+            <img src="">
+          </div>
+        </div>
+        <div class="item">
+          <div class="content">
+            <div class="name">3) Share your own feels.</div>
+            <p class="description">Anonymously or not, contribute your own emotional state to the big picture.</p>
+          </div>
+          <div class="images/screenshot3">
+            <img src="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
 </template>
