@@ -1,12 +1,10 @@
 <template name="feed">
-  {{> logo }}
+  {{> toolbar }}
+  {{> header }}
   {{> grid }}
 </template>
 
-<template name="logo">
-  <div id="header">
-
-  </div>
+<template name="toolbar">
   <div id="toolbar" class="">
     <div class="ui basic accordion">
       <div class="title">
@@ -16,10 +14,20 @@
         </div>
       </div>
 
-      <div class="active content">
+      <div class="content">
         {{> post }}
       </div>
     </div>
+  </div>
+</template>
+
+<template name="header">
+  <div id="header">
+    tfp is
+    <span class="{{ emotion }} text">
+      {{ emotion }}
+    </span>
+    today.
   </div>
 </template>
 

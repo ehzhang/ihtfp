@@ -48,21 +48,19 @@ body {
 
 }
 
-
-
 #header {
-  height: 608px;
-  width: 100%;
-  /*background-color: #4e4e4e*/
-
+  font-family: 'Rokkitt';
+  font-size: 80pt;
+  position: relative;
+  text-align: center;
 }
 
 #toolbar {
-  position: absolute;
+  position: relative;
   top: 0;
   left: calc(50% - 210px);
   width: 420px;
-  z-index: 999;
+  z-index: 3;
 
   background-color: white;
   padding: 12px;
@@ -129,7 +127,7 @@ body {
 
 /* Grid CSS */
 #grid {
-  margin-top: 4px;
+  margin-top: 16px;
   margin-left: auto;
   margin-right: auto;
   overflow: auto;
@@ -269,15 +267,28 @@ only screen and (max-device-width : 599px){
   color: #FFF;
 }
 
+.happy.text {
+  background-color: transparent;
+  color: #ffa71d;
+}
+
 .sad,
 .ui.sad.button {
   background-color: #3a90e5;
   color: #FFF;
-
+}
+.sad.text {
+  background-color: transparent;
+  color: #3a90e5;
 }
 
 .meh,
 .ui.meh.button {
   background-color: #808080;
   color: #FFF;
+}
+
+.meh.text {
+  background-color: transparent;
+  color: #808080;
 }

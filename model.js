@@ -13,7 +13,6 @@
  hearts: Integer representing number of 'hearts'
  timestamp: Date
  */
-
 Feels = new Meteor.Collection("feels");
 
 Meteor.methods({
@@ -25,9 +24,9 @@ Meteor.methods({
         text: text,
         emotion: emotion,
         hearts: 0,
-        timestamp: (new Date()).getTime()
+        timestamp: new Date()
       }, function () {
         console.log("successfully posted!!")
       });
   }
-})
+});

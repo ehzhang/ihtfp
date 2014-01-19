@@ -1,22 +1,109 @@
-Meteor.subscribe("feels", function () {
-  console.log("I GOT THE FEELS! ");
+Deps.autorun( function () {
+  // Gets the feels from the sessions startDate/endDate.
+  // Only subscribe to the data relevant for speed
+  Meteor.subscribe("feels", Session.get("startDate"), Session.get("endDate"))
 });
 
-//Template.logo.alpha = function () {
-//  var positive = Feels.find({emotion: 'happy'}).count();
-//  var negative = Feels.find({emotion: 'sad'}).count();
-//  console.log(negative / (positive + negative));
-//  return (positive / (positive + negative) * 255).floor();
-//}
-
-Template.feel.rendered = function () {
-  $(this.find('.feel')).transition('fade up in', '500ms');
+/**
+ * debug value for switching between the splash/app
+ */
+Template.app.debug = function () {
+  return Session.get("debugLoggedIn");
 }
 
+/**
+ * Events for the debug button
+ */
+Template.debug.events({
+  'click .debug.button' : function () {
+    Session.set("debugLoggedIn", !Session.get("debugLoggedIn"));
+  }
+})
+
+var today = new Date();
+
+var year = today.getYear(),
+  month = today.getMonth(),
+  day = today.getDay();
+var start = new Date(year, month, day);
+
+// For now, only subscribing to today's posts.
+Session.set("startDate", start);
+Session.set("debugLoggedIn", true);
+
+/**
+ * Find the maximum element of an array.
+ * @param array
+ * @returns {*}
+ */
+function mode(array) {
+  if(array.length == 0)
+    return null;
+  var elementMap = {};
+  var maxEl = array[0], maxCount = 1;
+  for(var i = 0; i < array.length; i++)
+  {
+    var el = array[i];
+    if(elementMap[el] == null) {
+      elementMap[el] = 1;
+    } else {
+      elementMap[el]++;
+    }
+    if(elementMap[el] > maxCount) {
+      maxEl = el;
+      maxCount = elementMap[el];
+    }
+  }
+  return maxEl;
+}
+
+/**
+ * Dynamically update the text for the emotion, based the max
+ * feeling of the current day
+ */
+Template.header.emotion = function () {
+  // An array of emotions
+  var recentFeels = Feels.find(
+    {
+      timestamp: { $gte: start }
+    },
+    {
+      fields: {emotion: 1},
+      sort: {timestamp: -1}
+    }).map(function (item) {
+      return item.emotion;
+    });
+  // This could probably be optimized somehow? Maybe.
+  return mode(recentFeels);
+}
+
+/**
+ * Every time the header is rendered, do a thing!
+ * - transition the new header
+ */
+Template.header.rendered = function () {
+  $(this.find('#header')).transition('fade up in', '300ms');
+}
+
+/**
+ * Populate the feels grid
+ */
 Template.grid.feels = function () {
-  return Feels.find({}, {sort: {timestamp: -1, limit: 100}});
+  // The feels found is based on the subscribe function above.
+  return Feels.find({}, {sort: {timestamp: -1}});
 }
 
+/**
+ * Every time the feel template is rendered, do a thing:
+ * - transition this new feel upward!
+ */
+Template.feel.rendered = function () {
+  $(this.find('.feel')).transition('fade up in', '300ms');
+}
+
+/**
+ * Events for the heart template
+ */
 Template.heart.events({
   'click .heart': function () {
     console.log("HEART");
@@ -24,6 +111,10 @@ Template.heart.events({
   }
 });
 
+
+/**
+ * Events for the Post template
+ */
 Template.post.events({
   'click .happy.button': function () {
     var username = $(":input:text").val() ? $(":input:text").val() : 'Anonymous';
