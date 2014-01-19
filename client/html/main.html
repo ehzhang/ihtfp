@@ -3,16 +3,6 @@
   <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-
-  <script>
-    Handlebars.registerHelper('times', function (n, block) {
-      var accum = '';
-      for (var i = 0; i < n; ++i)
-        accum += block.fn(i);
-      return accum;
-    });
-  </script>
-
 </head>
 <body>
 {{> debug }}

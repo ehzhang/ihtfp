@@ -2,6 +2,11 @@
  * Javascript to manage the toolbar's behavior.
  * Load this javascript whenever the toolbar is rendered.
  */
+
+function toolbarScrollHandler(toolbar) {
+
+}
+
 Template.toolbar.rendered = function () {
     // Initialize the toolbar on top.
     var toolbarDuration = 300;
@@ -11,8 +16,6 @@ Template.toolbar.rendered = function () {
         duration: toolbarDuration
       })
       .transition('fade down in', '400ms');
-
-//  var $header = $('#header');
 
     var prevOnGrid = false;
     $(window).scroll(function(){

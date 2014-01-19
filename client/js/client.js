@@ -5,6 +5,24 @@ Deps.autorun( function () {
 });
 
 /**
+ * Splash page events
+ */
+Session.setDefault("firstTime", true);
+Template.splash.firstTime = function () {
+  return Session.get("firstTime");
+}
+
+Template.splash.events({
+  'click .toggle.button': function () {
+    Session.set("firstTime", !Session.get("firstTime"));
+  }
+})
+
+Template.splash.preserve({
+  '#splash' : function(node) {}
+})
+
+/**
  * debug value for switching between the splash/app
  */
 Template.app.debug = function () {
@@ -20,16 +38,13 @@ Template.debug.events({
   }
 })
 
+// Today!
 var today = new Date();
-
-var year = today.getYear(),
-  month = today.getMonth(),
-  day = today.getDay();
-var start = new Date(year, month, day);
+var start = new Date(today.setHours(0,0,0,0));
 
 // For now, only subscribing to today's posts.
 Session.set("startDate", start);
-Session.set("debugLoggedIn", true);
+Session.set("debugLoggedIn", false);
 
 /**
  * Find the maximum element of an array.
@@ -110,7 +125,6 @@ Template.heart.events({
     Feels.update(this._id, {$inc: {hearts: 1}});
   }
 });
-
 
 /**
  * Events for the Post template
