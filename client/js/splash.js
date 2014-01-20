@@ -8,6 +8,7 @@
  *  Client-side code.
  *
  *  Splash-screen related functions.
+ *
  *  Mainly, things to execute when the splash or login/signup
  *  templates are rendered.
  *
@@ -79,3 +80,20 @@ Template.signup.rendered = function () {
 Template.login.rendered = function () {
   $(this.find('.ui.login.form')).transition('fade down in', '300ms');
 }
+
+/**
+ * Splash page events
+ */
+Session.setDefault("firstTime", true);
+Template.splash.firstTime = function () {
+  return Session.get("firstTime");
+}
+
+Template.splash.events({
+  'click .toggle.button': function () {
+    Session.set("firstTime", !Session.get("firstTime"));
+  },
+  'click .signup .button': function () {
+    alert("We'll let you know when we're ready!");
+  }
+})

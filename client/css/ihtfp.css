@@ -192,13 +192,32 @@ input {
   transition: opacity 1s ease-in-out;
 }
 
-.fadein {
-  opacity: 1 !important;
+.opaque {
+  opacity: 1;
+}
+/* Big feels for those with text */
+.feel.big {
+  min-width: 200px;
+  min-height: 200px;
+  cursor: pointer;
+  opacity: .9;
+
+  -webkit-transition: opacity .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out;
+  -ms-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
 }
 
-.feel.big {
-  width: 200px;
-  height: 200px;
+.feel.big:hover {
+  opacity: 1;
+}
+/* Maximum size feels */
+.feel.max {
+  width: auto !important;
+  max-width: 500px !important;
+  height: auto !important;
+  overflow: hidden;
 }
 
 .feel .text {
@@ -209,14 +228,26 @@ input {
 }
 
 .feel .footer {
-  z-index: 2;
-  opacity: .4;
-  background-color:white;
+  z-index: 4;
+  background-color: inherit;
+  font-weight: 400;
+  text-transform: uppercase;
   position: absolute;
   bottom: 0px;
   height:25px;
   padding:8px 12px;
   width: 100%;
+
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out;
+  -ms-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+}
+
+.big.feel:hover .footer {
+  opacity: .9;
 }
 
 .feel .footer .name {

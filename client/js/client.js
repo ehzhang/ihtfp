@@ -22,7 +22,7 @@ var start = new Date(today.setHours(0,0,0,0));
 // For now, only subscribing to today's posts.
 Session.setDefault("startDate", start);
 Session.setDefault("debugLoggedIn", false);
-Session.setDefault("limit", 40);
+Session.set("limit", 40);
 
 Deps.autorun( function () {
   // Gets the feels from the sessions startDate/endDate.
@@ -32,20 +32,6 @@ Deps.autorun( function () {
   // limit is the number of feels to load
   Meteor.subscribe("feels", Session.get("startDate"), Session.get("endDate"), Session.get("limit"));
 });
-
-/**
- * Splash page events
- */
-Session.setDefault("firstTime", true);
-Template.splash.firstTime = function () {
-  return Session.get("firstTime");
-}
-
-Template.splash.events({
-  'click .toggle.button': function () {
-    Session.set("firstTime", !Session.get("firstTime"));
-  }
-})
 
 /**
  * debug value for switching between the splash/app
@@ -65,9 +51,6 @@ Template.debug.events({
   'click .debug.button' : function () {
     Session.set("limit", 40);
     Session.set("debugLoggedIn", !Session.get("debugLoggedIn"));
-  },
-  'click .load.button' : function () {
-    Session.set("limit", Session.get("limit") + 15);
   }
 })
 
@@ -132,7 +115,6 @@ Template.grid.feels = function () {
   // The feels found is based on the subscribe function above.
   return Feels.find({}, {sort: {timestamp: -1}});
 }
-
 
 /**
  * Events for the heart template
