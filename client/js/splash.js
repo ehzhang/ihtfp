@@ -9,8 +9,7 @@
  *
  *  Splash-screen related functions.
  *
- *  Mainly, things to execute when the splash or login/signup
- *  templates are rendered.
+ *  Login-Signup related functions are here.
  *
  */
 Template.splash.rendered = function () {
@@ -88,12 +87,16 @@ Session.setDefault("firstTime", true);
 Template.splash.firstTime = function () {
   return Session.get("firstTime");
 }
-
+/**
+ * Events for the login/signup section
+ */
 Template.splash.events({
   'click .toggle.button': function () {
     Session.set("firstTime", !Session.get("firstTime"));
   },
-  'click .signup .button': function () {
-    alert("We'll let you know when we're ready!");
+  'click .signup.button': function () {
+    var email = $('.username').val();
+    var kerberos = email.substring(0, email.length - 8);
+    Meteor.call("newUser", kerberos, email);
   }
 })

@@ -12,6 +12,9 @@
  *
  */
 
+// Get the collections on the client side.
+Feels = new Meteor.Collection("feels");
+
 // Today!
 var today = new Date();
 var start = new Date(today.setHours(0,0,0,0));
