@@ -14,6 +14,19 @@
 
 // Get the collections on the client side.
 Feels = new Meteor.Collection("feels");
+// Collections permissions from the client side.
+Feels.allow({
+  insert: function(userId, feel) {
+    // Don't fuck with the console, yo
+    return false;
+  },
+  update: function(userId, feel) {
+    return false;
+  },
+  remove: function(userId, feel) {
+    return false;
+  }
+});
 
 // Today!
 var today = new Date();
@@ -66,7 +79,7 @@ Template.app.loggedIn = function () {
  * @param array
  * @returns {*}
  */
-function mode(array) {
+mode = function (array) {
   if(array.length == 0)
     return null;
   var elementMap = {};
