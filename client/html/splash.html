@@ -28,6 +28,18 @@
 
 
 <template name="signup">
+  <div class="ui basic modal">
+    <i class="close icon"></i>
+    <div class="header">
+      <h1> Thanks for signing up! </h1>
+    </div>
+    <div class="content">
+      <h2>
+        We've gotta make sure you're the real deal.
+        Check your email to verify your account and set up your password!
+      </h2>
+    </div>
+  </div>
   <div class="ui signup form">
     <div class="field">
       <input type="text" placeholder="Hey, what's your kerberos?" class="username">
@@ -49,7 +61,7 @@
       <input type="text" placeholder="Hey, what's your kerberos?" class="username">
     </div>
     <div class="field">
-      <input type="password" placeholder="Type in your secret code!">
+      <input type="password" placeholder="Type in your secret code!" class="password">
     </div>
     <div class="ui fluid green login button">
       Login

@@ -25,7 +25,7 @@ var start = new Date(today.setHours(0,0,0,0));
 // For now, only subscribing to today's posts.
 Session.setDefault("startDate", start);
 Session.setDefault("debugLoggedIn", false);
-Session.set("limit", 40);
+Session.setDefault("limit", 40);
 
 Deps.autorun( function () {
   // Gets the feels from the sessions startDate/endDate.
@@ -56,6 +56,10 @@ Template.debug.events({
     Session.set("debugLoggedIn", !Session.get("debugLoggedIn"));
   }
 })
+
+Template.app.loggedIn = function () {
+  return Meteor.user() ? true : false;
+}
 
 /**
  * Find the maximum element of an array.
@@ -121,20 +125,21 @@ Template.grid.feels = function () {
 
 /**
  * Events for the heart template
+ * Temporarily removed to be used later
  */
-Template.heart.events({
-  'click .heart': function () {
-    console.log("HEART");
-    Feels.update(this._id, {$inc: {hearts: 1}});
-  }
-});
+//Template.heart.events({
+//  'click .heart': function () {
+//    console.log("HEART");
+//    Feels.update(this._id, {$inc: {hearts: 1}});
+//  }
+//});
 
 /**
  * Events for the Post template
  */
 Template.post.events({
   'click .happy.button': function () {
-    var username = $(":input:text").val() ? $(":input:text").val() : 'Anonymous';
+    var username = Meteor.user.username;
     var text = $("textarea").val();
     var emotion = 'happy';
     Meteor.call("postFeel", username, text, emotion);
@@ -143,7 +148,7 @@ Template.post.events({
     return false;
   },
   'click .meh.button': function () {
-    var username = $(":input:text").val() ? $(":input:text").val() : 'Anonymous';
+    var username = Meteor.user.username;
     var text = $("textarea").val();
     var emotion = 'meh';
     Meteor.call("postFeel", username, text, emotion);
@@ -152,7 +157,7 @@ Template.post.events({
     return false;
   },
   'click .sad.button': function () {
-    var username = $(":input:text").val() ? $(":input:text").val() : 'Anonymous';
+    var username = Meteor.user.username;
     var text = $("textarea").val();
     var emotion = 'sad';
     Meteor.call("postFeel", username, text, emotion);

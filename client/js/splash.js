@@ -14,7 +14,7 @@
  */
 Template.splash.rendered = function () {
   // Number of feels gifs currently in the folder
-  var feelsGifs = 7;
+  var feelsGifs = 8;
   var previousGif = 0;
   function refreshGif() {
     // Grab a random number of that set, but not the previous.
@@ -98,5 +98,30 @@ Template.splash.events({
     var email = $('.username').val();
     var kerberos = email.substring(0, email.length - 8);
     Meteor.call("newUser", kerberos, email);
+    $('.username').val("");
+    $('.modal').modal('show');
+
+  },
+  'keyup .signup .username': function (event) {
+    if(event.keyCode == 13) {
+      var email = $('.username').val();
+      var kerberos = email.substring(0, email.length - 8);
+      Meteor.call("newUser", kerberos, email);
+      $('.username').val("");
+      $('.modal').modal('show');
+    }
+  },
+  'keyup .login .password': function (event) {
+    if(event.keyCode == 13) {
+      var email = $('.username').val();
+      var password = $('.password').val();
+      Meteor.loginWithPassword(email, password);
+    }
+  }
+  ,
+  'click .login.button': function () {
+    var email = $('.username').val();
+    var password = $('.password').val();
+    Meteor.loginWithPassword(email, password);
   }
 })

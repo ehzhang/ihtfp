@@ -33,10 +33,41 @@ input {
   z-index: 10;
   position: fixed;
   top: 12px;
+  right: 12px;
 }
 
-.load.button {
-  right: 12px;
+/* Password Authentication */
+.accounts-dialog {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14pt;
+  text-align: center;
+  padding: 30px;
+}
+.accounts-dialog .login-button {
+  background-image: none;
+  background-color: #58cb73;
+  text-shadow: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12pt;
+  text-transform: uppercase;
+  padding: 6pt;
+  border: none;
+  box-shadow: none;
+
+  -webkit-transition: background-color .3s ease-in-out;
+  -moz-transition: background-color .3s ease-in-out;
+  -ms-transition: background-color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
+}
+
+.accounts-dialog .login-button:hover {
+  background-color: #32c44e;
+}
+
+#enroll-account-password:focus {
+  outline: none;
 }
 
 /* Header for the main application */

@@ -22,14 +22,14 @@
 </body>
 <template name="debug">
   <div class="ui green debug button">
-    Trigger Splash/App
+    Logout
   </div>
 </template>
 
 <template name="app">
-  {{#if debug}} <!-- if authenticated-->
-  {{> feed }}
+  {{#if loggedIn}} <!-- if authenticated-->
+    {{> feed }}
   {{else}}
-  {{> splash }}
+    {{> splash }}
   {{/if}}
 </template>

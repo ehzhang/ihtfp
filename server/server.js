@@ -21,14 +21,26 @@ var start = today.setHours(0,0,0,0);
 
 /**
  * Meteor publishes a set of feels based on the getFeels function.
+ * This publish is limited for lazy-loading
  */
 Meteor.publish("feels", getFeels);
 
 /**
- * Methods for the
+ * Meteor publish a set of feels of only the emotion field for a date range.
+ * This publish receives the entire set in the date range.
+ */
+//Meteor.publish("emotions", getEmotions)
+
+/**
+ * Methods for the server to execute.
  */
 Meteor.methods({
   newUser: function (username, email) {
-    console.log(username + ' and ' + email + ' and ' + generatePassword());
+    var password = generatePassword();
+    var userId = Accounts.createUser({
+      username: username,
+      email: email
+    })
+    Accounts.sendEnrollmentEmail(userId);
   }
-  });
+});

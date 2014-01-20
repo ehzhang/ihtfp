@@ -1,6 +1,5 @@
 // Global container, msnry
-var container,
-    msnry;
+var container, msnry;
 
 Template.grid.rendered = function () {
   container = document.querySelector('#grid');
@@ -13,6 +12,7 @@ Template.grid.rendered = function () {
   });
 }
 
+// Add lazy load to the grid
 $('#grid').ready(function () {
   //  Add a scroll handler to detect reaching the bottom of the page.
   //  Throttle the function so it doesn't fire so often!
@@ -21,11 +21,11 @@ $('#grid').ready(function () {
       if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
         Session.set("limit", Session.get("limit") + 15);
       }
-      console.log(Session.get("limit"));
     }, 400));
 });
 
-// Code to execute when feels are rendered
+// Code to execute when feels are rendered.
+// This gives big feels the ability to expand in size
 Template.feel.rendered = function () {
   // Find the feel class
   $(this.find('.feel'))
@@ -43,3 +43,14 @@ Template.feel.rendered = function () {
       }
   })
 }
+
+/**
+ * Events related to the main-feed
+ *
+ * Namely: debug button acts a logout button
+ */
+Template.debug.events({
+  'click .debug.button' : function () {
+    Meteor.logout();
+}
+});
