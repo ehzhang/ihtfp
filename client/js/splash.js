@@ -87,6 +87,7 @@ Session.setDefault("firstTime", true);
 Template.splash.firstTime = function () {
   return Session.get("firstTime");
 }
+
 /**
  * Events for the login/signup section
  */
@@ -99,7 +100,7 @@ Template.splash.events({
     var kerberos = email.substring(0, email.length - 8);
     Meteor.call("newUser", kerberos, email);
     $('.username').val("");
-    $('.modal').modal('show');
+    $('.dimmer').dimmer('toggle');
 
   },
   'keyup .signup .username': function (event) {
@@ -108,7 +109,7 @@ Template.splash.events({
       var kerberos = email.substring(0, email.length - 8);
       Meteor.call("newUser", kerberos, email);
       $('.username').val("");
-      $('.modal').modal('show');
+      $('.dimmer').dimmer('toggle');
     }
   },
   'keyup .login .password': function (event) {

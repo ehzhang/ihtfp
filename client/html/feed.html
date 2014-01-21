@@ -1,13 +1,11 @@
 <template name="feed">
-  {{#if true}}
-  {{> toolbar }}
-  {{/if}}
+  {{> composer }}
   {{> header }}
   {{> grid }}
 </template>
 
-<template name="toolbar">
-  <div id="toolbar" class="">
+<template name="composer">
+  <div id="composer">
     <div class="ui basic accordion">
       <div class="title">
         ihtfp
@@ -34,21 +32,23 @@
 </template>
 
 <template name="post">
-  <div class="ui form">
-    <div class="field">
-      <label>Tell us about your feels</label>
-      <textarea placeholder="Start writing here!"></textarea>
-    </div>
-    <div class="ui happy emotion submit button">
-      <i class="smile icon"></i> Happy
-    </div>
+  <div id="post">
+    <div class="ui form">
+      <div class="field">
+        <label>Tell us about your feels</label>
+        <textarea placeholder="Start writing here!"></textarea>
+      </div>
+      <div class="ui happy emotion submit button">
+        <i class="smile icon"></i> Happy
+      </div>
 
-    <div class="ui meh emotion submit button">
-      <i class="meh icon"></i> Meh
-    </div>
+      <div class="ui meh emotion submit button">
+        <i class="meh icon"></i> Meh
+      </div>
 
-    <div class="ui sad emotion submit button">
-      <i class="frown icon"></i> Sad
+      <div class="ui sad emotion submit button">
+        <i class="frown icon"></i> Sad
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +62,7 @@
 </template>
 
 <template name="feel">
-  <div class="feel {{#if text}}big{{/if}} {{ emotion }}">
+  <div class="feel {{ size }} {{ emotion }}">
     {{#if text}}
       <div class="text">
           {{ text }}
@@ -70,9 +70,9 @@
       <div class="footer">
         <div class="name">
           {{#if anon}}
-          Anonymous
+            Anon.
           {{else}}
-          {{ username }}
+            {{ username }}
           {{/if}}
         </div>
         {{#if false }}

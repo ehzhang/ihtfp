@@ -1,7 +1,6 @@
 <head>
   <title>ihtfp</title>
   <link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -17,21 +16,13 @@
 
   love your beaver!
   -->
-  {{> debug }}
   {{> app }}
   {{> scrollUpButton }}
 </body>
-<template name="debug">
-  <div class="ui green debug button">
-    Logout
-  </div>
-</template>
 
 <template name="app">
   {{#if loggedIn}} <!-- if authenticated-->
-    {{#if false}}
-      {{> navbar }}
-    {{/if}}
+    {{> nav }}
     {{> feed }}
   {{else}}
     {{> splash }}
@@ -40,4 +31,41 @@
 
 <template name="scrollUpButton">
   <div class="scrollUp"></div>
+</template>
+
+<template name="nav">
+  <div id="nav">
+    <div class="ui inverted compact menu">
+      <a class="new-feel popup item"
+         href="#toolbar"
+         data-content="Share a Feel"
+         data-position="bottom center">
+        <i class="plus icon"></i>
+      </a>
+      <!--<a class="date-pick popup item" data-content="Choose a Date" data-position="bottom center">-->
+        <!--<i class="calendar icon"></i>-->
+      <!--</a>-->
+      <div class="account settings ui simple inverted dropdown item">
+        {{#if name }}
+        {{ name }}
+        {{else}}
+        {{ username }}
+        {{/if}}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <!--<a class="item">-->
+            <!--My Profile-->
+          <!--</a>-->
+          <a class="item logout">
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div id="filter">-->
+    <!--<div class="ui green button">-->
+      <!--minimize-->
+    <!--</div>-->
+  <!--</div>-->
 </template>

@@ -27,11 +27,9 @@ body {
 input {
   font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
   font-weight: 400;
-  border: none !important;
 }
 
 /* For debuggin, rapid switch between splash and app */
-.load.button,
 .debug.button {
   z-index: 10;
   position: fixed;
@@ -99,30 +97,26 @@ input {
   outline: none;
 }
 
-#navbar {
-  position: relative;
-  height: 150px;
+/* Nav bar options */
+#nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 5;
 }
 
-#navbar .content {
-  position: absolute;
-  bottom: 0;
-  padding: 0px 120px;
-  width: 100%;
+#nav .menu {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
-#navbar .logo {
-  font-family: 'Rokkitt', serif;
-  display: inline-block;
-  font-weight: 700;
-  font-size: 120pt;
-  position: relative;
-  bottom: -42px;
-  z-index: 2;
+#nav .menu .dropdown .menu {
+  background-color: white;
 }
 
-#navbar .nav.buttons {
-  position: relative;
+.account.settings.dropdown {
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Header for the main application */
@@ -155,12 +149,14 @@ input {
   height: 600px !important;
 }
 
-/* Toolbar for the main application */
-#toolbar {
+/* composer for the main application */
+#composer {
   position: absolute;
   top: 0;
-  left: calc(50% - 210px);
-  width: 420px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 450px;
   z-index: 100;
 
   background-color: white;
@@ -169,16 +165,19 @@ input {
   margin-bottom: 8px;
 }
 
-#toolbar .title {
+#composer .title {
   font-size: 56pt;
   padding: 0px;
 }
 
-#toolbar .subtitle {
+#composer .subtitle {
   font-size: 14pt;
   margin-bottom: 14px;
 }
 
+#composer .ui.form textarea {
+  border: none !important;
+}
 
 /* Splash Screen CSS */
 #splash {
@@ -293,12 +292,9 @@ textarea {
   opacity: 1;
 }
 /* Big feels for those with text */
-.feel.big {
-  min-width: 200px;
-  min-height: 200px;
+.feel.expandable {
   cursor: pointer;
   opacity: .9;
-
   -webkit-transition: opacity .3s ease-in-out;
   -moz-transition: opacity .3s ease-in-out;
   -ms-transition: opacity .3s ease-in-out;
@@ -306,15 +302,38 @@ textarea {
   transition: opacity .3s ease-in-out;
 }
 
-.feel.big:hover {
+.feel.expandable:hover {
   opacity: 1;
 }
+
+.feel.medium {
+  min-width: 125px;
+  min-height: 125px;
+}
+
+.feel.big {
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.feel.huge {
+  min-width: 275px;
+  min-height: 275px;
+}
+
 /* Maximum size feels */
-.feel.max {
+.feel.expanded {
   width: auto !important;
   max-width: 500px !important;
   height: auto !important;
   overflow: hidden;
+}
+
+.feel.minimized {
+  min-width: 50px;
+  min-height: 50px;
+  width: 50px !important;
+  height: 50px !important;
 }
 
 .feel .text {
@@ -343,7 +362,7 @@ textarea {
   transition: opacity .3s ease-in-out;
 }
 
-.big.feel:hover .footer {
+.expandable.feel:hover .footer {
   opacity: .9;
 }
 

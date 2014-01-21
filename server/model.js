@@ -22,7 +22,7 @@ Meteor.methods({
     Feels.insert(
       {
         username: username,
-        anon: false, // default for now
+        anon: true, // default for now
         text: text,
         emotion: emotion,
         hearts: 0,
