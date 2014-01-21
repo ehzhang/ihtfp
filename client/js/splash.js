@@ -66,7 +66,7 @@ Template.splash.rendered = function () {
   // Smooth scroll to anchor
   $('a').click(function(){
     $('body').animate({
-      scrollTop: $( $(this).attr('href') ).offset().top
+      scrollTop: $($(this).attr('href')).offset().top
     }, 800, 'swing');
     return false;
   });

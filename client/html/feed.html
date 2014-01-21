@@ -1,5 +1,7 @@
 <template name="feed">
+  {{#if true}}
   {{> toolbar }}
+  {{/if}}
   {{> header }}
   {{> grid }}
 </template>
@@ -22,7 +24,7 @@
 </template>
 
 <template name="header">
-  <div id="header">
+  <div id="header" class="{{ emotion }}">
     tfp is
     <span class="{{ emotion }} text">
       {{ emotion }}

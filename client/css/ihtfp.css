@@ -13,18 +13,21 @@
  */
 
 body {
-  background-color: #2d2d2d;
+  background-color: #3b3b3b;
+  background-color: #2a2a2a;
   color: white;
   font-family: 'Raleway', sans-serif;
   font-size: 12pt;
   font-weight: 100;
+  margin: 0;
 }
 
 /* Textarea font replacements */
-textarea,
+.ui.form textarea,
 input {
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
+  border: none !important;
 }
 
 /* For debuggin, rapid switch between splash and app */
@@ -34,6 +37,32 @@ input {
   position: fixed;
   top: 12px;
   right: 12px;
+}
+
+/* scrollUp button is on all of the main app stuff. Scrolls to top. */
+.scrollUp {
+  z-index: 123;
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  height: 60px;
+  width: 60px;
+  background: url('/assets/img/scrollUp.png');
+  opacity: 0;
+  -webkit-transition: opacity .3s ease-in-out;
+  -moz-transition: opacity .3s ease-in-out;
+  -ms-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+}
+
+.visible.scrollUp {
+  cursor: pointer;
+  opacity: .6;
+}
+
+.visible.scrollUp:hover {
+  opacity: .8;
 }
 
 /* Password Authentication */
@@ -70,14 +99,45 @@ input {
   outline: none;
 }
 
+#navbar {
+  position: relative;
+  height: 150px;
+}
+
+#navbar .content {
+  position: absolute;
+  bottom: 0;
+  padding: 0px 120px;
+  width: 100%;
+}
+
+#navbar .logo {
+  font-family: 'Rokkitt', serif;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 120pt;
+  position: relative;
+  bottom: -42px;
+  z-index: 2;
+}
+
+#navbar .nav.buttons {
+  position: relative;
+}
+
 /* Header for the main application */
 #header {
   font-family: 'Rokkitt', serif;
+  font-weight: 500;
   font-size: 9vw;
   position: relative;
   margin-top: 175px;
   margin-bottom: 50px;
   text-align: center;
+  border-top: 1px solid rgba(0,0,0,.2);
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 80px 12px;
+  background-color: rgba(0,0,0,.1);
 }
 
 /* Title CSS */
@@ -87,6 +147,12 @@ input {
   text-align: center;
   padding: 0px;
   margin-top: 30px;
+}
+
+.sidebar {
+  background-color: white;
+  color: black;
+  height: 600px !important;
 }
 
 /* Toolbar for the main application */
@@ -158,7 +224,8 @@ input {
 }
 
 .ui.form input.username,
-.ui.form input[type=password] {
+.ui.form input[type=password],
+textarea {
   border-radius: 0px !important;
   -moz-border-radius: 0px !important;
   -webkit-border-radius: 0px !important;
@@ -364,11 +431,11 @@ input {
 
 .masonry,
 .masonry .masonry-brick {
-  -webkit-transition-duration: 0.7s;
-  -moz-transition-duration: 0.7s;
-  -ms-transition-duration: 0.7s;
-  -o-transition-duration: 0.7s;
-  transition-duration: 0.7s;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .masonry {

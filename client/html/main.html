@@ -19,6 +19,7 @@
   -->
   {{> debug }}
   {{> app }}
+  {{> scrollUpButton }}
 </body>
 <template name="debug">
   <div class="ui green debug button">
@@ -28,8 +29,15 @@
 
 <template name="app">
   {{#if loggedIn}} <!-- if authenticated-->
+    {{#if false}}
+      {{> navbar }}
+    {{/if}}
     {{> feed }}
   {{else}}
     {{> splash }}
   {{/if}}
+</template>
+
+<template name="scrollUpButton">
+  <div class="scrollUp"></div>
 </template>
