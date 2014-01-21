@@ -16,7 +16,7 @@ body {
   background-color: #3b3b3b;
   background-color: #2a2a2a;
   color: white;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
   font-size: 12pt;
   font-weight: 100;
   margin: 0;
@@ -25,7 +25,7 @@ body {
 /* Textarea font replacements */
 .ui.form textarea,
 input {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
   font-weight: 400;
   border: none !important;
 }
@@ -67,7 +67,7 @@ input {
 
 /* Password Authentication */
 .accounts-dialog {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
   font-size: 14pt;
   text-align: center;
   padding: 30px;
@@ -76,7 +76,7 @@ input {
   background-image: none;
   background-color: #58cb73;
   text-shadow: none;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
   font-weight: 400;
   font-size: 12pt;
   text-transform: uppercase;
@@ -142,7 +142,7 @@ input {
 
 /* Title CSS */
 .title {
-  font-family: 'Rokkitt';
+  font-family: 'Rokkitt', serif;
   font-weight: 700;
   text-align: center;
   padding: 0px;
