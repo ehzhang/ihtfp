@@ -135,7 +135,9 @@ input {
 }
 
 /* Title CSS */
-.title {
+.title,
+.imfeeling,
+.emotion.dropdown {
   font-family: 'Rokkitt', serif;
   font-weight: 700;
   text-align: center;
@@ -156,18 +158,18 @@ input {
   left: 0;
   right: 0;
   margin: 0 auto;
+  padding: 0px;
   width: 450px;
   z-index: 100;
 
   background-color: white;
-  padding: 12px;
 
   margin-bottom: 8px;
 }
 
 #composer .title {
   font-size: 56pt;
-  padding: 0px;
+  padding: 8px 12px;
 }
 
 #composer .subtitle {
@@ -177,7 +179,55 @@ input {
 
 #composer .ui.form textarea {
   border: none !important;
+  min-height: 300px;
+  font-size: 12pt;
 }
+
+#composer .accordion .content {
+  padding-top: 0px !important;
+}
+
+/* new post box section CSS */
+#post {
+  text-align: center;
+}
+
+.emotion.selector {
+  background-color: #3b3b3b;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-top: 8px;
+  padding: 12px;
+}
+
+.imfeeling,
+.emotion.dropdown {
+  margin-top: 0px;
+  font-size: 30pt;
+  color: white;
+  display: inline-block;
+}
+
+.emotion.dropdown .dropdown.icon {
+  margin: 0 !important;
+  font-size: 15pt;
+}
+
+.emotion.menu {
+  overflow: hidden;
+}
+
+.emotion.menu .item {
+  color: white !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
+}
+
+.emotion.editor {
+  padding: 12px;
+}
+
 
 /* Splash Screen CSS */
 #splash {
@@ -402,15 +452,25 @@ textarea {
 /*
   Emotion Colors
 */
+.emotion.button {
+  margin-bottom: 8px !important;
+}
+
 .happy,
 .ui.happy.button {
   background-color: #ffa71d;
   color: #FFF;
 }
 
+.ui.happy.button:hover,
+.happy.item:hover {
+  background-color: #ff9200 !important;
+  color: #FFF !important;
+}
+
 .happy.text {
   background-color: transparent;
-  color: #ffa71d;
+  color: #ffa71d !important;
 }
 
 .sad,
@@ -418,9 +478,15 @@ textarea {
   background-color: #3a90e5;
   color: #FFF;
 }
+.ui.sad.button:hover,
+.sad.item:hover {
+  background-color: #2285e5 !important;
+  color: #FFF !important;
+}
+
 .sad.text {
   background-color: transparent;
-  color: #3a90e5;
+  color: #3a90e5 !important;
 }
 
 .meh,
@@ -429,9 +495,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.meh.button:hover,
+.meh.item:hover {
+  background-color: #696969 !important;
+  color: #FFF !important;
+}
+
 .meh.text {
   background-color: transparent;
-  color: #808080;
+  color: #808080 !important;
 }
 
 .angry,
@@ -440,9 +512,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.angry.button:hover,
+.angry.item:hover {
+  background-color: #e93a43 !important;
+  color: #FFF !important;
+}
+
 .angry.text {
   background-color: transparent;
-  color: #e94e54;
+  color: #e94e54 !important;
 }
 
 .excited,
@@ -451,9 +529,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.excited.button:hover,
+.excited.item:hover {
+  background-color: #feb403 !important;
+  color: #FFF !important;
+}
+
 .excited.text {
   background-color: transparent;
-  color: #fec81a;
+  color: #fec81a !important;
 }
 
 .stressed,
@@ -462,9 +546,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.stressed.button:hover,
+.stressed.item:hover {
+  background-color: #33c11a !important;
+  color: #FFF !important;
+}
+
 .stressed.text {
   background-color: transparent;
-  color: #50c12f;
+  color: #50c12f !important;
 }
 
 .proud,
@@ -473,9 +563,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.proud.button:hover,
+.proud.item:hover {
+  background-color: #9b51cc !important;
+  color: #FFF !important;
+}
+
 .proud.text {
   background-color: transparent;
-  color: #ab62cc;
+  color: #ab62cc !important;
 }
 
 .romantic,
@@ -484,9 +580,15 @@ textarea {
   color: #FFF;
 }
 
+.ui.romantic.button:hover,
+.romantic.item:hover {
+  background-color: #ff67ab !important;
+  color: #FFF !important;
+}
+
 .romantic.text {
   background-color: transparent;
-  color: #ff7ba9;
+  color: #ff7ba9 !important;
 }
 
 /* Clear button */

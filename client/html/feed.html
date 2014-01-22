@@ -15,7 +15,9 @@
       </div>
 
       <div class="content">
+        {{#isolate}}
         {{> post }}
+        {{/isolate}}
       </div>
     </div>
   </div>
@@ -33,34 +35,38 @@
 
 <template name="post">
   <div id="post">
-    <div class="ui form">
-      <div class="field">
-        <label>Tell us about your feels</label>
-        <textarea placeholder="Start writing here!"></textarea>
+    <div class="emotion selector">
+      <div class="imfeeling">
+        i'm feeling
+        <div class="ui emotion inline dropdown">
+          <div class="{{ emotion }} text">
+            {{ emotion }}.
+          </div>
+          <i class="tiny dropdown icon"></i>
+          <div class="emotion menu">
+            <div class="happy item" emotion="happy">happy.</div>
+            <div class="meh item" emotion="meh">meh. </div>
+            <div class="sad item" emotion="sad">sad.</div>
+            <div class="angry item" emotion="angry">angry.</div>
+            <div class="excited item" emotion="excited">excited!</div>
+            <div class="stressed item" emotion="stressed">stressed.</div>
+            <div class="proud item" emotion="proud">proud.</div>
+            <div class="romantic item" emotion="romantic">romantic.</div>
+          </div>
+        </div>
       </div>
-      <div class="ui happy emotion submit button" emotion="happy">
-        Happy
-      </div>
-      <div class="ui meh emotion submit button" emotion="meh">
-        Meh
-      </div>
-      <div class="ui sad emotion submit button" emotion="sad">
-        Sad
-      </div>
-      <div class="ui angry emotion submit button" emotion="angry">
-        Angry
-      </div>
-      <div class="ui excited emotion submit button" emotion="excited">
-        Excited
-      </div>
-      <div class="ui stressed emotion submit button" emotion="stressed">
-        Stressed
-      </div>
-      <div class="ui proud emotion submit button" emotion="proud">
-        Proud
-      </div>
-      <div class="ui romantic emotion submit button" emotion="romantic">
-        Romantic
+    </div>
+    <div class="emotion editor">
+      <div class="ui form">
+        <div class="field">
+          <textarea placeholder="Talk about why you feel {{ emotion }}! (optional)"></textarea>
+        </div>
+        <div class="ui {{ emotion }} emotion fluid submit button">
+          Share this feel.
+        </div>
+        <div class="ui black fluid cancel button">
+          Nevermind.
+        </div>
       </div>
     </div>
   </div>
