@@ -30,7 +30,7 @@ Template.post.rendered = function () {
  */
 Template.post.events({
   'click .emotion.submit.button': function () {
-    var username = Meteor.user.username;
+    var username = Meteor.user().username;
     var text = $("textarea").val();
     var emotion = Session.get("emotion");
     Meteor.call("postFeel", username, text, emotion);
