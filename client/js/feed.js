@@ -72,9 +72,9 @@ Template.feel.size = function () {
   if (!text.replace(/\s/g, '').length) {
     // If the string is only spaces
     return '';
-  } else if (text.length < 70) {
+  } else if (text.length < 150) {
     return 'medium expandable';
-  } else if (text.length < 140) {
+  } else if (text.length < 300) {
     return 'big expandable';
   } else {
     return 'huge expandable';

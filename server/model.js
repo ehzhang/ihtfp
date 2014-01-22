@@ -11,7 +11,8 @@
  *  username: String user name
  *  anon: Boolean
  *  text: String
- *  emotion: String out of the set {'happy', 'sad', 'meh'}
+ *  emotion: String out of these options:
+ *  {'happy', 'sad', 'meh', 'excited', 'angry', 'stressed', 'proud', 'romantic'}
  *  hearts: Integer representing number of 'hearts'
  *  timestamp: Date object
  */

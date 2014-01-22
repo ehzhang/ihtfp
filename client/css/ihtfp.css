@@ -408,9 +408,6 @@ textarea {
   color: #FFF;
 }
 
-.ui.happy.button:hover {
-}
-
 .happy.text {
   background-color: transparent;
   color: #ffa71d;
@@ -435,6 +432,61 @@ textarea {
 .meh.text {
   background-color: transparent;
   color: #808080;
+}
+
+.angry,
+.ui.angry.button {
+  background-color: #e94e54;
+  color: #FFF;
+}
+
+.angry.text {
+  background-color: transparent;
+  color: #e94e54;
+}
+
+.excited,
+.ui.excited.button {
+  background-color: #fec81a;
+  color: #FFF;
+}
+
+.excited.text {
+  background-color: transparent;
+  color: #fec81a;
+}
+
+.stressed,
+.ui.stressed.button {
+  background-color: #50c12f;
+  color: #FFF;
+}
+
+.stressed.text {
+  background-color: transparent;
+  color: #50c12f;
+}
+
+.proud,
+.ui.proud.button {
+  background-color: #ab62cc;
+  color: #FFF;
+}
+
+.proud.text {
+  background-color: transparent;
+  color: #ab62cc;
+}
+
+.romantic,
+.ui.romantic.button {
+  background-color: #ff7ba9;
+  color: #FFF;
+}
+
+.romantic.text {
+  background-color: transparent;
+  color: #ff7ba9;
 }
 
 /* Clear button */

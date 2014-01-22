@@ -17,30 +17,13 @@
  * Events for the post template, inside the composer.
  */
 Template.post.events({
-  'click .happy.button': function () {
+  'click .emotion.submit.button': function (event) {
     var username = Meteor.user.username;
     var text = $("textarea").val();
-    var emotion = 'happy';
+    var emotion = $(event.target).attr('emotion');
+    console.log(emotion);
     Meteor.call("postFeel", username, text, emotion);
-    // reset post stuff
-    $('textarea').val("");
-    return false;
-  },
-  'click .meh.button': function () {
-    var username = Meteor.user.username;
-    var text = $("textarea").val();
-    var emotion = 'meh';
-    Meteor.call("postFeel", username, text, emotion);
-    // reset post stuff
-    $('textarea').val("");
-    return false;
-  },
-  'click .sad.button': function () {
-    var username = Meteor.user.username;
-    var text = $("textarea").val();
-    var emotion = 'sad';
-    Meteor.call("postFeel", username, text, emotion);
-    // reset post stuff
+//    reset post stuff
     $('textarea').val("");
     return false;
   }
