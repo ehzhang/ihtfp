@@ -454,6 +454,7 @@ textarea {
 */
 .emotion.button {
   margin-bottom: 8px !important;
+  background-image: none !important;
 }
 
 .happy,
