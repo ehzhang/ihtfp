@@ -45,7 +45,8 @@ Deps.autorun( function () {
   // startDate indicates the start of the query
   // endDate indicates the end of the query
   // limit is the number of feels to load
-  Meteor.subscribe("feels", Session.get("startDate"), Session.get("endDate"), Session.get("limit"));
+  // Sstart date is currently false for infinite scroll
+  Meteor.subscribe("feels", false, Session.get("endDate"), Session.get("limit"));
 });
 
 Template.app.loggedIn = function () {
