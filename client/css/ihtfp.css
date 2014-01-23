@@ -7,7 +7,7 @@
  *
  *  CSS!
  *
- *  Elements are generaly organized in order of appearance,
+ *  Elements are generally organized in order of appearance,
  *  starting with the splash page and onto the grid.
  *
  */
@@ -464,7 +464,8 @@ textarea {
 }
 
 .ui.happy.button:hover,
-.happy.item:hover {
+.happy.item:hover
+.happy.item.active {
   background-color: #ff9200 !important;
   color: #FFF !important;
 }
@@ -480,7 +481,8 @@ textarea {
   color: #FFF;
 }
 .ui.sad.button:hover,
-.sad.item:hover {
+.sad.item:hover,
+.sad.item.active {
   background-color: #2285e5 !important;
   color: #FFF !important;
 }
@@ -497,7 +499,8 @@ textarea {
 }
 
 .ui.meh.button:hover,
-.meh.item:hover {
+.meh.item:hover,
+.meh.item.active {
   background-color: #696969 !important;
   color: #FFF !important;
 }
@@ -514,7 +517,8 @@ textarea {
 }
 
 .ui.angry.button:hover,
-.angry.item:hover {
+.angry.item:hover
+.angry.item.active {
   background-color: #e93a43 !important;
   color: #FFF !important;
 }
@@ -531,7 +535,8 @@ textarea {
 }
 
 .ui.excited.button:hover,
-.excited.item:hover {
+.excited.item:hover,
+.excited.item.active {
   background-color: #feb403 !important;
   color: #FFF !important;
 }
@@ -548,7 +553,8 @@ textarea {
 }
 
 .ui.stressed.button:hover,
-.stressed.item:hover {
+.stressed.item:hover,
+.stressed.item.active {
   background-color: #33c11a !important;
   color: #FFF !important;
 }
@@ -565,7 +571,8 @@ textarea {
 }
 
 .ui.proud.button:hover,
-.proud.item:hover {
+.proud.item:hover,
+.proud.item.active {
   background-color: #9b51cc !important;
   color: #FFF !important;
 }
@@ -582,7 +589,8 @@ textarea {
 }
 
 .ui.romantic.button:hover,
-.romantic.item:hover {
+.romantic.item:hover,
+.romantic.item.active {
   background-color: #ff67ab !important;
   color: #FFF !important;
 }

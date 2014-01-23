@@ -23,7 +23,11 @@
 <template name="app">
   {{#if loggedIn}} <!-- if authenticated-->
     {{> nav }}
-    {{> feed }}
+    {{#if account}}
+      {{> account}}
+    {{else}}
+      {{> feed }}
+    {{/if}}
   {{else}}
     {{> splash }}
   {{/if}}
@@ -53,9 +57,12 @@
         {{/if}}
         <i class="dropdown icon"></i>
         <div class="menu">
-          <!--<a class="item">-->
-            <!--My Profile-->
-          <!--</a>-->
+          <a class="item home">
+            Home
+          </a>
+          <a class="item account">
+            My Profile
+          </a>
           <a class="item logout">
             Sign Out
           </a>

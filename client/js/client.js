@@ -38,6 +38,7 @@ Feels.allow({
 // For now, only subscribing to today's posts.
 Session.setDefault("startDate", start);
 Session.setDefault("limit", 40);
+Session.setDefault("account", false);
 
 Deps.autorun( function () {
   // Gets the feels from the sessions startDate/endDate.
@@ -45,12 +46,16 @@ Deps.autorun( function () {
   // startDate indicates the start of the query
   // endDate indicates the end of the query
   // limit is the number of feels to load
-  // Sstart date is currently false for infinite scroll
+  // Start date is currently false for infinite scroll
   Meteor.subscribe("feels", false, Session.get("endDate"), Session.get("limit"));
 });
 
 Template.app.loggedIn = function () {
   return Meteor.user() ? true : false;
+}
+
+Template.app.account = function () {
+  return Session.get("account");
 }
 
 /**
