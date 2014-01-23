@@ -101,7 +101,6 @@ Template.splash.events({
     Meteor.call("newUser", kerberos, email);
     $('.username').val("");
     $('.dimmer').dimmer('toggle');
-
   },
   'keyup .signup .username': function (event) {
     if(event.keyCode == 13) {
@@ -118,8 +117,7 @@ Template.splash.events({
       var password = $('.password').val();
       Meteor.loginWithPassword(email, password);
     }
-  }
-  ,
+  },
   'click .login.button': function () {
     var email = $('.username').val();
     var password = $('.password').val();

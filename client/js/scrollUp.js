@@ -1,7 +1,6 @@
 // Javascript for the scrollUp button
 
 $(document).ready(function () {
-
   // Add a handler to the window on scroll
   var $scrollUp = $('.scrollUp');
   $scrollUp.click(function () {

@@ -14,9 +14,6 @@
  */
 
 Template.composer.rendered = function () {
-  if (!this._rendered) {
-    this._rendered = true;
-  }
   // Initialize the composer on top.
   var composerDuration = 300;
   var $composer = $(this.find('#composer'));

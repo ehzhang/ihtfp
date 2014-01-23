@@ -21,6 +21,7 @@ Template.nav.rendered = function () {
 }
 
 Template.nav.username = function () {
+  // TODO: Give user a field for just name, more personal that way
   return Meteor.user().username;
 }
 

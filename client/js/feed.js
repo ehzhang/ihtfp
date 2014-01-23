@@ -38,6 +38,7 @@ Template.header.emotion = function () {
  */
 Template.grid.feels = function () {
   // The feels found is based on the subscribe function above.
+  // TODO: Make this less bad
   return Feels.find({}, {sort: {timestamp: -1}});
 }
 
@@ -69,6 +70,7 @@ $('#grid').ready(function () {
 // Determine the size of the feel based on the amount of text inside.
 Template.feel.size = function () {
   var text = this.text;
+  // TODO: Can be moved to postFeel also needs max post size
   if (!text.replace(/\s/g, '').length) {
     // If the string is only spaces
     return '';
