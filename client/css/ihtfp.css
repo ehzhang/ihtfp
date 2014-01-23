@@ -448,6 +448,28 @@ textarea {
   width: 250px;
   border: 1px solid #585858;
 }
+/* Account page CSS */
+#account .info {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 34%;
+  background-color: #262626;
+  border-right: 1px solid black;
+  font-family: 'Rokkitt', sans-serif;
+  font-size: 24pt;
+  padding: 50px 20px;
+}
+
+#account .greeting {
+  font-size: 80pt;
+}
+
+#account .feed {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
 
 /*
   Emotion Colors

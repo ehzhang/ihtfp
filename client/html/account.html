@@ -1,11 +1,24 @@
 <template name="account">
-  <div class="ui two column middle aligned relaxed grid basic segment">
-    <div class="column">
-      Hello, {{username}}!
-    </div>
-    <div class="ui vertical divider"></div>
-    <div class="center aligned column">
-      Feed goes here.
+  <div id="account">
+    <div class="ui middle aligned relaxed grid">
+      <div class="six wide right aligned column">
+        <div class="info">
+          <div class="greeting">
+            Hello, {{ username }}!
+          </div>
+          You have posted {{ timesPosted }} times since you joined on {{ joinDate }}.
+          <br>
+          You most frequently post about being
+          <span class="{{ mostEmotion }} text"> {{ mostEmotion }}</span>.
+          In the past week, you posted mostly about feeling
+          <span class="{{ weeksEmotion }} text"> {{ weeksEmotion }}</span>.
+        </div>
+      </div>
+      <div class="ten wide left aligned column">
+        <div class="feed">
+          {{> grid }}
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -39,7 +39,9 @@ Template.header.emotion = function () {
 Template.grid.feels = function () {
   // The feels found is based on the subscribe function above.
   // TODO: Make this less bad
-  return Feels.find({}, {sort: {timestamp: -1}});
+  if (Session.get("active")){
+    return Feels.find({}, {sort: {timestamp: -1}});
+  }
 }
 
 // Global container, msnry
@@ -81,6 +83,10 @@ Template.feel.size = function () {
   } else {
     return 'huge expandable';
   }
+}
+
+Template.feel.date = function () {
+  return this.timestamp.toLocaleDateString();
 }
 
 // Code to execute when feels are rendered.

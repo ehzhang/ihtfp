@@ -21,12 +21,14 @@ Template.nav.rendered = function () {
 }
 
 Template.nav.username = function () {
-  // TODO: Give user a field for just name, more personal that way
+  if(Meteor.user().name) {
+    return Meteor.user().name;
+  }
   return Meteor.user().username;
 }
 
 /**
- * Events related to the main-feed
+ * Events related to the app in general
  */
 Template.nav.events({
   'click .new-feel' : function () {
@@ -42,11 +44,20 @@ Template.nav.events({
     return false;
   },
   'click .item.account' : function () {
-    Session.set("account", true);
+    if (!Session.get("account")){
+      Session.set("active", false);
+      Session.set("account", true);
+      return false;
+    }
     return false;
   },
   'click .item.home' : function () {
-    Session.set("account", false);
+    if (Session.get("account")){
+      Session.set("active", false);
+      Session.set("limit", 40);
+      Session.set("account", false);
+      return false;
+    }
     return false;
   },
   'click #filter .button' : function () {

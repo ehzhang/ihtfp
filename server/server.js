@@ -26,6 +26,16 @@ var start = today.setHours(0,0,0,0);
 Meteor.publish("feels", getFeels);
 
 /**
+ * Publish the record set of all feels felt by a specific user.
+ */
+Meteor.publish("userFeels", getUserFeels)
+
+/**
+ * Publish relevant user information
+ */
+Meteor.publish("userData", getUserData);
+
+/**
  * Meteor publish a set of feels of only the emotion field for a date range.
  * This publish receives the entire set in the date range.
  */
