@@ -13,59 +13,46 @@
  *  I probably wouldn't touch this since it's all good -Edwin
  */
 
-Template.composer.greeting = function () {
-  var greetings = [
-    "how you doin'?",
-    "how are you today?",
-    "how are you feeling?",
-    "what's on your mind?",
-    "hey, what's up?",
-    "watcha thinkin bout?"
-  ]
-  return greetings[Math.floor(Math.random() * greetings.length)];
+Session.setDefault("emotion", "happy");
+
+/**
+ * The current emotion selected.
+ * @returns {emotion}
+ */
+Template.post.emotion = function () {
+  return Session.get("emotion");
 }
 
-Template.composer.rendered = function () {
-  // Initialize the composer on top.
-  var composerDuration = 300;
-  var $composer = $(this.find('#composer'));
-  $composer
-    .accordion({
-      duration: composerDuration
-    })
-//    .transition('fade down in', '400ms');
-
-  var prevOnGrid = true;
-  $(window).scroll(function () {
-    var gridTop = $('#grid').offset().top;
-    var position = $(this).scrollTop();
-
-    var onGrid = position >= gridTop;
-    var setPos = onGrid ? 'fixed' : 'absolute';
-
-    // Set the composer fixed when you scroll down
-    $composer.css({position: setPos})
-
-    var trigger = prevOnGrid != onGrid;
-    var onGridTrigger = trigger && onGrid == true;
-    var offGridTrigger = trigger && onGrid == false;
-
-    // Activates when the user scrolls onto the grid
-    if (onGridTrigger) {
-      // Close it immediately, then drop it down from the top.
-      $composer
-        .transition('fade down in', '400ms');
-    }
-
-    // Activates when the user scrolls off the grid
-    if (offGridTrigger) {
-      // Fade that shit in!
-//      $composer
-//        .accordion({duration: 0})
-//        .accordion('close', 0)
-//        .accordion({duration: composerDuration});
-//      $header.transition('fade up in', '1000ms');
-    }
-    prevOnGrid = onGrid;
-  });
+/**
+ * When the post template is rendered, initialize the dropdown emotion selector.
+ */
+Template.post.rendered = function () {
+  // Select the dropdown.
+  var $dropdown = $('.ui.emotion.dropdown');
+  // Initialize the dropdown!
+  $dropdown.dropdown();
 }
+
+/**
+ * Events for the post template, inside the composer.
+ */
+Template.post.events({
+  'click .emotion.submit.button': function () {
+    var username = Meteor.user().username;
+    var text = $("textarea").val();
+    var emotion = Session.get("emotion");
+    Meteor.call("postFeel", username, text, emotion);
+    // reset post stuff
+    $('#composer').dimmer('hide');
+    $('textarea').val("");
+    return false;
+  },
+  'click .emotion .item': function (event) {
+    var emotion = $(event.target).attr('emotion');
+    Session.set("emotion", emotion);
+  },
+  'click .cancel.button': function () {
+    $('#composer').dimmer('hide');
+    $('textarea').val("");
+  }
+});

@@ -3,9 +3,9 @@
     <div class="center">
       {{> title}}
       {{#if firstTime}}
-      {{> signup }}
+        {{> signup }}
       {{else}}
-      {{> login }}
+        {{> login }}
       {{/if}}
       {{> learnmore }}
     </div>
@@ -27,7 +27,7 @@
 
 
 <template name="signup">
-  <div class="ui page dimmer">
+  <div class="ui signup success page dimmer">
     <div class="content">
       <div class="center">
         <i class="huge inverted green circular mail icon"></i>
@@ -46,7 +46,7 @@
     <div class="field">
       <input type="text" placeholder="Hey, what's your kerberos?" class="username">
     </div>
-    <div class="ui fluid green signup button">
+    <div class="ui fluid green signup bottom attached button">
       Sign Up
     </div>
     <br>
@@ -74,7 +74,7 @@
             </div>
           </div>-->
   </div>
-  <div class="ui fluid green login button">
+  <div class="ui fluid green login bottom attached button">
     Login
   </div>
   <br>

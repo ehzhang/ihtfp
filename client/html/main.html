@@ -23,10 +23,11 @@
 <template name="app">
   {{#if loggedIn}} <!-- if authenticated-->
     {{> nav }}
+    {{> composer }}
     {{#if account}}
       {{> account}}
     {{else}}
-      {{> feed }}
+      {{> mainfeed }}
     {{/if}}
   {{else}}
     {{> splash }}
@@ -39,18 +40,27 @@
 
 <template name="nav">
   <div id="nav">
+    <div class="ui inverted compact left menu">
+      {{#if account }}
+      <a class="logo home item">
+        <i class="small angle left icon"></i>ihtfp
+      </a>
+      {{/if}}
+      <!--<a class="item">-->
+        <!--<i class="grid layout icon"></i>-->
+      <!--</a>-->
+    </div>
     <div class="ui inverted compact right menu">
       <a class="new-feel popup item"
-         href="#composer"
          data-content="Share a Feel"
          data-position="bottom center">
-        <i class="plus icon"></i>
+        <i class="{{ emotion }} text plus icon"></i>
       </a>
       <!--<a class="date-pick popup item" data-content="Choose a Date" data-position="bottom center">-->
-        <!--<i class="calendar icon"></i>-->
+      <!--<i class="calendar icon"></i>-->
       <!--</a>-->
       <div class="account settings ui simple inverted dropdown item">
-        {{ username }}
+        <span class="{{ emotion }} text">{{ username }}</span>
         <i class="dropdown icon"></i>
         <div class="menu">
           <a class="item home">
@@ -64,14 +74,6 @@
           </a>
         </div>
       </div>
-    </div>
-    <div class="ui inverted compact left menu">
-      <a class="logo item">
-        ihtfp
-      </a>
-      <a class="item">
-        <i class="grid layout icon"></i>
-      </a>
     </div>
   </div>
   <!--<div id="filter">-->

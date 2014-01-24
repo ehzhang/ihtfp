@@ -1,0 +1,54 @@
+<template name="composer">
+  <div id="composer" class="ui page dimmer">
+    <div class="content">
+      <div class="center">
+        <div class="title">
+          ihtfp
+          <div class="subtitle">
+            anonymous, real-time feels
+          </div>
+        </div>
+        {{> post }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="post">
+  <div id="post">
+    <div class="emotion selector">
+      <div class="imfeeling">
+        i'm feeling
+        <div class="ui emotion inline dropdown">
+          <div class="{{ emotion }} text">
+            {{ emotion }}.
+          </div>
+          <i class="tiny dropdown icon"></i>
+          <div class="emotion menu">
+            <div class="happy item" emotion="happy">happy.</div>
+            <div class="meh item" emotion="meh">meh. </div>
+            <div class="sad item" emotion="sad">sad.</div>
+            <div class="angry item" emotion="angry">angry.</div>
+            <div class="excited item" emotion="excited">excited!</div>
+            <div class="stressed item" emotion="stressed">stressed.</div>
+            <div class="proud item" emotion="proud">proud.</div>
+            <div class="romantic item" emotion="romantic">romantic.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="emotion editor">
+      <div class="ui form">
+        <div class="field">
+          <textarea placeholder="Talk about why you feel {{ emotion }}! (optional)"></textarea>
+        </div>
+        <div class="ui {{ emotion }} emotion fluid submit button">
+          Share this feel.
+        </div>
+        <div class="ui black emotion fluid cancel button">
+          Nevermind.
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -94,22 +94,26 @@ Template.splash.firstTime = function () {
  * Events for the login/signup section
  */
 signup = function () {
-  var email = $('.username').val();
-  if (email.split("@")[0] == 0) {
+  var email = $('.username').val(),
+      $usernameInput = $('input.username');
+  if (!email) {
     // first check if field is empty
-    $('input.username').parent().addClass("error");
-    $('input.username').val("").attr("placeholder", "Whoops, enter your kerberos!");
+    $usernameInput
+      .val("")
+      .attr("placeholder", "Whoops, enter your kerberos!")
+      .parent().addClass("error");
   }
   else {
     Meteor.call("newUser", email, function (error, result) {
       if (result) {
         // if successfully sent email
         $('.username').val("");
-        $('.dimmer').dimmer('toggle');
+        $('.signup.success.dimmer').dimmer('toggle');
       } else {
         // if account already exists
-        $('input.username').parent().addClass("error");
-        $('input.username').val("").attr("placeholder", "This account already exists!")
+        $usernameInput
+          .val("").attr("placeholder", "This account already exists!")
+          .parent().addClass("error");
       }
 
     });
@@ -119,25 +123,39 @@ signup = function () {
 }
 
 login = function () {
-  var email = $('.username').val();
-  var password = $('.password').val();
-  if (email.split("@")[0] == 0) {
+  var email = $('.username').val(),
+      password = $('.password').val(),
+      $usernameInput = $('input.username'),
+      $passwordInput = $('input.password');
+
+  if (!email) {
     // first check if field is empty
-    $('input.username').parent().addClass("error");
-    $('input.username').val("").attr("placeholder", "Whoops, enter your kerberos!");
+    $usernameInput
+      .val("")
+      .attr("placeholder", "Whoops, enter your kerberos!")
+      .parent()
+        .addClass("error");
   } else {
     Meteor.call("userExists", email, function (error, result) {
       if (!result) {
         // if user doesn't exists
-        $('input.username').parent().addClass("error");
-        $('input.password').parent().addClass("error");
-        $('input.username').val("").attr("placeholder", "This account doesn't exist!");
+        $usernameInput
+          .val("")
+          .attr("placeholder", "This account doesn't exist!")
+          .parent()
+            .addClass("error");
+        $passwordInput
+          .parent()
+            .addClass("error");
       } else {
         // if user exists, try logging in
-        Meteor.loginWithPassword(email, password, function (Error) {
-          if (Error) {
-            $('input.password').parent().addClass("error");
-            $('input.password').val("").attr("placeholder", "Incorrect password? Try again!");
+        Meteor.loginWithPassword(email, password, function (error) {
+          if (error) {
+            $passwordInput
+              .val("")
+              .attr("placeholder", "Incorrect password? Try again!")
+              .parent()
+                .addClass("error");
           }
         })
       }
@@ -155,19 +173,25 @@ Template.splash.events({
     return signup();
   },
   'keyup .signup .username': function (event) {
-    $(event.target).parent().removeClass("error");
+    $(event.target)
+      .attr("placeholder", "Hey, what's your kerberos?")
+      .parent().removeClass("error");
     if (event.keyCode == 13) {
       return signup();
     }
   },
   'keyup .login .username': function (event) {
-    $(event.target).parent().removeClass("error");
+    $(event.target)
+      .attr("placeholder", "Hey, what's your kerberos?")
+      .parent().removeClass("error");
     if (event.keyCode == 13) {
       return login();
     }
   },
   'keyup .login .password': function (event) {
-    $(event.target).parent().removeClass("error");
+    $(event.target)
+      .attr("placeholder", "Your secret code")
+      .parent().removeClass("error");
     if (event.keyCode == 13) {
       return login();
     }

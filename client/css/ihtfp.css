@@ -111,13 +111,17 @@ input {
   z-index: 5;
 }
 
+#nav .item,
+#nav .menu {
+  border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+}
+
 #nav .menu {
   top: 8px;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  -webkit-border-radius: 0px !important;
   color: white;
 }
 
@@ -135,15 +139,45 @@ input {
   background-color: white;
 }
 
+#nav .logo.item {
+  font-size: 30pt;
+  padding: 12px;
+}
+
+#logo,
+.logo,
+#header {
+  font-family: 'Rokkitt', serif;
+  font-weight: 500;
+  text-align: center;
+}
+
+#logo {
+  font-size: 100pt;
+  font-weight: 700;
+  position: relative;
+  height: 110px;
+  z-index: 3;
+}
+
+#logo .content {
+  position: absolute;
+  bottom: -40px;
+  left: 15%;
+}
+
+#logo .greeting {
+  display: inline-block;
+  font-size: 3vw;
+}
+
 /* Header for the main application */
 #header {
   font-family: 'Rokkitt', serif;
   font-weight: 500;
   font-size: 9vw;
   position: relative;
-  margin-top: 110px;
   margin-bottom: 50px;
-  text-align: center;
   border-top: 1px solid rgba(0, 0, 0, .2);
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 80px 12px;
@@ -167,51 +201,25 @@ input {
   height: 600px !important;
 }
 
-/* composer for the main application */
-#composer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  padding: 0px;
-  width: 450px;
-  z-index: 100;
-
-  background-color: white;
-
-  margin-bottom: 8px;
-}
-
 #composer .title {
-  font-size: 56pt;
-  padding: 8px 12px;
+  font-size: 100pt;
+  margin-top: 0;
 }
 
 #composer .subtitle {
-  font-size: 14pt;
+  font-size: 16pt;
   margin-bottom: 14px;
-}
-
-#composer .ui.form textarea {
-  border: none !important;
-  min-height: 300px;
-  font-size: 12pt;
-}
-
-#composer .accordion .content {
-  padding-top: 0px !important;
 }
 
 /* new post box section CSS */
 #post {
   text-align: center;
+  width: 500px;
+  margin: 0 auto;
 }
 
 .emotion.selector {
-  background-color: #3b3b3b;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  background-color: transparent;
   margin-top: 8px;
   padding: 12px;
 }
@@ -359,11 +367,11 @@ textarea {
   position: relative;
 
   opacity: 0;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out, background-color .3s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out, background-color .3s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out, background-color .3s ease-in-out;
+  -o-transition: opacity 1s ease-in-out, background-color .3s ease-in-out;
+  transition: opacity 1s ease-in-out, background-color .3s ease-in-out;
 
   word-wrap: break-word;
 }
@@ -372,15 +380,13 @@ textarea {
   opacity: 1;
 }
 
+.expandable.opaque {
+  opacity: .9;
+}
+
 /* Big feels for those with text */
 .feel.expandable {
   cursor: pointer;
-  opacity: .9;
-  -webkit-transition: opacity .3s ease-in-out;
-  -moz-transition: opacity .3s ease-in-out;
-  -ms-transition: opacity .3s ease-in-out;
-  -o-transition: opacity .3s ease-in-out;
-  transition: opacity .3s ease-in-out;
 }
 
 .feel.expandable:hover {
@@ -523,7 +529,8 @@ textarea {
 
 .ui.happy.button:hover,
 .happy.item:hover
-.happy.item.active {
+.happy.item.active,
+.happy.feel:hover {
   background-color: #ff9200 !important;
   color: #FFF !important;
 }
@@ -541,7 +548,8 @@ textarea {
 
 .ui.sad.button:hover,
 .sad.item:hover,
-.sad.item.active {
+.sad.item.active,
+.sad.feel:hover {
   background-color: #2285e5 !important;
   color: #FFF !important;
 }
@@ -559,7 +567,8 @@ textarea {
 
 .ui.meh.button:hover,
 .meh.item:hover,
-.meh.item.active {
+.meh.item.active,
+.meh.feel:hover {
   background-color: #696969 !important;
   color: #FFF !important;
 }
@@ -577,7 +586,8 @@ textarea {
 
 .ui.angry.button:hover,
 .angry.item:hover
-.angry.item.active {
+.angry.item.active,
+.angry.feel:hover {
   background-color: #e93a43 !important;
   color: #FFF !important;
 }
@@ -595,7 +605,8 @@ textarea {
 
 .ui.excited.button:hover,
 .excited.item:hover,
-.excited.item.active {
+.excited.item.active,
+.excited.feel:hover {
   background-color: #feb403 !important;
   color: #FFF !important;
 }
@@ -613,7 +624,8 @@ textarea {
 
 .ui.stressed.button:hover,
 .stressed.item:hover,
-.stressed.item.active {
+.stressed.item.active,
+.stressed.feel:hover {
   background-color: #33c11a !important;
   color: #FFF !important;
 }
@@ -631,7 +643,8 @@ textarea {
 
 .ui.proud.button:hover,
 .proud.item:hover,
-.proud.item.active {
+.proud.item.active,
+.proud.feel:hover {
   background-color: #9b51cc !important;
   color: #FFF !important;
 }
@@ -649,7 +662,8 @@ textarea {
 
 .ui.romantic.button:hover,
 .romantic.item:hover,
-.romantic.item.active {
+.romantic.item.active,
+.romantic.feel:hover {
   background-color: #ff67ab !important;
   color: #FFF !important;
 }

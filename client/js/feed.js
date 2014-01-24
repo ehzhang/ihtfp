@@ -14,6 +14,22 @@
 Session.setDefault('minimized', false);
 
 /**
+ * Set of greetings to be randomly selected for the header.
+ * @returns {string}
+ */
+Template.logo.greeting = function () {
+  var greetings = [
+    "how you doin'?",
+    "how are you today?",
+    "how are you feeling?",
+    "what's on your mind?",
+    "hey, what's up?",
+    "watcha thinkin bout?"
+  ]
+  return greetings[Math.floor(Math.random() * greetings.length)];
+}
+
+/**
  * Dynamically update the text for the emotion, based the max
  * feeling of the current day
  */
@@ -31,6 +47,15 @@ Template.header.emotion = function () {
     });
   // This could probably be optimized somehow? Maybe.
   return mode(recentFeels);
+}
+
+/**
+ * Determines whether or not the record set has been sufficiently synced.
+ * When true, will then render the feed.
+ * @returns Boolean true/false
+ */
+Template.feed.active = function () {
+  return Session.get("active");
 }
 
 /**
@@ -55,6 +80,17 @@ Template.grid.rendered = function () {
     gutter: 25,
     isFitWidth: true
   });
+  // Check to see if this template hasn't been rendered before.
+  // If it hasn't, then do a thing! (transition)
+  if(!this._rendered) {
+    this._rendered = true;
+    $('#grid').transition('fade up in', 500);
+  }
+}
+
+// When the template is destroyed, reset the _rendered variable to false.
+Template.grid.destroyed = function () {
+  this._rendered = false;
 }
 
 // Add lazy load to the grid
