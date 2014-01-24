@@ -10,6 +10,7 @@
  *  Each feel is represented by a document in the Feels collection:
  *  username: String user name
  *  anon: Boolean
+ *  private: Boolean (indicates text should be hidden to public)
  *  text: String
  *  emotion: String out of these options:
  *  {'happy', 'sad', 'meh', 'excited', 'angry', 'stressed', 'proud', 'romantic'}
