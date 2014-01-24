@@ -122,7 +122,9 @@ Template.feel.size = function () {
 }
 
 Template.feel.date = function () {
-  return this.timestamp.toLocaleDateString();
+  if (this.timestamp instanceof Date) {
+    return this.timestamp.toLocaleDateString();
+  }
 }
 
 // Code to execute when feels are rendered.
