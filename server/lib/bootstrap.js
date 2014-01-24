@@ -39,7 +39,6 @@ Meteor.startup(function () {
         timestamp: null
       }
     ];
-    var timestamp = (new Date()).getTime();
     for (var i = 0; i < data.length; i++) {
       var feel = data[i];
       Feels.insert({username: feel.username,
@@ -47,9 +46,8 @@ Meteor.startup(function () {
         text: feel.text,
         emotion: feel.emotion,
         hearts: Math.floor(Random.fraction()*10),
-        timestamp: timestamp,
+        timestamp: new Date()
       });
-      timestamp += 1; // ensure unique timestamp.
     }
   }
 });
