@@ -13,6 +13,18 @@
  *  I probably wouldn't touch this since it's all good -Edwin
  */
 
+Template.composer.greeting = function () {
+  var greetings = [
+    "how you doin'?",
+    "how are you today?",
+    "how are you feeling?",
+    "what's on your mind?",
+    "hey, what's up?",
+    "watcha thinkin bout?"
+  ]
+  return greetings[Math.floor(Math.random() * greetings.length)];
+}
+
 Template.composer.rendered = function () {
   // Initialize the composer on top.
   var composerDuration = 300;

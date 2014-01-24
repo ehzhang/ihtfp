@@ -101,26 +101,38 @@ input {
   outline: none;
 }
 
+.account.settings.dropdown {
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* Nav bar options */
 #nav {
-  position: fixed;
-  top: 0;
-  right: 0;
   z-index: 5;
 }
 
 #nav .menu {
+  top: 8px;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
   color: white;
+}
+
+#nav .right.menu {
+  position: fixed;
+  right: 8px;
+}
+
+#nav .left.menu {
+  position: fixed;
+  left: 8px;
 }
 
 #nav .menu .dropdown .menu {
   background-color: white;
-}
-
-.account.settings.dropdown {
-  text-transform: uppercase;
-  text-align: center;
 }
 
 /* Header for the main application */
@@ -129,7 +141,7 @@ input {
   font-weight: 500;
   font-size: 9vw;
   position: relative;
-  margin-top: 175px;
+  margin-top: 110px;
   margin-bottom: 50px;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, .2);
@@ -471,22 +483,28 @@ textarea {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 34%;
+  width: 36%;
   background-color: #262626;
   border-right: 1px solid black;
   font-family: 'Rokkitt', sans-serif;
-  font-size: 24pt;
+  font-size: 2.3vw;
   padding: 50px 20px;
 }
 
 #account .greeting {
-  font-size: 80pt;
+  font-size: 9vw;
 }
 
 #account .feed {
   height: 100%;
   width: 100%;
   overflow: auto;
+}
+
+.loading {
+  padding: 24px;
+  font-weight: 100;
+  font-size: 1.5vw;
 }
 
 /*

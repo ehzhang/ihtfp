@@ -27,6 +27,10 @@ Template.account.events({
 
 });
 
+Template.account.active = function () {
+  return Session.get("active");
+}
+
 Template.account.username = function () {
   if (Meteor.user().name) {
     return Meteor.user().name;
