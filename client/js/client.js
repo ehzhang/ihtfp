@@ -38,7 +38,7 @@ Feels.allow({
 // For now, only subscribing to today's posts.
 Session.setDefault("startDate", start);
 Session.setDefault("limit", 40);
-Session.setDefault("account", false);
+Session.setDefault("account", true);
 Session.setDefault("active", false);
 
 Deps.autorun( function () {

@@ -39,7 +39,9 @@ Template.account.timesPosted = function () {
 }
 
 Template.account.joinDate = function () {
-  return Meteor.user().createdAt.toDateString();
+  if (Meteor.user().createdAt instanceof Date) {
+    return Meteor.user().createdAt.toDateString();
+  }
 }
 
 Template.account.mostEmotion = function () {
