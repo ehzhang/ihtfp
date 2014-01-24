@@ -17,7 +17,7 @@
  * @type {Date}
  */
 var today = new Date();
-var start = today.setHours(0,0,0,0);
+var start = today.setHours(0, 0, 0, 0);
 
 /**
  * Meteor publishes a set of feels based on the getFeels function.
@@ -45,12 +45,27 @@ Meteor.publish("userData", getUserData);
  * Methods for the server to execute.
  */
 Meteor.methods({
-  newUser: function (username, email) {
-    var password = generatePassword();
-    var userId = Accounts.createUser({
-      username: username,
-      email: email
-    })
-    Accounts.sendEnrollmentEmail(userId);
+  newUser: function (email) {
+    var username = email.split("@")[0];
+    var count = Meteor.users.find({"username": username}).count();
+    if (count === 0) {
+      var userId = Accounts.createUser({
+        username: username,
+        email: email
+      })
+      Accounts.sendEnrollmentEmail(userId);
+      return true;
+    } else {
+      return false;
+    }
+  },
+  userExists: function (email) {
+    var username = email.split("@")[0];
+    var count = Meteor.users.find({"username": username}).count();
+    if (count === 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 });
