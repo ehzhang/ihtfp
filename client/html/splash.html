@@ -2,11 +2,11 @@
   <div id="splash">
     <div class="center">
       {{> title}}
-        {{#if firstTime}}
-          {{> signup }}
-        {{else}}
-          {{> login }}
-        {{/if}}
+      {{#if firstTime}}
+      {{> signup }}
+      {{else}}
+      {{> login }}
+      {{/if}}
       {{> learnmore }}
     </div>
     {{> info }}
@@ -31,8 +31,10 @@
     <div class="content">
       <div class="center">
         <i class="huge inverted green circular mail icon"></i>
+
         <h1> Thanks for signing up! </h1>
         <br>
+
         <h3>
           Just so we know you're the real deal, please check
           your email to verify your account and set up your password!
@@ -48,6 +50,7 @@
       Sign Up
     </div>
     <br>
+
     <div class="ui fluid orange toggle button">
       Login
     </div>
@@ -62,14 +65,23 @@
     </div>
     <div class="field">
       <input type="password" placeholder="Type in your secret code!" class="password">
-    </div>
-    <div class="ui fluid green login button">
-      Login
-    </div>
-    <br>
-    <div class="ui fluid orange toggle button">
-      Sign Up
-    </div>
+    <!-- code for password w/ forgot-password icon-->
+    <!--      <div class="ui labeled input">
+            <input type="password" placeholder="Type in your secret code!" class="password">
+
+            <div class="ui corner label">
+              <i class="forgot-password question icon link" data-position="right center"></i>
+            </div>
+          </div>-->
+  </div>
+  <div class="ui fluid green login button">
+    Login
+  </div>
+  <br>
+
+  <div class="ui fluid orange toggle button">
+    Sign Up
+  </div>
   </div>
 </template>
 
@@ -85,36 +97,26 @@
 
 <template name="info">
   <div id="info">
-    <div class="ui stackable connected items">
-      <div class="row">
-        <div class="item">
-          <div class="content">
-            <div class="name">Join your community.</div>
-            <p class="description">Got an @mit.edu email address? Then you can join the MIT community ihtfp page. Verify your email here.</p>
-          </div>
-          <div class="image">
-            <img src="images/screenshot1">
-          </div>
-        </div>
-        <div class="item">
-          <div class="content">
-            <div class="name">Get a sense for your community's emotional state.</div>
-            <p class="description">See what people are saying about how tfp is feeling today.</p>
-          </div>
-          <div class="images/screenshot2">
-            <img src="">
-          </div>
-        </div>
-        <div class="item">
-          <div class="content">
-            <div class="name">Share your own feels.</div>
-            <p class="description">Anonymously or not, contribute your own emotional state to the big picture.</p>
-          </div>
-          <div class="images/screenshot3">
-            <img src="">
-          </div>
-        </div>
+    <div class="info-segment">
+      <div class="ui huge header">Join your community.
+        <img class="ui small right floated image" src="images/screenshot1">
       </div>
+      <p class="description">Got an @mit.edu email address? Then you can join the MIT community ihtfp page. Verify your
+        email here.</p>
+    </div>
+    <div class="ui divider"></div>
+    <div class="info-segment">
+      <div class="ui huge header">Get a sense for your community's emotional state.
+        <img class="ui small right floated image" src="images/screenshot2">
+      </div>
+      <p class="description">See what people are saying about how tfp is feeling today.</p>
+    </div>
+    <div class="ui divider"></div>
+    <div class="info-segment">
+      <div class="ui huge header">Share your own feels.
+        <img class="ui small right floated image" src="images/screenshot3">
+      </div>
+      <p class="description">Anonymously or not, contribute your own emotional state to the big picture.</p>
     </div>
     {{> footer }}
   </div>

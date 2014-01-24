@@ -13,7 +13,7 @@
 
 // Today!
 var today = new Date();
-var start = new Date(today.setHours(0,0,0,0));
+var start = new Date(today.setHours(0, 0, 0, 0));
 var lastWeek = new Date();
 lastWeek.setDate(lastWeek.getDate() - 7);
 
@@ -45,7 +45,7 @@ Template.account.joinDate = function () {
 }
 
 Template.account.mostEmotion = function () {
-  return mode(Feels.find({username: Meteor.user().username}).map(function(item){
+  return mode(Feels.find({username: Meteor.user().username}).map(function (item) {
     return item.emotion;
   }));
 }
@@ -55,8 +55,9 @@ Template.account.weeksEmotion = function () {
       username: Meteor.user().username,
       timestamp: { $gte: lastWeek}
     }
-  ).map(function(item){
-    return item.emotion;
-  }));}
+  ).map(function (item) {
+      return item.emotion;
+    }));
+}
 
 

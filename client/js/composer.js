@@ -24,12 +24,12 @@ Template.composer.rendered = function () {
 //    .transition('fade down in', '400ms');
 
   var prevOnGrid = true;
-  $(window).scroll(function(){
+  $(window).scroll(function () {
     var gridTop = $('#grid').offset().top;
     var position = $(this).scrollTop();
 
     var onGrid = position >= gridTop;
-    var setPos = onGrid ? 'fixed' : 'absolute' ;
+    var setPos = onGrid ? 'fixed' : 'absolute';
 
     // Set the composer fixed when you scroll down
     $composer.css({position: setPos})

@@ -13,7 +13,6 @@
  */
 
 body {
-  background-color: #3b3b3b;
   background-color: #2a2a2a;
   color: white;
   font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
@@ -25,8 +24,12 @@ body {
 /* Textarea font replacements */
 .ui.form textarea,
 input {
-  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif !important;
   font-weight: 400;
+}
+
+.ui.form input[type=password] {
+  padding-left: 2.5em !important;
 }
 
 /* For debuggin, rapid switch between splash and app */
@@ -70,6 +73,7 @@ input {
   text-align: center;
   padding: 30px;
 }
+
 .accounts-dialog .login-button {
   background-image: none;
   background-color: #58cb73;
@@ -128,10 +132,10 @@ input {
   margin-top: 175px;
   margin-bottom: 50px;
   text-align: center;
-  border-top: 1px solid rgba(0,0,0,.2);
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  border-top: 1px solid rgba(0, 0, 0, .2);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 80px 12px;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0, 0, 0, .1);
 }
 
 /* Title CSS */
@@ -228,7 +232,6 @@ input {
   padding: 12px;
 }
 
-
 /* Splash Screen CSS */
 #splash {
   width: 100%;
@@ -279,6 +282,7 @@ textarea {
   -moz-border-radius: 0px !important;
   -webkit-border-radius: 0px !important;
 }
+
 .ui.form input.username,
 .ui.form input[type=password] {
   font-size: 12pt !important;
@@ -301,11 +305,23 @@ textarea {
 
 /* Info stuff */
 #splash #info {
-  background-color: #2d2d2d;
+  background-color: #ffffff;
   position: absolute;
   top: 100%;
   width: 100%;
-  height:700px;
+  height: 100%;
+  color: #242424;
+}
+
+.info-segment {
+  padding: 16px;
+  font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
+  font-weight: 400;
+  font-size: 1.4vw;
+}
+
+.info-segment .header {
+  font-family: 'Rokkitt', sans-serif;
 }
 
 /* center container with CSS */
@@ -343,6 +359,7 @@ textarea {
 .opaque {
   opacity: 1;
 }
+
 /* Big feels for those with text */
 .feel.expandable {
   cursor: pointer;
@@ -402,8 +419,8 @@ textarea {
   text-transform: uppercase;
   position: absolute;
   bottom: 0px;
-  height:25px;
-  padding:8px 12px;
+  height: 25px;
+  padding: 8px 12px;
   width: 100%;
 
   opacity: 0;
@@ -434,20 +451,21 @@ textarea {
   position: relative;
   margin: 16px 0;
   width: 100%;
-  bottom: 0px;
+  top: 60px;
   height: 50px;
   text-align: center;
 }
 
 #footer .content {
   margin: 0 auto;
+  color: black;
   padding: 20px;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
-  background: #262626;
   width: 250px;
-  border: 1px solid #585858;
+  /*  border: 1px solid #585858; */
 }
+
 /* Account page CSS */
 #account .info {
   position: fixed;
@@ -502,6 +520,7 @@ textarea {
   background-color: #3a90e5;
   color: #FFF;
 }
+
 .ui.sad.button:hover,
 .sad.item:hover,
 .sad.item.active {

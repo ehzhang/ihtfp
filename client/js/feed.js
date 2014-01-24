@@ -39,7 +39,7 @@ Template.header.emotion = function () {
 Template.grid.feels = function () {
   // The feels found is based on the subscribe function above.
   // TODO: Make this less bad
-  if (Session.get("active")){
+  if (Session.get("active")) {
     return Feels.find({}, {sort: {timestamp: -1}});
   }
 }
@@ -48,7 +48,7 @@ Template.grid.feels = function () {
 var container, msnry;
 Template.grid.rendered = function () {
   container = document.querySelector('#grid');
-  msnry = new Masonry( container, {
+  msnry = new Masonry(container, {
     // options
     columnWidth: 50,
     itemSelector: '.feel',
@@ -62,8 +62,8 @@ $('#grid').ready(function () {
   //  Add a scroll handler to detect reaching the bottom of the page.
   //  Throttle the function so it doesn't fire so often!
   $(window).scroll(_.throttle(
-    function() {
-      if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+    function () {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
         Session.set("limit", Session.get("limit") + 15);
       }
     }, 400));
@@ -106,7 +106,7 @@ Template.feel.rendered = function () {
         // Reorganize the msnry layout
         msnry.layout();
       }
-  })
+    })
 }
 
 // Helper functions
@@ -116,19 +116,18 @@ Template.feel.rendered = function () {
  * @returns {*}
  */
 mode = function (array) {
-  if(array.length == 0)
+  if (array.length == 0)
     return null;
   var elementMap = {};
   var maxEl = array[0], maxCount = 1;
-  for(var i = 0; i < array.length; i++)
-  {
+  for (var i = 0; i < array.length; i++) {
     var el = array[i];
-    if(elementMap[el] == null) {
+    if (elementMap[el] == null) {
       elementMap[el] = 1;
     } else {
       elementMap[el]++;
     }
-    if(elementMap[el] > maxCount) {
+    if (elementMap[el] > maxCount) {
       maxEl = el;
       maxCount = elementMap[el];
     }
