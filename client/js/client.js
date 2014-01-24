@@ -48,24 +48,26 @@ Deps.autorun(function () {
   // endDate indicates the end of the query
   // limit is the number of feels to load
   // Start date is currently false for infinite scroll
-  if (Session.get("account")) {
-    // Change the subscription if you're on the account page.
-    // When this record set is ready, trigger active to then load the grid.
-    Meteor.subscribe("userFeels", Meteor.user().username,
-      {
-        onReady: function () {
-          Session.set("active", true);
-        }
-      })
-  } else {
-    Meteor.subscribe("feels", false, Session.get("endDate"), Session.get("limit"),
-      {
-        onReady: function () {
-          Session.set("active", true);
-        }
-      });
+  if (Meteor.user()) {
+    if (Session.get("account")) {
+      // Change the subscription if you're on the account page.
+      // When this record set is ready, trigger active to then load the grid.
+      Meteor.subscribe("userFeels", Meteor.user().username,
+        {
+          onReady: function () {
+            Session.set("active", true);
+          }
+        })
+    } else {
+      Meteor.subscribe("feels", false, Session.get("endDate"), Session.get("limit"),
+        {
+          onReady: function () {
+            Session.set("active", true);
+          }
+        });
+    }
+    Meteor.subscribe("userData");
   }
-  Meteor.subscribe("userData");
 });
 
 Template.app.loggedIn = function () {
