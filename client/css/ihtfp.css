@@ -528,7 +528,7 @@ textarea {
 }
 
 .ui.happy.button:hover,
-.happy.item:hover
+.happy.item:hover,
 .happy.item.active,
 .happy.feel:hover {
   background-color: #ff9200 !important;
@@ -585,7 +585,7 @@ textarea {
 }
 
 .ui.angry.button:hover,
-.angry.item:hover
+.angry.item:hover,
 .angry.item.active,
 .angry.feel:hover {
   background-color: #e93a43 !important;
