@@ -75,6 +75,7 @@ Template.filter.events({
       // on the client side instead of the server
       Session.set("active", false);
     }
+    Session.set("limit", 60);
     Session.set("filter",$(event.target).attr("emotion"));
   }
 })
@@ -124,7 +125,7 @@ $('#grid').ready(function () {
   //  Throttle the function so it doesn't fire so often!
   $(window).scroll(_.throttle(
     function () {
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
         Session.set("limit", Session.get("limit") + 15);
       }
     }, 400));
