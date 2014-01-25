@@ -21,6 +21,10 @@ body {
   margin: 0;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 /* Textarea font replacements */
 .ui.form textarea,
 input {
@@ -169,6 +173,33 @@ input {
 #logo .greeting {
   display: inline-block;
   font-size: 3vw;
+}
+
+#filter {
+  position: fixed;
+  bottom: 12px;
+  background-color: rgba(0, 0, 0, 0.70);
+  padding: 12px;
+  font-size: 14pt;
+}
+
+#filter .filters .item {
+  display: inline-block;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin: 4px;
+}
+
+#filter .filters .all.item {
+  height: 19px;
+  width: 19px;
+  border: 1px solid rgba(255, 255, 255, 0.80);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#filter .filters .all.item:hover {
+  background-color: rgba(255, 255, 255, 0.50);
 }
 
 /* Header for the main application */
@@ -516,6 +547,15 @@ textarea {
 /*
   Emotion Colors
 */
+.emotion.button,
+.emotion.item {
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
 .emotion.button {
   margin-bottom: 8px !important;
   background-image: none !important;

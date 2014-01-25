@@ -17,20 +17,48 @@
 
 <template name="header">
   <div id="header" class="{{ emotion }}">
-    tfp is
-    <span class="{{ emotion }} text">
-      {{ emotion }}
-    </span>
-    today.
+    {{#if filtered}}
+      all the
+      <span class="{{ filter }} text">
+        {{ filter }}
+      </span>
+      feels!
+    {{else}}
+      tfp is
+      <span class="{{ emotion }} text">
+        {{ emotion }}
+      </span>
+      today.
+    {{/if}}
   </div>
 </template>
 
 <template name="feed">
   {{#if active}}
     {{> grid}}
+    {{> filter}}
   {{else}}
     {{> loading}}
   {{/if}}
+</template>
+
+<template name="filter">
+  <div id="filter">
+    <div class="">
+      filter by emotion:
+    </div>
+    <div class="filters">
+      <div class="all emotion item" emotion="all"></div>
+      <div class="happy emotion item" emotion="happy"></div>
+      <div class="meh emotion item" emotion="meh"></div>
+      <div class="sad emotion item" emotion="sad"></div>
+      <div class="angry emotion item" emotion="angry"></div>
+      <div class="excited emotion item" emotion="excited"></div>
+      <div class="stressed emotion item" emotion="stressed"></div>
+      <div class="proud emotion item" emotion="proud"></div>
+      <div class="romantic emotion item" emotion="romantic"></div>
+    </div>
+  </div>
 </template>
 
 <template name="loading">

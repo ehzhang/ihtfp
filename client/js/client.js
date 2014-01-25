@@ -61,7 +61,7 @@ Deps.autorun(function () {
       // Takes in startDate, endDate, limit.
       // Currently, no start date or end date, so only acting based on limit.
       // TODO: set the session variables intelligently to select specific date ranges.
-      Meteor.subscribe("feels", false, Session.get("endDate"), Session.get("limit"),
+      Meteor.subscribe("feels", Session.get("limit"), Session.get("filter"), false, false,
         {
           onReady: function () {
             // Record set is ready!

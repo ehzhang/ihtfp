@@ -11,7 +11,8 @@
  *
  */
 
-Session.setDefault('minimized', false);
+Session.setDefault("minimized", false);
+Session.setDefault("filter", 'all');
 
 /**
  * Set of greetings to be randomly selected for the header.
@@ -27,6 +28,14 @@ Template.logo.greeting = function () {
     "watcha thinkin bout?"
   ]
   return greetings[Math.floor(Math.random() * greetings.length)];
+}
+
+Template.header.filtered = function () {
+  return emotions.indexOf(Session.get("filter")) >= 0;
+}
+
+Template.header.filter = function () {
+  return Session.get("filter");
 }
 
 /**
@@ -58,6 +67,18 @@ Template.feed.active = function () {
   return Session.get("active");
 }
 
+Template.filter.events({
+  'click .filters .item' : function (event) {
+    if(!Session.get("account")){
+      // Only set the active flag to false on the main feed.
+      // On the account page, the data is all found, and filtered
+      // on the client side instead of the server
+      Session.set("active", false);
+    }
+    Session.set("filter",$(event.target).attr("emotion"));
+  }
+})
+
 /**
  * Populate the feels grid
  */
@@ -65,7 +86,11 @@ Template.grid.feels = function () {
   // The feels found is based on the subscribe function above.
   // TODO: Make this less bad
   if (Session.get("active")) {
-    return Feels.find({}, {sort: {timestamp: -1}});
+    if (emotions.indexOf(Session.get("filter")) >= 0) {
+      return Feels.find({emotion: Session.get("filter")}, {sort: {timestamp: -1}});
+    } else {
+      return Feels.find({}, {sort: {timestamp: -1}});
+    }
   }
 }
 
@@ -109,7 +134,7 @@ $('#grid').ready(function () {
 Template.feel.size = function () {
   var text = this.text;
   // TODO: Can be moved to postFeel also needs max post size
-  if (!text.replace(/\s/g, '').length) {
+  if (!this.text || !text.replace(/\s/g, '').length) {
     // If the string is only spaces
     return '';
   } else if (text.length < 100) {
