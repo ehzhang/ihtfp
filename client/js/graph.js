@@ -24,26 +24,33 @@ var emotionColors = {
 }
 
 /**
- Returns an object of the format {"happy": 1, "sad": 3}
+ Returns an object of the format {"happy": 1, "sad": 3}. For the pie chart.
  */
 Template.graph.emotionCounts = function () {
-  var emotionCounts;
-
+  var emotionCounts,
+      emotions;
   if (Session.get("account")) {
     // If user is on accounts page, get all feels data
-    emotionCounts = _.countBy(getEmotions());
+    emotions = getEmotions();
   } else {
     // If user is on main feed page, get feels data from past day
-    emotionCounts = _.countBy(getEmotions(Session.get("startDate")));
+    emotions = getEmotions(Session.get("startDate"))
+  };
+
+  if (emotions.length > 0) {
+    emotionCounts = _.countBy(emotions);
+  } else {
+    // if no feels, return null
+    return null;
   }
+
   return emotionCounts;
 }
 
 /**
- *Returns an object of the format {"happy": 0.25, "sad": 0.75}
+ *Returns an object of the format {"happy": 0.25, "sad": 0.75}. For the pie chart.
  */
 Template.graph.emotionPercentages = function () {
-  var emotionCounts = Template.graph.emotionCounts();
   var emotionPercentages = {    // default to 0
     "happy": 0,
     "meh": 0,
@@ -54,15 +61,20 @@ Template.graph.emotionPercentages = function () {
     "proud": 0,
     "romantic": 0
   };
-  var total = _.reduce(_.values(emotionCounts), function (memo, num) {
-    return memo + num;
-  });
-  for (var key in emotionCounts) {
-    if (emotionPercentages.hasOwnProperty(key)) {
-      emotionPercentages[key] = parseInt(emotionCounts[key] / total * 100);
+
+  var emotionCounts = Template.graph.emotionCounts();
+  if (emotionCounts) {
+    var total = _.reduce(_.values(emotionCounts), function (memo, num) {
+      return memo + num;
+    });
+    for (var key in emotionCounts) {
+      if (emotionPercentages.hasOwnProperty(key)) {
+        emotionPercentages[key] = parseInt(emotionCounts[key] / total * 100);
+      }
     }
   }
   return emotionPercentages;
+
 }
 
 Template.graph.account = function () {
@@ -70,64 +82,60 @@ Template.graph.account = function () {
 }
 
 Template.graph.rendered = function () {
+
+
+  // Emotion Pie Chart Code
+
   var emotionCounts = Template.graph.emotionCounts();
+  if (emotionCounts) {
+    // if there are emotions, create pie chart.
+    var data = _.map(
+      _.pairs(emotionCounts),
+      function (pair) {
+        return {
+          emotion: pair[0],
+          count: pair[1]
+        };
+      }
+    );
 
-  var data = _.map(
-    _.pairs(emotionCounts),
-    function (pair) {
-      return {
-        emotion: pair[0],
-        count: pair[1]
-      };
-    }
-  );
+    var w = 360,                        //width
+      h = 360,                            //height
+      r = 180;                            //radius
+
+    var vis = d3.select("#emotion-pie")
+      .append("svg:svg")              //create the SVG element inside the <body>
+      .data([data])                   //associate our data with the document
+      .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
+      .attr("height", h)
+      .append("svg:g")                //make a group to hold our pie chart
+      .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
+
+    var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
+      .outerRadius(r)
+      .innerRadius(5/6 * r);
+
+    var pie = d3.layout.pie()           //this will create arc data for us given a list of values
+      .value(function (d) {
+        return d.count;
+      });    //we must tell it out to access the value of each element in our data array
+
+    var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
+      .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
+      .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
+      .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
+      .attr("class", "slice");    //allow us to style things in the slices (like text)
+
+    arcs.append("svg:path")
+      .attr("fill", function (d, i) {
+        return emotionColors[data[i].emotion];
+      }) //set the color for each slice to be chosen from the color function defined above
+      .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+  }
 
 
-  var w = 360,                        //width
-    h = 360,                            //height
-    r = 180;                            //radius
 
-  var vis = d3.select("#emotion-pie")
-    .append("svg:svg")              //create the SVG element inside the <body>
-    .data([data])                   //associate our data with the document
-    .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
-    .attr("height", h)
-    .append("svg:g")                //make a group to hold our pie chart
-    .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
-
-  var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
-    .outerRadius(r)
-    .innerRadius(5/6 * r);
-
-  var pie = d3.layout.pie()           //this will create arc data for us given a list of values
-    .value(function (d) {
-      return d.count;
-    });    //we must tell it out to access the value of each element in our data array
-
-  var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
-    .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties)
-    .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-    .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-    .attr("class", "slice");    //allow us to style things in the slices (like text)
-
-  arcs.append("svg:path")
-    .attr("fill", function (d, i) {
-      return emotionColors[data[i].emotion];
-    }) //set the color for each slice to be chosen from the color function defined above
-    .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-
-/*  arcs.append("svg:text")                                     //add a label to each slice
-    .attr("transform", function (d) {                    //set the label's origin to the center of the arc
-      //we have to make sure to set these before calling arc.centroid
-      d.innerRadius = 5/6 * r;
-      d.outerRadius = r;
-      return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-    })
-    .attr("text-anchor", "middle")                          //center the text on it's origin
-    .text(function (d, i) {
-      return data[i].emotion + " (" + data[i].count + ")";
-    });        //get the label from our original data array
-*/
+  // Graph template fading effects!
 
   // Check to see if this template hasn't been rendered before.
   // If it hasn't, then do a thing! (transition)
@@ -136,7 +144,6 @@ Template.graph.rendered = function () {
     $('#graph').transition('fade up in', 500);
   }
 }
-
 
 // When the template is destroyed, reset the _rendered variable to false.
 Template.graph.destroyed = function () {

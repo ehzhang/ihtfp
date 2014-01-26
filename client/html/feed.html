@@ -24,11 +24,16 @@
       </span>
     feels!
     {{else}}
-    tfp is
-      <span class="{{ emotion }} text">
-        {{ emotion }}
-      </span>
-    today.
+
+      {{#if emotion}}
+        tfp is
+          <span class="{{ emotion }} text">
+            {{ emotion }}
+          </span>
+        today.
+    {{else}}
+        no feels yet today...
+      {{/if}}
     {{/if}}
   </div>
 </template>
@@ -83,9 +88,13 @@
 
 <template name="grid">
   <div id="grid">
-    {{#each feels}}
-    {{> feel}}
-    {{/each}}
+    {{#if feels}}
+      {{#each feels}}
+        {{> feel}}
+      {{/each}}
+    {{else}}
+      No feels found!
+    {{/if}}
   </div>
 </template>
 
