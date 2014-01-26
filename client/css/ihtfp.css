@@ -177,6 +177,7 @@ input {
 
 #filter {
   position: fixed;
+  z-index: 10;
   bottom: 12px;
   background-color: rgba(0, 0, 0, 0.70);
   padding: 12px;
@@ -380,6 +381,9 @@ textarea {
   margin: 0 auto;
 }
 
+#feed {
+}
+
 /* Grid CSS */
 #grid {
   margin-top: 16px;
@@ -516,11 +520,17 @@ textarea {
 }
 
 /* Account page CSS */
+#account .grid {
+  width: 100%;
+  margin: 0;
+}
+
 #account .info {
   position: fixed;
   top: 0;
+  left: 0;
   height: 100%;
-  width: 36%;
+  width: 35%;
   background-color: #262626;
   border-right: 1px solid black;
   font-family: 'Rokkitt', sans-serif;
@@ -530,12 +540,6 @@ textarea {
 
 #account .greeting {
   font-size: 9vw;
-}
-
-#account .feed {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
 }
 
 .loading {

@@ -34,12 +34,14 @@
 </template>
 
 <template name="feed">
-  {{#if active}}
-    {{> grid}}
-    {{> filter}}
-  {{else}}
-    {{> loading}}
-  {{/if}}
+  <div id="feed">
+    {{#if active}}
+      {{> filter}}
+      {{> grid}}
+    {{else}}
+      {{> loading}}
+    {{/if}}
+  </div>
 </template>
 
 <template name="filter">
