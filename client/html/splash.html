@@ -16,15 +16,14 @@
 <template name="title">
   <div class="title">
     ihtfp
-    <div class="subtitle">
-      anonymous, real time feels.
-    </div>
-    <div class="details">
-      Now available at MIT.
-    </div>
+  </div>
+  <div class="subtitle">
+    anonymous, real time feels.
+  </div>
+  <div class="details">
+    Now available at MIT.
   </div>
 </template>
-
 
 <template name="signup">
   <div class="ui signup success page dimmer">
@@ -97,26 +96,41 @@
 
 <template name="info">
   <div id="info">
-    <div class="info-segment">
-      <div class="ui huge header">Join your community.
-        <img class="ui small right floated image" src="images/screenshot1">
+    <div class="post segment">
+      <div class="header">
+        How are you feeling today?
       </div>
-      <p class="description">Got an @mit.edu email address? Then you can join the MIT community ihtfp page. Verify your
-        email here.</p>
+      <div class="subtitle">
+        vent. celebrate. share your thoughts and feelings with the MIT community, completely anonymously.
+      </div>
+      <div class="example feels">
+        <div class="happy emotion item"><div class="text">happy</div></div>
+        <div class="meh emotion item"><div class="text">meh</div></div>
+        <div class="sad emotion item"><div class="text">sad</div></div>
+        <div class="angry emotion item"><div class="text">angry</div></div>
+        <div class="excited emotion item"><div class="text">excited</div></div>
+        <div class="stressed emotion item"><div class="text">stressed</div></div>
+        <div class="proud emotion item"><div class="text">proud</div></div>
+        <div class="romantic emotion item"><div class="text">romantic</div></div>
+      </div>
     </div>
-    <div class="ui divider"></div>
-    <div class="info-segment">
-      <div class="ui huge header">Get a sense for your community's emotional state.
-        <img class="ui small right floated image" src="images/screenshot2">
+    <div class="community segment">
+      <div class="header">
+        How is your community feeling?
       </div>
-      <p class="description">See what people are saying about how tfp is feeling today.</p>
+      <div class="subtitle">
+        real-time data visualizations for emotions. see how MIT is feeling.
+      </div>
+      <img class="ui macbooks image" src="/assets/img/macbookihtfp.jpg">
     </div>
-    <div class="ui divider"></div>
-    <div class="info-segment">
-      <div class="ui huge header">Share your own feels.
-        <img class="ui small right floated image" src="images/screenshot3">
+    <div class="personal segment">
+      <div class="header">
+        See how you've been feeling.
       </div>
-      <p class="description">Anonymously or not, contribute your own emotional state to the big picture.</p>
+      <div class="subtitle">
+        Track your own emotional history. Graphs and stuff, because reasons!
+      </div>
+      <img class="personal image" src="/assets/img/macbookihtfppersonal.png">
     </div>
     {{> footer }}
   </div>
