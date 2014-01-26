@@ -1,30 +1,46 @@
 <template name="graph">
   <div id="graph">
     <div class="container">
-      <div class="chart">
-        {{> emotion-pie }}
-      </div>
-      <div class="content">
-        {{#if account}}
+      <div class="inner-container">
+        <div class="chart">
+          {{> emotion-pie }}
+        </div>
+        <div class="content">
+          {{#if account}}
           Since you started posting, your feels are
-        {{else}}
+          {{else}}
           So far today, tfp has been
-        {{/if}}
-        <span class="happy text">{{emotionPercentages.happy}}% happy</span>,
-        <span class="meh text">{{emotionPercentages.meh}}% meh</span>,
-        <span class="sad text">{{emotionPercentages.sad}}% sad</span>,
-        <span class="angry text">{{emotionPercentages.angry}}% angry</span>,
-        <span class="excited text">{{emotionPercentages.excited}}% excited</span>,
-        <span class="stressed text">{{emotionPercentages.stressed}}% stressed</span>,
-        <span class="proud text">{{emotionPercentages.proud}}% proud</span>, and
-        <span class="romantic text">{{emotionPercentages.romantic}}% romantic</span>.
+          {{/if}}
+          <span class="happy text">{{emotionPercentages.happy}}% happy</span>,
+          <span class="meh text">{{emotionPercentages.meh}}% meh</span>,
+          <span class="sad text">{{emotionPercentages.sad}}% sad</span>,
+          <span class="angry text">{{emotionPercentages.angry}}% angry</span>,
+          <span class="excited text">{{emotionPercentages.excited}}% excited</span>,
+          <span class="stressed text">{{emotionPercentages.stressed}}% stressed</span>,
+          <span class="proud text">{{emotionPercentages.proud}}% proud</span>, and
+          <span class="romantic text">{{emotionPercentages.romantic}}% romantic</span>.
+        </div>
       </div>
     </div>
-  </div>
+
+    <!-- TODO: line graph
+    <div class="container">
+      <div class="chart">
+        {{> feels-line }}
+      </div>
+      <div class="content">
+          LINE GRAPH LEGGOOOOO
+      </div>
+    </div>
+  </div> -->
 </template>
 
 <template name="emotion-pie">
   <div id="emotion-pie">
+  </div>
+</template>
 
+<template name="feels-line">
+  <div id="feels-line">
   </div>
 </template>
