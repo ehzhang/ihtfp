@@ -70,6 +70,7 @@ Template.nav.events({
       // Switching pages, reset the active flag.
       Session.set("active", false);
       Session.set("account", true);
+      Session.set("grid", true);
       Session.set("filter", "all");
       return false;
     }
@@ -81,6 +82,7 @@ Template.nav.events({
       Session.set("active", false);
       Session.set("limit", 60);
       Session.set("account", false);
+      Session.set("grid", true);
       Session.set("filter", "all");
       return false;
     }

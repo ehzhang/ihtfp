@@ -184,6 +184,11 @@ input {
   font-size: 14pt;
 }
 
+#filter .views {
+  margin-bottom:4px;
+}
+
+
 #filter .filters .item {
   display: inline-block;
   cursor: pointer;

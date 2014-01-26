@@ -18,17 +18,17 @@
 <template name="header">
   <div id="header" class="{{ emotion }}">
     {{#if filtered}}
-      all the
+    all the
       <span class="{{ filter }} text">
         {{ filter }}
       </span>
-      feels!
+    feels!
     {{else}}
-      tfp is
+    tfp is
       <span class="{{ emotion }} text">
         {{ emotion }}
       </span>
-      today.
+    today.
     {{/if}}
   </div>
 </template>
@@ -36,8 +36,13 @@
 <template name="feed">
   <div id="feed">
     {{#if active}}
+      {{#if grid}}
+        {{> grid}}
+      {{else}}
+        {{> graph}}
+      {{/if}}
+
       {{> filter}}
-      {{> grid}}
     {{else}}
       {{> loading}}
     {{/if}}
@@ -46,9 +51,13 @@
 
 <template name="filter">
   <div id="filter">
-    <div class="">
-      filter by emotion:
+    <!-- view options -->
+    <div class="views">
+      <i class="grid layout large icon link" id="grid-view"></i>
+      <i class="tasks icon large link" id="graph-view"></i>
     </div>
+
+    {{#if grid}}
     <div class="filters">
       <div class="all emotion item" emotion="all"></div>
       <div class="happy emotion item" emotion="happy"></div>
@@ -59,6 +68,9 @@
       <div class="stressed emotion item" emotion="stressed"></div>
       <div class="proud emotion item" emotion="proud"></div>
       <div class="romantic emotion item" emotion="romantic"></div>
+    </div>
+    {{/if}}
+    <div>
     </div>
   </div>
 </template>
@@ -72,7 +84,7 @@
 <template name="grid">
   <div id="grid">
     {{#each feels}}
-      {{> feel}}
+    {{> feel}}
     {{/each}}
   </div>
 </template>
@@ -80,17 +92,17 @@
 <template name="feel">
   <div class="feel {{ size }} {{ emotion }}">
     {{#if text}}
-      <div class="text">
-          {{ text }}
+    <div class="text">
+      {{ text }}
+    </div>
+    <div class="footer">
+      <div class="name">
+        {{ date }}
       </div>
-      <div class="footer">
-        <div class="name">
-          {{ date }}
-        </div>
-        {{#if false }}
-        {{> heart}}
-        {{/if}}
-      </div>
+      {{#if false }}
+      {{> heart}}
+      {{/if}}
+    </div>
     {{/if}}
   </div>
 </template>

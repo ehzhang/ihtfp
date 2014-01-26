@@ -8,3 +8,5 @@ preserve-inputs
 jquery
 accounts-ui
 accounts-password
+d3
+underscore

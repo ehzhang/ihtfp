@@ -1,0 +1,37 @@
+#graph {
+  padding: 24px;
+}
+
+#graph .container {
+  background-color: #262626;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  padding:32px;
+  height: 100%;
+  max-width: 800px;
+  width:90%;
+  margin: auto;
+  display: table;
+}
+
+#graph .chart, #graph .text{
+  display: inline-block;
+  padding: 12px;
+  font-family: Raleway, sans-serif;
+}
+
+#graph .content {
+  font-size:28px;
+  max-width:320px;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#graph .text {
+  padding: 0px;
+}
+
+#graph .chart {
+  font-size:16px;
+  color:white;
+}

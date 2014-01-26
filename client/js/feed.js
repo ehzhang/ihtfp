@@ -13,6 +13,7 @@
 
 Session.setDefault("minimized", false);
 Session.setDefault("filter", 'all');
+Session.setDefault("grid", true);
 
 /**
  * Set of greetings to be randomly selected for the header.
@@ -44,18 +45,10 @@ Template.header.filter = function () {
  */
 Template.header.emotion = function () {
   // An array of emotions
-  var recentFeels = Feels.find(
-    {
-      timestamp: { $gte: Session.get("startDate") }
-    },
-    {
-      fields: {emotion: 1},
-      sort: {timestamp: -1}
-    }).map(function (item) {
-      return item.emotion;
-    });
+  var recentEmotions = getEmotions(Session.get("startDate"));
+
   // This could probably be optimized somehow? Maybe.
-  return mode(recentFeels);
+  return mode(recentEmotions);
 }
 
 /**
@@ -67,17 +60,54 @@ Template.feed.active = function () {
   return Session.get("active");
 }
 
+/**
+ * If true, render grid view. If false, render graph view.
+ * @returns Boolean true/false
+ */
+Template.feed.grid = function () {
+  return Session.get("grid");
+}
+
+Template.filter.grid = function () {
+  return Session.get("grid");
+}
+
+
 Template.filter.events({
-  'click .filters .item' : function (event) {
-    if(!Session.get("account")){
+  'click .filters .item': function (event) {
+    if (!Session.get("account")) {
       // Only set the active flag to false on the main feed.
       // On the account page, the data is all found, and filtered
       // on the client side instead of the server
       Session.set("active", false);
     }
     Session.set("limit", 60);
-    Session.set("filter",$(event.target).attr("emotion"));
+    Session.set("filter", $(event.target).attr("emotion"));
+  },
+  'click #grid-view': function (event) {
+    // update 'grid' session variable if not already set
+    if (!Session.get("grid")) {
+      // make 'active' false only if on main feed
+      if (!Session.get("account")) {
+        Session.set("active", false);
+      }
+      Session.set("filter", 'all');
+      Session.set("grid", true);
+    }
+  },
+  'click #graph-view': function (event) {
+    // update grid session variable if not already set
+    if (Session.get("grid")) {
+      // make 'active' false only if on main feed
+      if (!Session.get("account")) {
+        Session.set("active", false);
+      }
+      Session.set("filter", 'all');
+      Session.set("grid", false);
+    }
+
   }
+
 })
 
 /**
@@ -90,6 +120,7 @@ Template.grid.feels = function () {
     if (emotions.indexOf(Session.get("filter")) >= 0) {
       return Feels.find({emotion: Session.get("filter")}, {sort: {timestamp: -1}});
     } else {
+
       return Feels.find({}, {sort: {timestamp: -1}});
     }
   }
@@ -108,7 +139,7 @@ Template.grid.rendered = function () {
   });
   // Check to see if this template hasn't been rendered before.
   // If it hasn't, then do a thing! (transition)
-  if(!this._rendered) {
+  if (!this._rendered) {
     this._rendered = true;
     $('#grid').transition('fade up in', 500);
   }
