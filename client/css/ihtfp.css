@@ -469,6 +469,7 @@ textarea {
   font-size: 18pt;
   font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', 'Arial' sans-serif;
   font-weight: 100;
+  text-align: left;
 }
 
 .feel .footer {
