@@ -696,6 +696,14 @@ textarea {
   color: #ffa71d !important;
 }
 
+.happy.graph {
+  fill: #ffa71d;
+}
+
+.happy.graph:hover {
+  fill: #ff9200;
+}
+
 .sad,
 .ui.sad.button {
   background-color: #3a90e5;
@@ -713,6 +721,15 @@ textarea {
 .sad.text {
   background-color: transparent;
   color: #3a90e5 !important;
+}
+
+.sad.graph {
+  fill: #3a90e5;
+
+}
+
+.sad.graph:hover {
+  fill: #2285e5;
 }
 
 .meh,
@@ -734,6 +751,15 @@ textarea {
   color: #808080 !important;
 }
 
+.meh.graph {
+  fill: #808080;
+
+}
+
+.meh.graph:hover {
+  fill: #696969;
+}
+
 .angry,
 .ui.angry.button {
   background-color: #e94e54;
@@ -751,6 +777,14 @@ textarea {
 .angry.text {
   background-color: transparent;
   color: #e94e54 !important;
+}
+
+.angry.graph {
+  fill: #e94e54;
+}
+
+.angry.graph:hover {
+  fill: #e93a43;
 }
 
 .excited,
@@ -772,6 +806,14 @@ textarea {
   color: #fec81a !important;
 }
 
+.excited.graph {
+  fill: #fec81a;
+}
+
+.excited.graph:hover {
+  fill: #feb403;
+}
+
 .stressed,
 .ui.stressed.button {
   background-color: #50c12f;
@@ -790,6 +832,15 @@ textarea {
   background-color: transparent;
   color: #50c12f !important;
 }
+
+.stressed.graph {
+  fill: #50c12f;
+}
+
+.stressed.graph:hover {
+  fill: #33c11a;
+}
+
 
 .proud,
 .ui.proud.button {
@@ -810,6 +861,15 @@ textarea {
   color: #ab62cc !important;
 }
 
+.proud.graph {
+  fill: #ab62cc;
+}
+
+.proud.graph:hover {
+  fill: #9b51cc;
+}
+
+
 .romantic,
 .ui.romantic.button {
   background-color: #ff7ba9;
@@ -828,6 +888,15 @@ textarea {
   background-color: transparent;
   color: #ff7ba9 !important;
 }
+
+.romantic.graph {
+  fill: #ff7ba9;
+}
+
+.romantic.graph:hover {
+  fill: #ff67ab;
+}
+
 
 /* Clear button */
 .clear.button {

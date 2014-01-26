@@ -11,31 +11,20 @@
  *
  */
 
-// Colors used by d3
-var emotionColors = {
-  happy: "#ffa71d",
-  meh: "#808080",
-  sad: "#3a90e5",
-  angry: "#e94e54",
-  excited: "#fec81a",
-  stressed: "#50c12f",
-  proud: "#ab62cc",
-  romantic: "#ff7ba9"
-}
-
 /**
  Returns an object of the format {"happy": 1, "sad": 3}. For the pie chart.
  */
 Template.graph.emotionCounts = function () {
   var emotionCounts,
-      emotions;
+    emotions;
   if (Session.get("account")) {
     // If user is on accounts page, get all feels data
     emotions = getEmotions();
   } else {
     // If user is on main feed page, get feels data from past day
     emotions = getEmotions(Session.get("startDate"))
-  };
+  }
+  ;
 
   if (emotions.length > 0) {
     emotionCounts = _.countBy(emotions);
@@ -113,7 +102,7 @@ Template.graph.rendered = function () {
 
     var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
       .outerRadius(r)
-      .innerRadius(5/6 * r);
+      .innerRadius(5 / 6 * r);
 
     var pie = d3.layout.pie()           //this will create arc data for us given a list of values
       .value(function (d) {
@@ -127,13 +116,11 @@ Template.graph.rendered = function () {
       .attr("class", "slice");    //allow us to style things in the slices (like text)
 
     arcs.append("svg:path")
-      .attr("fill", function (d, i) {
-        return emotionColors[data[i].emotion];
+      .attr("class", function (d, i) {
+        return "graph " + data[i].emotion;
       }) //set the color for each slice to be chosen from the color function defined above
       .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
   }
-
-
 
   // Graph template fading effects!
 
@@ -143,6 +130,7 @@ Template.graph.rendered = function () {
     this._rendered = true;
     $('#graph').transition('fade up in', 500);
   }
+
 }
 
 // When the template is destroyed, reset the _rendered variable to false.
