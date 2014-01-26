@@ -223,6 +223,8 @@ input {
 
 /* Title CSS */
 .title,
+.subtitle,
+.details,
 .imfeeling,
 .emotion.dropdown {
   font-family: 'Rokkitt', serif;
@@ -230,6 +232,11 @@ input {
   text-align: center;
   padding: 0px;
   margin-top: 30px;
+}
+
+.subtitle,
+.details {
+  margin-top: 0;
 }
 
 .sidebar {
@@ -305,6 +312,10 @@ input {
   margin: auto;
 }
 
+#splash .title {
+  margin-bottom: -30px;
+}
+
 #splash .title,
 #splash .subtitle,
 #splash .details {
@@ -362,7 +373,6 @@ textarea {
 
 /* Info stuff */
 #splash #info {
-  background-color: #ffffff;
   position: absolute;
   top: 100%;
   width: 100%;
@@ -370,16 +380,113 @@ textarea {
   color: #242424;
 }
 
-.info-segment {
-  padding: 16px;
+#info .title,
+#info .subtitle,
+#info .description {
   font-family: 'Raleway', 'Helvetic Neue', 'Helvetica', sans-serif;
-  font-weight: 400;
-  font-size: 1.4vw;
+  font-weight: 100;
+  margin: 0;
+  text-shadow: none;
 }
 
-.info-segment .header {
-  font-family: 'Rokkitt', sans-serif;
+#info .subtitle {
+  font-weight: 300;
 }
+
+#info .segment {
+  position: relative;
+  padding: 48px 16px;
+  text-align: center;
+  font-size: 1.4vw;
+  height: 70%;
+  background-color: white;
+}
+
+#info .segment .header {
+  margin-bottom: 12px;
+}
+
+#info .post.segment {
+  color: white;
+  background-color: #232323;
+  height: 60%;
+}
+
+#info .post.segment .header {
+  font-size: 5em;
+}
+
+#info .post.segment .subtitle {
+  font-size: 1.2em;
+}
+
+#info .example.feels {
+  margin-top: 60px;
+  position: relative;
+}
+
+#info .post.segment .example.feels .item {
+  display: inline-block;
+  height: 6em;
+  width: 6em;
+  opacity: .9;
+  margin: 8px;
+}
+
+.example.feels .item .text {
+  position: absolute;
+  width: 6em;
+  text-align: center;
+  bottom: -1em;
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.example.feels .item:hover .text {
+  opacity: 1;
+}
+
+#info .community.segment {
+}
+
+#info .community.segment .header {
+  font-size: 4.4em;
+}
+
+
+#info .community.segment .subtitle {
+  font-size: 1.4em;
+}
+
+#info .community.segment .macbooks {
+  margin: 12px auto;
+}
+
+#info .personal.segment {
+  background-color: #c6c6c6;
+  overflow: hidden;
+}
+
+#info .personal.segment .header{
+  font-size: 4em;
+}
+
+#info .personal.segment .subtitle{
+  font-size: 1.6em;
+}
+
+#info .signup.segment {
+  height: 35%;
+  color: white;
+  background-color: #646464;
+}
+
+
+
 
 /* center container with CSS */
 #fit-width .masonry {
@@ -507,16 +614,14 @@ textarea {
 /* Footer CSS */
 #footer {
   position: relative;
-  margin: 16px 0;
   width: 100%;
-  top: 60px;
   height: 50px;
   text-align: center;
 }
 
 #footer .content {
   margin: 0 auto;
-  color: black;
+  color: white;
   padding: 20px;
   font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
