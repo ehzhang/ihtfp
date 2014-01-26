@@ -520,7 +520,7 @@ textarea {
 }
 
 /* Account page CSS */
-#account .grid {
+#account .ui.grid {
   width: 100%;
   margin: 0;
 }
