@@ -156,6 +156,9 @@ login = function () {
               .attr("placeholder", "Incorrect password? Try again!")
               .parent()
                 .addClass("error");
+          } else {
+            // Successful login
+            switchToCommunity();
           }
         })
       }
