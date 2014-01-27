@@ -29,15 +29,15 @@ Template.logo.greeting = function () {
     "watcha thinkin bout?"
   ]
   return greetings[Math.floor(Math.random() * greetings.length)];
-}
+};
 
 Template.header.filtered = function () {
   return emotions.indexOf(Session.get("filter")) >= 0;
-}
+};
 
 Template.header.filter = function () {
   return Session.get("filter");
-}
+};
 
 /**
  * Dynamically update the text for the emotion, based the max
@@ -49,7 +49,7 @@ Template.header.emotion = function () {
 
   // This could probably be optimized somehow? Maybe.
   return mode(recentEmotions);
-}
+};
 
 /**
  * Determines whether or not the record set has been sufficiently synced.
@@ -58,7 +58,7 @@ Template.header.emotion = function () {
  */
 Template.feed.active = function () {
   return Session.get("active");
-}
+};
 
 /**
  * If true, render grid view. If false, render graph view.
@@ -66,49 +66,27 @@ Template.feed.active = function () {
  */
 Template.feed.grid = function () {
   return Session.get("grid");
-}
+};
 
 Template.filter.grid = function () {
   return Session.get("grid");
-}
+};
 
 
 Template.filter.events({
   'click .filters .item': function (event) {
-    if (!Session.get("account")) {
-      // Only set the active flag to false on the main feed.
-      // On the account page, the data is all found, and filtered
-      // on the client side instead of the server
-      Session.set("active", false);
-    }
-    Session.set("limit", 60);
-    Session.set("filter", $(event.target).attr("emotion"));
+    showFilteredBy($(event.target).attr("emotion"));
+    return false;
   },
   'click #grid-view': function (event) {
-    // update 'grid' session variable if not already set
-    if (!Session.get("grid")) {
-      // make 'active' false only if on main feed
-      if (!Session.get("account")) {
-        Session.set("active", false);
-      }
-      Session.set("filter", 'all');
-      Session.set("grid", true);
-    }
+    switchToGridView();
+    return false;
   },
   'click #graph-view': function (event) {
-    // update grid session variable if not already set
-    if (Session.get("grid")) {
-      // make 'active' false only if on main feed
-      if (!Session.get("account")) {
-        Session.set("active", false);
-      }
-      Session.set("filter", 'all');
-      Session.set("grid", false);
-    }
-
+    switchToGraphView();
+    return false;
   }
-
-})
+});
 
 /**
  * Populate the feels grid
@@ -120,7 +98,6 @@ Template.grid.feels = function () {
     if (emotions.indexOf(Session.get("filter")) >= 0) {
       return Feels.find({emotion: Session.get("filter")}, {sort: {timestamp: -1}});
     } else {
-
       return Feels.find({}, {sort: {timestamp: -1}});
     }
   }
@@ -141,26 +118,29 @@ Template.grid.rendered = function () {
   // If it hasn't, then do a thing! (transition)
   if (!this._rendered) {
     this._rendered = true;
+    // Create the lazyload scroll function
+    this._lazyLoad = function () {
+      // Lazy load only on the main feed.
+      if(!Session.get("account")) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+          Session.set("limit", Session.get("limit") + 15);
+        }
+      }
+    }
+    // Fade in the grid! yay!
     $('#grid').transition('fade up in', 500);
+    //  Add a scroll handler to detect reaching the bottom of the page.
+    //  Throttle the function so it doesn't fire so often!
+    $(window).scroll(_.throttle(this._lazyLoad, 400));
   }
-}
+};
 
 // When the template is destroyed, reset the _rendered variable to false.
 Template.grid.destroyed = function () {
   this._rendered = false;
-}
-
-// Add lazy load to the grid
-$('#grid').ready(function () {
-  //  Add a scroll handler to detect reaching the bottom of the page.
-  //  Throttle the function so it doesn't fire so often!
-  $(window).scroll(_.throttle(
-    function () {
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
-        Session.set("limit", Session.get("limit") + 15);
-      }
-    }, 400));
-});
+  // Detach the lazy load handler when the grid is destroyed.
+  $(window).off("scroll", this._lazyLoad);
+};
 
 // Determine the size of the feel based on the amount of text inside.
 Template.feel.size = function () {
@@ -176,13 +156,13 @@ Template.feel.size = function () {
   } else {
     return 'huge expandable';
   }
-}
+};
 
 Template.feel.date = function () {
   if (this.timestamp instanceof Date) {
     return this.timestamp.toLocaleDateString();
   }
-}
+};
 
 // Code to execute when feels are rendered.
 // This gives big feels the ability to expand in size
@@ -201,8 +181,8 @@ Template.feel.rendered = function () {
         // Reorganize the msnry layout
         msnry.layout();
       }
-    })
-}
+    });
+};
 
 // Helper functions
 /**
@@ -228,4 +208,4 @@ mode = function (array) {
     }
   }
   return maxEl;
-}
+};

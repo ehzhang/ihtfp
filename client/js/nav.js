@@ -66,26 +66,11 @@ Template.nav.events({
     return false;
   },
   'click .item.account': function () {
-    if (!Session.get("account")) {
-      // Switching pages, reset the active flag.
-      Session.set("active", false);
-      Session.set("account", true);
-      Session.set("grid", true);
-      Session.set("filter", "all");
-      return false;
-    }
+    switchToAccount();
     return false;
   },
   'click .item.home': function () {
-    if (Session.get("account")) {
-      // Reset the active flag when switching pages.
-      Session.set("active", false);
-      Session.set("limit", 60);
-      Session.set("account", false);
-      Session.set("grid", true);
-      Session.set("filter", "all");
-      return false;
-    }
+    switchToCommunity();
     return false;
   },
   'click #filter .button': function () {
