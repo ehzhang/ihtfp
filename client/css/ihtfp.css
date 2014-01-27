@@ -664,7 +664,8 @@ textarea {
   Emotion Colors
 */
 .emotion.button,
-.emotion.item {
+.emotion.item,
+.graph {
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   -ms-transition-duration: 0.3s;
