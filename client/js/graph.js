@@ -16,7 +16,7 @@
  */
 Template.graph.emotionCounts = function () {
   var emotionCounts,
-    emotions;
+      emotions;
   if (Session.get("account")) {
     // If user is on accounts page, get all feels data
     emotions = getEmotions();
@@ -58,7 +58,8 @@ Template.graph.emotionPercentages = function () {
     });
     for (var key in emotionCounts) {
       if (emotionPercentages.hasOwnProperty(key)) {
-        emotionPercentages[key] = parseInt(emotionCounts[key] / total * 100);
+        var percentage = emotionCounts[key] / total * 100;
+        emotionPercentages[key] = percentage < 1 ? '<1' : Math.round(percentage);
       }
     }
   }
@@ -88,9 +89,9 @@ Template.graph.rendered = function () {
       }
     );
 
-    var w = 360,                        //width
-      h = 360,                            //height
-      r = 180;                            //radius
+    var w = 250,                        //width
+      h = 250,                            //height
+      r = 125;                            //radius
 
     var vis = d3.select("#emotion-pie")
       .append("svg:svg")              //create the SVG element inside the <body>
@@ -101,10 +102,11 @@ Template.graph.rendered = function () {
       .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
 
     var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
-      .outerRadius(r)
-      .innerRadius(5 / 6 * r);
+      .outerRadius(r - 5)
+      .innerRadius(r - 40);
 
     var pie = d3.layout.pie()           //this will create arc data for us given a list of values
+      .sort(null)
       .value(function (d) {
         return d.count;
       });    //we must tell it out to access the value of each element in our data array

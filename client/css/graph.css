@@ -43,3 +43,8 @@
   font-size:16px;
   color:white;
 }
+
+#emotion-pie {
+  stroke: #262626;
+  stroke-width: 4;
+}
