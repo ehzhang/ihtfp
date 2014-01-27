@@ -71,6 +71,7 @@ switchToGraphView = function () {
     if (!Session.get("account")) {
       Session.set("active", false);
     }
+    resetLimit();
     Session.set("filter", 'all');
     Session.set("grid", false);
   }
