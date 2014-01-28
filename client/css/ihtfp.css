@@ -152,6 +152,7 @@ input {
 #nav .logo.item {
   font-size: 30pt;
   padding: 12px;
+
 }
 
 #logo,
@@ -173,7 +174,7 @@ input {
 #logo .content {
   position: absolute;
   bottom: -40px;
-  left: 15%;
+  left: 8%;
 }
 
 #logo .greeting {
