@@ -245,6 +245,10 @@ input {
   height: 600px !important;
 }
 
+#composer {
+  z-index: 850;
+}
+
 #composer .title {
   font-size: 100pt;
   margin-top: 0;
@@ -294,6 +298,13 @@ input {
 
 .emotion.editor {
   padding: 12px;
+}
+
+#post-warning {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 12pt;
+  font-weight: 300;
 }
 
 /* Splash Screen CSS */
