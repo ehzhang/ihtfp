@@ -70,4 +70,41 @@ Template.account.weeksEmotion = function () {
     }));
 }
 
+/**
+ * Returns the emotion with the highest amount of text.
+ */
+Template.account.mostTalkedEmotion = function () {
+  var feels = Feels.find({username: Meteor.user().username}).map(function (item) {
+      return {emotion: item.emotion, len: item.text.length};
+    }),
+    lengthCounts = {};
+  for (var i = 0; i < feels.length; i++) {
+    var feel = feels[i];
+    if (lengthCounts[feel.emotion] == null) {
+      lengthCounts[feel.emotion] = feel.len;
+    } else {
+      lengthCounts[feel.emotion] += feel.len;
+    }
+  }
+  return _.max(_.pairs(lengthCounts), function(emotion) {return emotion[1]})[0];
+}
+
+Template.account.polarity = function () {
+  var positive = ['happy', 'excited', 'proud', 'romantic'],
+      negative = ['sad',  'stressed', 'angry'];
+  return _.reduce(Feels.find({username: Meteor.user().username})
+                    .map( function(item){return item.emotion}),
+    function(memo, emotion) {
+      var value = 0;
+      if (positive.indexOf(emotion) >= 0) {
+        value = 1;
+      } else {
+        value = -1;
+      }
+      return memo + value;
+    }, 0) >= 0 ? 'positive' : 'negative';
+}
+
+
+
 

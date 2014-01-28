@@ -8,10 +8,17 @@
           </div>
           You've posted {{ timesPosted }} times since you joined on {{ joinDate }}.
           <br>
-          You post most frequently about being
-          <span class="{{ mostEmotion }} text"> {{ mostEmotion }}</span>.
-          In the past week, you posted mostly about feeling
-          <span class="{{ weeksEmotion }} text"> {{ weeksEmotion }}</span>.
+          {{#if timesPosted}}
+            You post most frequently about feeling
+            <span class="{{ mostEmotion }} text"> {{ mostEmotion }}</span>,
+            write the most about feeling
+            <span class="{{ mostTalkedEmotion }} text"> {{ mostTalkedEmotion }}</span>,
+            and are generally
+            <span class="{{ polarity }} text"> {{ polarity }}</span>.
+            <br>
+            In the past week, you posted mostly about feeling
+            <span class="{{ weeksEmotion }} text"> {{ weeksEmotion }}</span>.
+          {{/if}}
         </div>
       </div>
       <div class="ten wide left aligned column">

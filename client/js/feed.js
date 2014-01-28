@@ -186,7 +186,7 @@ Template.feel.rendered = function () {
 
 // Helper functions
 /**
- * Find the maximum element of an array.
+ * Find the most common item in an array
  * @param array
  * @returns {*}
  */

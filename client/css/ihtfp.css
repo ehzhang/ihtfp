@@ -692,7 +692,8 @@ textarea {
   color: #FFF !important;
 }
 
-.happy.text {
+.happy.text,
+.positive.text {
   background-color: transparent;
   color: #ffa71d !important;
 }
@@ -719,7 +720,8 @@ textarea {
   color: #FFF !important;
 }
 
-.sad.text {
+.sad.text,
+.negative.text {
   background-color: transparent;
   color: #3a90e5 !important;
 }
