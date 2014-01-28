@@ -7,17 +7,22 @@
             Hello, {{ username }}!
           </div>
           You've posted {{ timesPosted }} times since you joined on {{ joinDate }}.
-          <br>
           {{#if timesPosted}}
             You post most frequently about feeling
-            <span class="{{ mostEmotion }} text"> {{ mostEmotion }}</span>,
+            <span class="{{ mostEmotion }} text">{{ mostEmotion }}</span>,
             write the most about feeling
-            <span class="{{ mostTalkedEmotion }} text"> {{ mostTalkedEmotion }}</span>,
+            <span class="{{ mostWrittenEmotion }} text">{{ mostWrittenEmotion }}</span>,
             and are generally
-            <span class="{{ polarity }} text"> {{ polarity }}</span>.
-            <br>
+            <span class="{{ polarity }} text">{{ polarity }}</span>.
             In the past week, you posted mostly about feeling
             <span class="{{ weeksEmotion }} text"> {{ weeksEmotion }}</span>.
+            In the past 30 days, you posted mostly about feeling
+            <span class="{{ monthsEmotion }} text"> {{ monthsEmotion }}</span>.
+            <br>
+            <br>
+            <div class="swears">
+              Also, you've sworn {{ swears }} times, in {{ percentSwears }}% of your posts. Just saying.
+            </div>
           {{/if}}
         </div>
       </div>

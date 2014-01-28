@@ -70,10 +70,22 @@ Template.account.weeksEmotion = function () {
     }));
 }
 
+var lastMonth = new Date();
+lastMonth.setDate(lastWeek.getDate() - 30)
+Template.account.monthsEmotion = function () {
+  return mode(Feels.find({
+      username: Meteor.user().username,
+      timestamp: { $gte: lastMonth}
+    }
+  ).map(function (item) {
+      return item.emotion;
+    }));
+}
+
 /**
  * Returns the emotion with the highest amount of text.
  */
-Template.account.mostTalkedEmotion = function () {
+Template.account.mostWrittenEmotion = function () {
   var feels = Feels.find({username: Meteor.user().username}).map(function (item) {
       return {emotion: item.emotion, len: item.text.length};
     }),
@@ -103,6 +115,38 @@ Template.account.polarity = function () {
       }
       return memo + value;
     }, 0) >= 0 ? 'positive' : 'negative';
+}
+
+Template.account.swears = function () {
+  var feels = Feels.find({username: Meteor.user().username}).map(function(item) {return item.text}),
+      count = 0,
+      badWords = ['ass', 'fuck', 'shit', 'damn', 'bitch', 'tits', 'motherfucker', 'fucking',
+                  'shitting', 'shitty', 'goddamn', 'bitchy'].join('|'),
+      check = new RegExp(badWords, "gi");
+  for (var i = 0; i < feels.length; i++) {
+    if (feels[i].match(check)) {
+      count += feels[i].match(check).length;
+    }
+  }
+  return count;
+}
+
+Template.account.percentSwears = function () {
+  var feels = Feels.find({username: Meteor.user().username}).map(function(item) {return item.text}),
+    count = 0,
+    badWords = ['ass', 'fuck', 'shit', 'damn', 'bitch', 'tits', 'motherfucker', 'fucking',
+      'shitting', 'shitty', 'goddamn', 'bitchy'].join('|'),
+    check = new RegExp(badWords, "gi");
+  if (feels.length) {
+    for (var i = 0; i < feels.length; i++) {
+      if (feels[i].match(check)) {
+        count += 1;
+      }
+    }
+    return Math.round(count / feels.length * 100);
+  } else {
+    return 0;
+  }
 }
 
 

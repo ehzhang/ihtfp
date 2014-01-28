@@ -153,8 +153,10 @@ Template.feel.size = function () {
     return 'medium expandable';
   } else if (text.length < 300) {
     return 'big expandable';
+  } else if (text.length < 700) {
+    return 'huge expandable'
   } else {
-    return 'huge expandable';
+    return 'humongo expandable';
   }
 };
 
