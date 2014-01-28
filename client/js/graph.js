@@ -126,17 +126,6 @@ Template.graph.emotionDurationCounts = function (date, duration) {
   return emotionWeekCountsFormatted;
 }
 
-/**
- * Sorry for being janky.
- */
-Template.graph.selectLineChartWidth = function () {
-  if (Session.get("account")) {
-    return "650";
-  } else {
-    return "1000";
-  }
-}
-
 Template.graph.lastDurationDays = function (duration) {
   var days = [],
     date = Session.get("startDate");
@@ -264,7 +253,7 @@ Template.graph.rendered = function () {
         type: 'area',
         backgroundColor: null,
         height: 400,
-        width: Template.graph.selectLineChartWidth()
+        width: Session.get("account") ? '550' : '1000'
       },
       title: {
         text: null
@@ -340,7 +329,7 @@ Template.graph.rendered = function () {
       },
       series: line_data,
       tooltip: {
-        enabled: false,
+        enabled: false
       },
       legend: {
         borderWidth: 0,
