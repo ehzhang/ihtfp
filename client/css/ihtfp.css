@@ -33,7 +33,7 @@ input {
 }
 
 .ui.form input[type=password] {
-  padding-left: 2.5em !important;
+  /*padding-left: 2.5em !important;*/
 }
 
 /* For debuggin, rapid switch between splash and app */
