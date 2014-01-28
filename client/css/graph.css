@@ -2,6 +2,11 @@
 
 #graph {
   padding: 24px;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -ms-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
 }
 
 #graph .container {
@@ -47,4 +52,9 @@
 #emotion-pie {
   stroke: #262626;
   stroke-width: 4;
+}
+
+#feels-week-line {
+  margin: 24px;
+  height:400px
 }

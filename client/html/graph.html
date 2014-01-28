@@ -1,37 +1,53 @@
 <template name="graph">
   <div id="graph">
-    <div class="container">
-      <div class="inner-container">
-        <div class="chart">
-          {{> emotion-pie }}
-        </div>
-        <div class="content">
-          {{#if account}}
-          Since you started posting, your feels are about
-          {{else}}
-          So far today, tfp has been about
-          {{/if}}
-          <span class="happy text">{{emotionPercentages.happy}}% happy</span>,
-          <span class="meh text">{{emotionPercentages.meh}}% meh</span>,
-          <span class="sad text">{{emotionPercentages.sad}}% sad</span>,
-          <span class="angry text">{{emotionPercentages.angry}}% angry</span>,
-          <span class="excited text">{{emotionPercentages.excited}}% excited</span>,
-          <span class="stressed text">{{emotionPercentages.stressed}}% stressed</span>,
-          <span class="proud text">{{emotionPercentages.proud}}% proud</span>, and
-          <span class="romantic text">{{emotionPercentages.romantic}}% romantic</span>.
-        </div>
-      </div>
-    </div>
-
+    {{> emotionPie }}
+    {{> feelsWeekLine }}
   </div>
 </template>
 
-<template name="emotion-pie">
+<template name="emotionPie">
+  <div class="container">
+    <div class="inner-container">
+      <div class="chart">
+        {{> emotionPieChart }}
+      </div>
+      <div class="content">
+        {{#if account}}
+        Since you started posting, your feels are about
+        {{else}}
+        So far today, tfp has been about
+        {{/if}}
+        <span class="happy text">{{emotionPiePercentages.happy}}% happy</span>,
+        <span class="meh text">{{emotionPiePercentages.meh}}% meh</span>,
+        <span class="sad text">{{emotionPiePercentages.sad}}% sad</span>,
+        <span class="angry text">{{emotionPiePercentages.angry}}% angry</span>,
+        <span class="excited text">{{emotionPiePercentages.excited}}% excited</span>,
+        <span class="stressed text">{{emotionPiePercentages.stressed}}% stressed</span>,
+        <span class="proud text">{{emotionPiePercentages.proud}}% proud</span>, and
+        <span class="romantic text">{{emotionPiePercentages.romantic}}% romantic</span>.
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="feelsWeekLine">
+  <div class="container">
+    <div class="inner-container">
+      <div class="chart">
+        {{> feelsWeekLineChart }}
+      </div>
+      <div class="content">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="emotionPieChart">
   <div id="emotion-pie">
   </div>
 </template>
 
-<template name="feels-line">
-  <div id="feels-line">
+<template name="feelsWeekLineChart">
+  <div id="feels-week-line">
   </div>
 </template>
