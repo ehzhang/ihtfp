@@ -16,10 +16,11 @@
  * Reset the limit of how many posts to load initially.
  */
 resetLimit = function () {
-  if(Session.equals("limit", 60)) {
-    Session.set("limit", 59);
+  if(Session.equals("limit", 100)) {
+    Session.set("limit", 99);
   } else {
-    Session.set("limit", 60);
+    Session.set("limit", 100);
+    console.log(Session.get("limit") + 'supposed to reset');
   }
 }
 
@@ -49,7 +50,7 @@ switchToCommunity = function () {
     // Reset the active flag when switching pages.
     Session.set("active", false);
     // Reset the limit for the query
-    resetLimit()
+    resetLimit();
     // Switch to the main feed.
     Session.set("account", false);
     // Show the grid.

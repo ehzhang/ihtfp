@@ -104,7 +104,18 @@ Template.grid.feels = function () {
 }
 
 // Global container, msnry
-var container, msnry;
+var container,
+    msnry,
+    lazyLoad = _.throttle(function () {
+      // Lazy load only on the main feed.
+      if(!Session.get("account")) {
+        if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+          Session.set("limit", Session.get("limit") + 15);
+          console.log(Session.get("limit"));
+        }
+      }
+    }, 400);
+
 Template.grid.rendered = function () {
   container = document.querySelector('#grid');
   msnry = new Masonry(container, {
@@ -118,20 +129,12 @@ Template.grid.rendered = function () {
   // If it hasn't, then do a thing! (transition)
   if (!this._rendered) {
     this._rendered = true;
-    // Create the lazyload scroll function
-    this._lazyLoad = function () {
-      // Lazy load only on the main feed.
-      if(!Session.get("account")) {
-        if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
-          Session.set("limit", Session.get("limit") + 15);
-        }
-      }
-    }
+
     // Fade in the grid! yay!
     $('#grid').transition('fade up in', 500);
     //  Add a scroll handler to detect reaching the bottom of the page.
     //  Throttle the function so it doesn't fire so often!
-    $(window).scroll(_.throttle(this._lazyLoad, 400));
+    $(window).scroll(lazyLoad);
   }
 };
 
@@ -139,7 +142,7 @@ Template.grid.rendered = function () {
 Template.grid.destroyed = function () {
   this._rendered = false;
   // Detach the lazy load handler when the grid is destroyed.
-  $(window).off("scroll", this._lazyLoad);
+  $(window).off('scroll', lazyLoad);
 };
 
 // Determine the size of the feel based on the amount of text inside.

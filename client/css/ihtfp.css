@@ -218,6 +218,7 @@ input {
 /* About dimmers */
 
 #about .title {
+  margin: 0;
   font-size: 6em;
 }
 
