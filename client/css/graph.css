@@ -31,13 +31,18 @@
   font-family: Raleway, sans-serif;
 }
 
-#graph .content {
+#graph #emotionPieContainer .content {
   font-size: 1.3em;
   max-width:320px;
   position: relative;
   display: table-cell;
   vertical-align: middle;
   padding-left: 24px;
+}
+
+#graph #feelsWeekLineContainer .content, #graph #feelsMonthLineContainer .content {
+  font-size: 1.6em;
+  position: relative;
 }
 
 #graph .text {
@@ -54,7 +59,7 @@
   stroke-width: 4;
 }
 
-#feels-week-line {
+#feels-week-line, #feels-month-line {
   margin: 24px;
   height:400px
 }

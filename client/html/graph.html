@@ -1,42 +1,63 @@
 <template name="graph">
   <div id="graph">
-    {{> emotionPie }}
-    {{> feelsWeekLine }}
+    {{> emotionPie}}
+    {{> feelsWeekLine}}
+    {{> feelsMonthLine}}
   </div>
 </template>
 
 <template name="emotionPie">
-  <div class="container">
-    <div class="inner-container">
-      <div class="chart">
-        {{> emotionPieChart }}
-      </div>
-      <div class="content">
-        {{#if account}}
-        Since you started posting, your feels are about
-        {{else}}
-        So far today, tfp has been about
-        {{/if}}
-        <span class="happy text">{{emotionPiePercentages.happy}}% happy</span>,
-        <span class="meh text">{{emotionPiePercentages.meh}}% meh</span>,
-        <span class="sad text">{{emotionPiePercentages.sad}}% sad</span>,
-        <span class="angry text">{{emotionPiePercentages.angry}}% angry</span>,
-        <span class="excited text">{{emotionPiePercentages.excited}}% excited</span>,
-        <span class="stressed text">{{emotionPiePercentages.stressed}}% stressed</span>,
-        <span class="proud text">{{emotionPiePercentages.proud}}% proud</span>, and
-        <span class="romantic text">{{emotionPiePercentages.romantic}}% romantic</span>.
+  <div id="emotionPieContainer">
+    <div class="container">
+      <div class="inner-container">
+        <div class="chart">
+          {{> emotionPieChart }}
+        </div>
+        <div class="content">
+          {{#if account}}
+          Since you started posting, your feels are about
+          {{else}}
+          So far today, tfp has been about
+          {{/if}}
+          <span class="happy text">{{emotionPiePercentages.happy}}% happy</span>,
+          <span class="meh text">{{emotionPiePercentages.meh}}% meh</span>,
+          <span class="sad text">{{emotionPiePercentages.sad}}% sad</span>,
+          <span class="angry text">{{emotionPiePercentages.angry}}% angry</span>,
+          <span class="excited text">{{emotionPiePercentages.excited}}% excited</span>,
+          <span class="stressed text">{{emotionPiePercentages.stressed}}% stressed</span>,
+          <span class="proud text">{{emotionPiePercentages.proud}}% proud</span>, and
+          <span class="romantic text">{{emotionPiePercentages.romantic}}% romantic</span>.
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <template name="feelsWeekLine">
-  <div class="container">
-    <div class="inner-container">
-      <div class="chart">
-        {{> feelsWeekLineChart }}
+  <div id="feelsWeekLineContainer">
+    <div class="container">
+      <div class="inner-container">
+        <div class="content">
+          Feels in the past 7 days:
+        </div>
+        <div class="chart">
+          {{> feelsWeekLineChart }}
+        </div>
       </div>
-      <div class="content">
+    </div>
+  </div>
+</template>
+
+<template name="feelsMonthLine">
+  <div id="feelsMonthLineContainer">
+    <div class="container">
+      <div class="inner-container">
+        <div class="content">
+          Feels in the past 30 days:
+        </div>
+        <div class="chart">
+          {{> feelsMonthLineChart }}
+        </div>
       </div>
     </div>
   </div>
@@ -49,5 +70,10 @@
 
 <template name="feelsWeekLineChart">
   <div id="feels-week-line">
+  </div>
+</template>
+
+<template name="feelsMonthLineChart">
+  <div id="feels-month-line">
   </div>
 </template>

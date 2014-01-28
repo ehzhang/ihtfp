@@ -74,7 +74,7 @@ Template.emotionPie.emotionPieCounts = function () {
 
 /**
  * Calls emotionCounts to return emotion counts per day
- * for the past seven days. Returns an object of the format:
+ * for the past duration (int) days. Returns an object of the format:
  * [{
  *    name: 'happy',
  *    data: [1,3,2,4,5,7,0]
@@ -84,8 +84,7 @@ Template.emotionPie.emotionPieCounts = function () {
  *    data: [0,2,1,6,3,1,1]
  * }]
  */
-Template.feelsWeekLine.emotionWeekCounts = function (date) {
-//{"happy": 1, "sad": 3}
+Template.graph.emotionDurationCounts = function (date, duration) {
   var emotionWeekCounts = {
     "happy": [],
     "meh": [],
@@ -97,7 +96,7 @@ Template.feelsWeekLine.emotionWeekCounts = function (date) {
     "romantic": []
   };
 
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < duration; i++) {
     var emotionDayCount = Template.graph.emotionCounts(date);
     for (var key in emotionWeekCounts) {
       var count = 0;
@@ -130,7 +129,7 @@ Template.feelsWeekLine.emotionWeekCounts = function (date) {
 /**
  * Sorry for being janky.
  */
-Template.feelsWeekLineChart.selectWidth = function () {
+Template.graph.selectLineChartWidth = function () {
   if (Session.get("account")) {
     return "650";
   } else {
@@ -138,12 +137,12 @@ Template.feelsWeekLineChart.selectWidth = function () {
   }
 }
 
-Template.feelsWeekLine.lastSevenDays = function() {
+Template.graph.lastDurationDays = function (duration) {
   var days = [],
     date = Session.get("startDate");
 
-  for (var i = 0; i < 7; i++) {
-    var formatDate = (date.getMonth()+1).toString() +  "/" + date.getDate().toString();
+  for (var i = 0; i < duration; i++) {
+    var formatDate = (date.getMonth() + 1).toString() + "/" + date.getDate().toString();
     days = [formatDate].concat(days);
     date.setDate(date.getDate() - 1);
   }
@@ -205,9 +204,9 @@ Template.graph.rendered = function () {
       }
     );
 
-    var w = 250,                        //width
-      h = 250,                            //height
-      r = 125;                            //radius
+    var w = 350,                        //width
+      h = 350,                            //height
+      r = 175;                            //radius
 
     var vis = d3.select("#emotion-pie")
       .append("svg:svg")              //create the SVG element inside the <body>
@@ -218,7 +217,7 @@ Template.graph.rendered = function () {
       .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
 
     var arc = d3.svg.arc()              //this will create <path> elements for us using arc data
-      .outerRadius(r - 5)
+      .outerRadius(r - 7)
       .innerRadius(r - 40);
 
     var pie = d3.layout.pie()           //this will create arc data for us given a list of values
@@ -242,96 +241,7 @@ Template.graph.rendered = function () {
 
 // Feels line graph
 
-  var line_data = Template.feelsWeekLine.emotionWeekCounts(Session.get("startDate"));
-
-
-  $('#feels-week-line').highcharts({
-    chart: {
-      type: 'area',
-      backgroundColor: null,
-      height: 400,
-      width: Template.feelsWeekLineChart.selectWidth()
-    },
-    title: {
-      text: null
-    },
-    xAxis: {
-      title: {
-        text: null,
-        style: {
-          fontFamily: "Raleway, sans-serif",
-          fontSize: 20,
-          color: "white",
-          fontWeight: 100
-        }
-      },
-      categories: Template.feelsWeekLine.lastSevenDays(),
-      tickmarkPlacement: 'on',
-      gridLineWidth: 0,
-      labels: {
-        style: {
-          fontFamily: "Raleway, sans-serif",
-          fontSize: 14,
-          color: "white",
-          fontWeight: 100,
-          padding: 10
-        }
-      }
-    },
-    yAxis: {
-      title: {
-        text: '# feels',
-        style: {
-          fontFamily: "Raleway, sans-serif",
-          fontSize: 20,
-          color: "white",
-          fontWeight: 100
-        }
-      },
-      gridLineWidth: 0,
-      labels: {
-        formatter: function () {
-          return this.value;
-        },
-        style: {
-          fontFamily: "Raleway, sans-serif",
-          fontSize: 14,
-          color: "white",
-          fontWeight: 100,
-          padding: 10
-        }
-      }
-    },
-    tooltip: {
-      enabled: false
-    },
-    plotOptions: {
-      area: {
-        stacking: 'normal',
-        lineColor: '#FFFFFF',
-        lineWidth: 0,
-        marker: {
-          enabled: false,
-          states: {
-            hover: {
-              enabled: false
-            }
-          }
-        }
-      },
-      series: {
-        fillOpacity: 1
-      }
-    },
-    series: line_data,
-    tooltip: {
-      enabled: false,
-    },
-    legend: {
-      borderWidth: 0,
-      itemWidth: 40
-    }
-  }, function () {
+  Template.graph.lineChartCallbacks = function () {
     $("tspan:contains('Highcharts.com')").attr("opacity", "0.2")
     $.each($(".highcharts-legend-item rect"), function (index, obj) {
       $(obj).attr("rx", "0")
@@ -344,7 +254,103 @@ Template.graph.rendered = function () {
     $.each($(".highcharts-legend-item tspan"), function (index, obj) {
       $(obj).remove();
     });
-  })
+  }
+
+  Template.graph.getLineChartJSON = function (duration) {
+    var categories = Template.graph.lastDurationDays(duration),
+      line_data = Template.graph.emotionDurationCounts(Session.get("startDate"), duration);
+    return {
+      chart: {
+        type: 'area',
+        backgroundColor: null,
+        height: 400,
+        width: Template.graph.selectLineChartWidth()
+      },
+      title: {
+        text: null
+      },
+      xAxis: {
+        title: {
+          text: null,
+          style: {
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 20,
+            color: "white",
+            fontWeight: 100
+          }
+        },
+        categories: categories,
+        tickInterval: duration > 7 ? 2 : 1,
+        tickmarkPlacement: 'on',
+        gridLineWidth: 0,
+        labels: {
+          style: {
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 14,
+            color: "white",
+            fontWeight: 100,
+            padding: 10
+          }
+        }
+      },
+      yAxis: {
+        title: {
+          text: '# feels',
+          style: {
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 20,
+            color: "white",
+            fontWeight: 100
+          }
+        },
+        gridLineWidth: 0,
+        labels: {
+          formatter: function () {
+            return this.value;
+          },
+          style: {
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 14,
+            color: "white",
+            fontWeight: 100,
+            padding: 10
+          }
+        }
+      },
+      tooltip: {
+        enabled: false
+      },
+      plotOptions: {
+        area: {
+          stacking: 'normal',
+          lineColor: '#FFFFFF',
+          lineWidth: 0,
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+          }
+        },
+        series: {
+          fillOpacity: 1
+        }
+      },
+      series: line_data,
+      tooltip: {
+        enabled: false,
+      },
+      legend: {
+        borderWidth: 0,
+        itemWidth: 40
+      }
+    }
+  }
+
+  $('#feels-week-line').highcharts(Template.graph.getLineChartJSON(7), Template.graph.lineChartCallbacks);
+  $('#feels-month-line').highcharts(Template.graph.getLineChartJSON(30), Template.graph.lineChartCallbacks)
 
 // Graph template fading effects!
 
