@@ -49,6 +49,14 @@ Template.nav.account = function () {
   return Session.get("account");
 };
 
+/** Account template code in nav
+ * because it's just this one method.
+ *
+ */
+Template.about.account = function () {
+  return Session.get("account");
+};
+
 /**
  * Events related to the app in general
  */
@@ -58,6 +66,12 @@ Template.nav.events({
       .dimmer({
         closable: false
       })
+      .dimmer('show');
+    return false;
+  },
+  'click .trigger-about': function () {
+    $('#about.ui.dimmer')
+      .dimmer()
       .dimmer('show');
     return false;
   },

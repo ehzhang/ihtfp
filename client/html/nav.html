@@ -9,29 +9,35 @@
       <!--<a class="item">-->
       <!--<i class="grid layout icon"></i>-->
       <!--</a>-->
-    </div>
-    <div class="ui inverted compact right menu">
-      <a class="new-feel popup item"
-         data-content="Share a Feel"
-         data-position="bottom center">
-        <i class="{{ emotion }} text plus icon"></i>
-      </a>
-      <!--<a class="date-pick popup item" data-content="Choose a Date" data-position="bottom center">-->
-      <!--<i class="calendar icon"></i>-->
-      <!--</a>-->
-      <div class="account settings ui simple inverted dropdown item">
-        <span class="{{ emotion }} text">{{ username }}</span>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item home">
-            Home
-          </a>
-          <a class="item account">
-            My Profile
-          </a>
-          <a class="item logout">
-            Sign Out
-          </a>
+      <div class="ui inverted compact right menu">
+        <a class="new-feel nav-icon popup item"
+           data-content="Share a Feel"
+           data-position="bottom center">
+          <i class="text plus icon"></i>
+        </a>
+        <a class="trigger-about nav-icon popup item"
+           data-content="About"
+           data-position="bottom center">
+          <i class="text question icon"></i>
+        </a>
+        <!--<a class="date-pick popup item" data-content="Choose a Date" data-position="bottom center">-->
+        <!--<i class="calendar icon"></i>-->
+        <!--</a>-->
+        <div class="account settings ui simple inverted dropdown item">
+          <span class="{{ emotion }} text">{{ username }}</span>
+          <i class="dropdown icon"></i>
+
+          <div class="menu">
+            <a class="item home">
+              Home
+            </a>
+            <a class="item account">
+              My Profile
+            </a>
+            <a class="item logout">
+              Sign Out
+            </a>
+          </div>
         </div>
       </div>
     </div>

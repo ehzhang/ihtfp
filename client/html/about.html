@@ -1,0 +1,64 @@
+<template name="about">
+  <div id="about" class="ui page dimmer">
+    <div class="content">
+      <div class="center">
+        <div class="title">
+          ihtfp
+        </div>
+        {{#if account}}
+        {{> about-account}}
+        {{else}}
+        {{> about-feed}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="about-account">
+  <div id="about-account">
+    <div class="welcome">
+      Welcome to your personal feels record.
+    </div>
+    <div class="text">
+      Check out your <b>personal emotional summary</b> in the left sidebar.
+      Understand with which emotion you <b>post</b> and <b>write about</b> most.
+      Your feels have also been categorized as either <b>positive</b> (happy, excited, proud, and romantic) and
+      <b>negative</b> (sad, stressed, and angry).
+      <br>
+      <br>
+      Read all your feels in the <b>grid view</b>.
+      <b>Filter by emotion</b> in the grid's lower left corner.
+      <br>
+      <br>
+      Or analyze your feels through the <b>graph view</b>. See
+      how you've been posting in the past <b>day, week, and month</b>.
+      <b>Filter by emotion</b> by clicking in the line graphs' legends.
+    </div>
+  </div>
+</template>
+
+<template name="about-feed">
+  <div id="about-feed">
+    <div class="welcome">
+      Welcome to MIT's feels.
+    </div>
+    <div class="text">
+      Get a sense for how campus is feeling through <b>color-coded feels</b>.
+      <b>Filter by emotion</b> in the lower left corner.
+      <br>
+      <br>
+      Read individual posts, all anonymous, in the <b>grid view</b>. Or get
+      a better overall quantitative understanding through the <b>graph view</b>. Analyze
+      how people have been feeling in the past <b>day, week, and month</b>.
+      <b>Filter by emotion</b> by clicking in the line graphs' legends. Toggle
+      between the two views in the lower left corner.
+      <br>
+      <br>
+      <b>Compose</b> your own feels in the upper right corner. Choose an emotion, and
+      add some text if you want. Your feels will be added <b>anonymously</b> to the main MIT feed,
+      and you can look back on your feels in your personal feed.
+
+    </div>
+  </div>
+</template>
