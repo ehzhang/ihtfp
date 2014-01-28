@@ -137,12 +137,12 @@ input {
 
 #nav .right.menu {
   position: fixed;
-  right: 8px;
+  right: 0;
 }
 
 #nav .left.menu {
   position: fixed;
-  left: 8px;
+  left: 0;
 }
 
 #nav .menu .dropdown .menu {
