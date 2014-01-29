@@ -33,7 +33,7 @@ input {
 }
 
 .ui.form input[type=password] {
-  /*padding-left: 2.5em !important;*/
+  padding-left: 2.5em !important;
 }
 
 /* For debuggin, rapid switch between splash and app */
@@ -414,6 +414,11 @@ textarea {
 
 .learn-more .button {
   padding: 20px !important;
+}
+
+#forgot-password .field {
+  width: 250px;
+  margin: 0 auto;
 }
 
 /* Info stuff */

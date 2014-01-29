@@ -21,3 +21,12 @@ Accounts.emailTemplates.enrollAccount.text = function (user, url) {
     "to activate your account and set your password, simply click the link below: \n\n" +
     url;
 }
+
+Accounts.emailTemplates.resetPassword.subject = function (user) {
+  return "[ihtfp] Password reset for " + user.username + "!";
+}
+
+Accounts.emailTemplates.resetPassword.text = function (user, url) {
+  return "To reset your password, just visit the link below! \n\n " +
+    url;
+}

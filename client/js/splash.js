@@ -72,6 +72,8 @@ Template.splash.rendered = function () {
     }, 800, 'swing');
     return false;
   });
+
+  $('.forgot-password').popup();
 }
 
 // Animate the signup/login forms
@@ -107,10 +109,12 @@ signup = function () {
     Meteor.call("newUser", email, function (error, result) {
       if (result) {
         // if successfully sent email
+        console.log("Enrollment email sent.");
         $('.username').val("");
         $('.signup.success.dimmer').dimmer('toggle');
       } else {
         // if account already exists
+        console.log("the account apparently already exists");
         $usernameInput
           .val("").attr("placeholder", "This account already exists!")
           .parent().addClass("error");
@@ -118,14 +122,13 @@ signup = function () {
 
     });
   }
-  ;
   return false;
 }
 
 login = function () {
-  var email = $('.username').val(),
+  var email = $('.login .username').val(),
       password = $('.password').val(),
-      $usernameInput = $('input.username'),
+      $usernameInput = $('.login input.username'),
       $passwordInput = $('input.password');
 
   if (!email) {
@@ -153,7 +156,7 @@ login = function () {
           if (error) {
             $passwordInput
               .val("")
-              .attr("placeholder", "Incorrect password? Try again!")
+              .attr("placeholder", "Incorrect :( Try again!")
               .parent()
                 .addClass("error");
           } else {
@@ -164,6 +167,28 @@ login = function () {
       }
     })
   }
+  return false;
+}
+
+resetPassword = function () {
+  var email = $('.reset.username').val(),
+      $usernameInput = $('input.reset.username');
+  $('.reset.username').val("");
+  Meteor.call("userExists", email, function (error, result) {
+    if (!result) {
+      // if user doesn't exists
+      $usernameInput
+        .val("")
+        .attr("placeholder", "This account doesn't exist!")
+        .parent()
+        .addClass("error");
+    } else {
+      // if user exists, try resetting
+      Meteor.call("resetUserPassword", email);
+      $('#forgot-password.dimmer').dimmer('hide');
+      $('.password-reset.success.dimmer').dimmer('show');
+    }
+  })
   return false;
 }
 
@@ -182,6 +207,7 @@ Template.splash.events({
     if (event.keyCode == 13) {
       return signup();
     }
+    return false;
   },
   'keyup .login .username': function (event) {
     $(event.target)
@@ -190,6 +216,7 @@ Template.splash.events({
     if (event.keyCode == 13) {
       return login();
     }
+    return false;
   },
   'keyup .login .password': function (event) {
     $(event.target)
@@ -198,9 +225,27 @@ Template.splash.events({
     if (event.keyCode == 13) {
       return login();
     }
+    return false;
   },
   'click .login.button': function () {
     return login();
+  },
+  'keyup .reset.username': function (event) {
+    $(event.target)
+      .attr("placeholder", "Hey, what's your kerberos?")
+      .parent().removeClass("error");
+    if (event.keyCode == 13) {
+      return resetPassword();
+    }
+    return false;
+  },
+  'click .forgot-password' : function (event) {
+    $('#forgot-password.dimmer').dimmer('show');
+    return false;
+  },
+  'click .reset-password' : function () {
+    return resetPassword();
   }
+
 })
 

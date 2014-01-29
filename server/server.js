@@ -67,5 +67,12 @@ Meteor.methods({
     } else {
       return true;
     }
+  },
+  resetUserPassword: function (email) {
+    var username = email.split("@")[0];
+    if (Meteor.call("userExists", email)) {
+      Accounts.sendResetPasswordEmail(Meteor.users.find({username: username}).fetch()[0]._id);
+      console.log("Password reset sent");
+    }
   }
 });
