@@ -456,6 +456,15 @@ textarea {
   margin-bottom: 12px;
 }
 
+#info .demo.segment .header {
+  font-size: 4em;
+}
+
+#info .demo.segment .subtitle {
+  font-size: 1.2em;
+  margin-bottom: 16px;
+}
+
 #info .post.segment {
   color: white;
   background-color: #232323;
